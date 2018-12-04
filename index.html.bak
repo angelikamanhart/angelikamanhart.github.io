@@ -9,7 +9,7 @@
   <body>
     <div id="container">
       <div id="cuheader">
-        <h1><a href="#" style="width: 959px;">your website name here</a></h1>
+        <h1><a href="#">your website name here</a></h1>
       </div>
       <div id="wrapper">
         <div id="banner">
