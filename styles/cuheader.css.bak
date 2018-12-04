@@ -5,14 +5,7 @@
       title="Wrap Long Lines">
   </head>
   <body>
-    <pre>&lt;html&gt;
-  &lt;head&gt;
-    &lt;meta http-equiv="content-type" content="text/html; charset=windows-1252"&gt;
-    &lt;link rel="alternate stylesheet" type="text/css" href="resource://gre-resources/plaintext.css"
-      title="Wrap Long Lines"&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;pre&gt;@charset "utf-8";
+    <pre>@charset "utf-8";
 
 #cuheader {
 	position: relative;
@@ -29,7 +22,7 @@
 #cuheader h1 a {
 	display: block;
 	height: 120px;
-	width: 960px;
+	width: 700px;
 	text-indent: -9999px;
 	background-image: url(../images/imp_banner.png);
 	background-repeat: no-repeat;
@@ -105,9 +98,6 @@
 
 #submit {
 	border: none;
-}&lt;/pre&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</pre>
+}</pre>
   </body>
 </html>

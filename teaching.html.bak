@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Manhart, Teaching</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="styles/defaultstyle.css" rel="stylesheet" media="screen">
+    <link href="styles/cuheader.css" rel="stylesheet" media="screen">
+  </head>
+  <body vlink="#551A8B" text="windowtext" bgcolor="#000000"
+    alink="#EE0000" link="#0000EE">
+    <div id="container">
+      <div id="cuheader">
+        <h1><a href="#">cyour website name here</a></h1>
+      </div>
+      <div id="wrapper">
+        <div id="banner">
+          <div id="name">
+            <h1>Angelika Manhart</h1>
+            <p>POST DOC</p>
+            <p>COURANT INSTITUTE, NEW YORK UNIVERSITY, NY, USA<br>
+            </p>
+          </div>
+        </div>
+        <div id="nav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="cv.html">CV/Talks</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="teaching.html">Teaching</a></li>
+            <li><a href="other.html">Other Activities</a></li>
+          </ul>
+        </div>
+        <div id="page">
+          <div id="content">
+            <p><font size="+1"><b>Teaching</b></font><i><br>
+              </i></p>
+            <p>Here is a link to my <a
+                href="files/Manhart_TeachingStatement_Web.pdf">Teaching
+                Statement</a>.<i><br>
+              </i></p>
+            <p> </p>
+            <table border="0" cellspacing="2" cellpadding="2"
+              width="100%">
+              <tbody>
+                <tr>
+                  <td valign="top"><b>Past<br>
+                    </b>Fall Term 2017<br>
+                    Lecturer:<i> College Bridge Course for the <a
+                        href="https://www.nymathcircle.org/">New York
+                        Math Circle</a>: <font color="#009900">Mathematical
+
+
+                        Modeling with Differential Equations</font><br>
+                    </i>New York Math Circle, USA<br>
+                    <br>
+                    Spring Term 2017<br>
+                    Lecturer: <i>MATH-UA 0252-005: <font
+                        color="#009900">Numerical Analysis</font><b>.</b></i>
+                    <a
+                      href="https://piazza.com/demo_login?nid=iyaavi2oqw33jw&amp;auth=9931b46">Class
+
+
+
+
+
+
+                      webpage on piazza</a>.<br>
+                    New York University, USA<br>
+                    <p>Summer Term 2015<br>
+                      Exercise Classes<font color="#009900"><font
+                          color="#000000">:</font> <i>Mathematics for
+                          Molecular Biologists</i></font> <span
+                        style="font-style: italic;">(Mathematik für
+                        Molekulare Biologen)</span>.<br>
+                      University of Vienna, Austria<br>
+                    </p>
+                    <p>Summer Term 2011<br>
+                      Teaching Assistant:<font color="#009900"><i>
+                          Mathematics for Molecular Biologists</i></font>
+                      <span style="font-style: italic;">(Mathematik für
+                        Molekulare Biologen).<br>
+                      </span>University of Vienna, Austria</p>
+                  </td>
+                  <td valign="top"><img
+                      src="images/Newton_Global_1D.png" alt="newton"
+                      width="462" height="218"><br>
+                    <br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
