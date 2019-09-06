@@ -15,8 +15,8 @@
         <div id="banner">
           <div id="name">
             <h1>Angelika Manhart</h1>
-            <p>POST DOC</p>
-            <p>IMPERIAL COLLEGE LONDON, LONDON, UK<br />
+            <p>LECTURER</p>
+            <p>UNIVERSITY COLLEGE LONDON, LONDON, UK<br />
             </p>
           </div>
         </div>
@@ -33,46 +33,51 @@
         <div id="page">
           <div id="content">
             <div id="sidebar">
-              <div align="center"><img src="images/portrait.JPG" alt="portrait"
-                  width="198" height="185" /><br />
+              <div align="center"><img src="images/portrait.JPG" alt="portrait"
+                  height="185" width="198" /><br />
               </div>
               <h3>Contact</h3>
-              <p>Office: Huxley Building, Room 737<br />
-                South Kensington Campus, <br />
-                Imperial College London<br />
+              <p>Office: Room 402<br />
+                25 Gordon Street, <br />
+                University College London<br />
               </p>
-              <p>LONDON SW7 2AZ, United Kingdom</p>
-              <p> <a href="mailto:a.manhart@imperial.ac.uk">a.manhart[at]imperial.ac.uk</a><br />
+              <p>LONDON WC1H 0AY, UK</p>
+              <p> <a href="mailto:a.manhart@ucl.ac.uk">a.manhart[at]ucl.ac.uk</a><br />
               </p>
             </div>
             I am a researcher in the interdisciplinary field of mathematics and
-            molecular biology. Currently I work as a postdoctoral associate with
-            <a href="https://sites.google.com/site/degond/">Prof. Pierre Degond</a><span
-              style="color: #065388;"></span> at the <a href="https://www.imperial.ac.uk/mathematics/">Mathematics
-              Department of Imperial College London</a><br />
+            molecular biology. Currently I am a Lecturer (Assistant Professor)
+            in Applied Mathematics at the Mathematics Department of <a href="https://www.ucl.ac.uk/maths/">University
+              College London</a> (UCL).<br />
             <br />
             <font size="+1"><b>News<br />
               </b></font>
             <ul>
-              <li>March 2019: New publication accepted in eLife: <a href="https://www.biorxiv.org/content/early/2018/10/08/437806">Reconstitution
-                  of the equilibrium state of dynamic actin networks</a> - <i>link
-                  to bioRxiv </i><i><a href="https://www.biorxiv.org/content/early/2018/10/08/437806">here.</a></i></li>
+              <li>Sept 2019: New Appointment as Lecturer in Applied Mathematics
+                at University College London</li>
+              <li>Aug 2019: New preprint <a href="https://arxiv.org/abs/1908.09081">Analyzing
+                  Collective Motion with Machine Learning and Topology</a> - <i>available
+                  <a href="https://arxiv.org/abs/1908.09081">here</a> on arXiv.</i></li>
+              <li>April 2019: We made Cover! Our article <a href="https://www.cell.com/developmental-cell/fulltext/S1534-5807%2819%2930143-1">Nuclear
+                  scaling is coordinated among individual nuclei in
+                  multinucleated muscle fibers</a> made the cover of the new
+                Developmental Cell. <a href="https://www.cell.com/developmental-cell/issue?pii=S1534-5807%2818%29X0008-2#fullCover">Here
+                  is the cover</a> and <a href="https://www.cell.com/developmental-cell/fulltext/S1534-5807%2819%2930229-1">here
+                  is the preview</a> written about our article.</li>
+              <li>April 2019: I obtained the Cecilia Tanner Research Impulse
+                grant for attending a workshop.</li>
+              <li>March 2019: New article published in eLife: <a href="https://elifesciences.org/articles/42413">Quantitative
+                  regulation of the dynamic steady state of actin networks</a> -
+                <i>link </i><i><a href="https://elifesciences.org/articles/42413">here.</a></i></li>
+              <li>February 2019: New publication accepted by Dev Cell: Nuclear
+                scaling is coordinated among individual nuclei in multinucleated
+                muscle fibers</li>
               <li>November 2018: 10-part series of illustrations showcasing
                 women in science and their work on <a href="http://coopersquarereview.org/10-women-in-science-you-should-know">coopersquarereview.org</a></li>
-              <li>August 2018: New publication in the Journal of Math Biol: <a
+              <li>August 2018: New publication in the Journal of Math Biol: <a
                   href="https://rdcu.be/5oXH">Counter-propagating waves in a
                   system of transport-reaction equations</a> - <i>link <a href="https://rdcu.be/5oXH">here.</a><br />
                 </i></li>
-              <li> July 2018: I obtained a Travel Award by the Association of
-                Women in Mathematics (NSF)</li>
-              <li> June 2018<font size="+1">:</font> New publication in PLOS
-                Computational Biology: <a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006208">Mechanical
-
-
-
-                  positioning of multiple nuclei in muscle cells</a> - <i>link
-                  <a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006208">here.</a></i><br />
-              </li>
               <li> Spring 2018: Listen to panel discussion <a href="https://drive.google.com/file/d/1wgh_hsu9JI_jSKLrRVPzR4n7YdQddoRR/view">"Artist
 
 
@@ -111,7 +116,7 @@
                 models</li>
               <li>Numerical simulations</li>
             </ul>
-            More details on my current and past projects can be found on my <a
+            More details on my current and past projects can be found on my <a
               href="research.html">research page.</a><br />
             <br />
             <br />
