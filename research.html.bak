@@ -14,9 +14,8 @@
           <div id="banner">
             <div id="name">
               <h1>Angelika Manhart</h1>
-              <p>POST DOC</p>
-              <p>COURANT INSTITUTE, NEW YORK UNIVERSITY, NY, USA<br />
-              </p>
+              <p>LECTURER</p>
+              <p>UNIVERSITY COLLEGE LONDON, LONDON, UK </p>
             </div>
           </div>
           <div id="nav">
@@ -31,6 +30,7 @@
           </div>
           <div id="nav">
             <ul>
+              <li><a href="myonuclei.html">Nuclei in Muscle Cells</a></li>
               <li><a href="lamellipodium.html">Lamellipodium</a></li>
               <li><a href="myxo.html">Myxobacteria</a></li>
             </ul>
@@ -38,24 +38,43 @@
           <div id="page">
             <div id="content">
               <div id="contentbar" class="contentbar4">
-                <h3 align="center">Research Interests</h3>
+                <h3 style="text-align: left;">Research Interests</h3>
                 <div align="center"> </div>
-                <p align="center">The interplay between mathematics and biology
-                  has always interested me. I believe that using good
-                  mathematical models we can capture, describe and eventually
-                  better understand biological phenomena ... and maybe do some
+                <p style="text-align: left;">The interplay between mathematics
+                  and biology has always interested me. I believe that using
+                  good mathematical models we can capture, describe and better
+                  understand biological phenomena ... and maybe do some
                   beautiful mathematics on the way.<br />
                 </p>
               </div>
-              <div style="text-align: left;"><span style="font-weight:
-                  bold;">Biologically I am interested in</span><br />
+              <div style="text-align: center;">
+                <h3><img src="images/research_overview.png" alt="overview" title="overview"
+                    style="width: 581px; height: 349px;" /><span style="font-weight:                   bold;"></span></h3>
+                <h3 style="text-align: left;"><span style="font-weight:                   bold;">Movement
+                    and scales</span></h3>
+              </div>
+              <div style="text-align: left;"><span>My research focuses on two
+                  center themes: </span></div>
+              <div style="text-align: left;"><span><b>1. Movement in and of
+                    cells:</b> How are forces create</span><span>d that allow
+                  cells to move, how are cell organelles positioned and how can
+                  we understand collective motion of cells?<br />
+                </span></div>
+              <div style="text-align: left;"><span><b>2. Scales:</b> How do nano
+                  or micro-scale events have an effect on a much bigger scale?
+                  How can we bridge these scales mathematically?<br />
+                </span></div>
+              <div style="text-align: left;"><br />
+              </div>
+              <div style="text-align: left;"><span style="font-weight:                   bold;">Biologically
+                  I am interested in</span><br />
               </div>
               <ul>
                 <ul>
                   <ul>
                     <ul>
                       <ul>
-                        <ul>
+                        <ul style="margin-left: -177px;">
                           <li style="text-align: left;">Cell migration, e.g.
                             keratocyte movement</li>
                           <li style="text-align: left;">Muscle development, in
@@ -67,7 +86,7 @@
                             or cofilin<br />
                           </li>
                           <li>Collective motion and pattern formation in e.g.
-                            myxobacteria</li>
+                            myxobacteria or sperm</li>
                         </ul>
                       </ul>
                     </ul>
@@ -80,16 +99,16 @@
                   <ul>
                     <ul>
                       <ul>
-                        <ul>
-                          <li>Kinetic transport equations</li>
+                        <ul style="margin-left: -179px;">
                           <li>Non-linear PDEs and ODEs (traveling waves,
                             bifurcations, long-term behavior and asymptotic
                             analysis) </li>
                           <li>The Micro-Macro passage from particle-based to
                             macroscopic models<br />
                           </li>
-                          <li>Boltzmann type equations</li>
-                          <li>Numerical simulations (FE-Method)</li>
+                          <li>Boltzmann type equations, kinetic transport
+                            equations</li>
+                          <li>Numerical simulations </li>
                         </ul>
                       </ul>
                     </ul>
@@ -103,22 +122,15 @@
                   to characterize sperm movement through a fluid containing a
                   fibrous environment.  We derive, analyze and simulate
                   differential equations for the sperm, the fluid and the
-                  fibers. Collaboration with <a href="https://sites.google.com/site/degond/">P.
+                  fibers. Collaboration with the groups of <a href="https://sites.google.com/site/degond/">P.
+
                     Degond</a> and <a href="http://wwwf.imperial.ac.uk/%7Eekeaveny/">E.
                     Keaveny</a> (Imperial College).</li>
-                <li><b>Myonuclear Positioning</b> - How are nuclei positioned in
-                  developing muscle cells, how is their size controlled, the
-                  Myonuclear Domain Hypothesis. Collaboration with <a href="https://cims.nyu.edu/%7Emogilner/">A.
-                    Mogilner</a> (New York) and <a href="https://www.mskcc.org/research-areas/labs/mary-baylies">M.
-
-
-
-
-                    Baylies (New York)</a>.</li>
                 <li><b>Actin-Cofilin Interactions</b> - Role of ADF/Cofilin in
                   establishing and maintaining an actin network of fixed length.
                   Collaboration with <a href="https://cims.nyu.edu/%7Emogilner/">A.
                     Mogilner</a> (New York) and <a href="http://www.cytomorpholab.com/index.php?page=lab-members">L.
+
 
 
 
@@ -135,13 +147,23 @@
                 </li>
               </ul>
               <br />
-              <b> Past projects</b><br />
+              <b> (Past) projects pages</b><br />
               <ul>
+                <li><a href="file:///web/amanhart/myonuclei.html"><b>Myonuclear
+                      Positioning</b></a> - How are nuclei positioned in
+                  developing muscle cells, how is their size controlled, the
+                  Myonuclear Domain Hypothesis. Collaboration with the groups of
+                  <a href="https://cims.nyu.edu/%7Emogilner/">A. Mogilner</a>
+                  (New York) and <a href="https://www.mskcc.org/research-areas/labs/mary-baylies">M.
+
+
+                    Baylies (New York)</a>.</li>
                 <li><b><b><a href="file:///web/amanhart/myxo.html">Myxobacteria</a></b>
                     - </b>Onset of patterns, kinetic models, collective
                   behaviour, non-linear PDEs, wave formation. Collaboration with
-                  <a href="https://sites.google.com/site/degond/">P. Degond
-                    (London)</a> and <a href="https://homepage.univie.ac.at/christian.schmeiser/">C.
+                  groups of <a href="https://sites.google.com/site/degond/">P.
+                    Degond (London)</a> and <a href="https://homepage.univie.ac.at/christian.schmeiser/">C.
+
 
 
 
@@ -156,8 +178,11 @@
                 <li><b><a href="lamellipodium.html">Lamellipodia</a></b> - Actin
                   driven cell movement, variational methods, non-linear PDEs.
                   Collaboration with <a href="https://smp.uq.edu.au/profile/3200/dietmar-oelz">D.
+
                     Oelz</a>, <a href="http://www2.mathematik.uni-mainz.de/%7Esfaknikj/">N.
+
                     Sfakianakis</a> and <a href="https://homepage.univie.ac.at/christian.schmeiser/">C.
+
                     Schmeiser.</a><br />
                 </li>
               </ul>

@@ -1,18 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
     <title>Manhart, Lamellipodium</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="styles/defaultstyle.css" rel="stylesheet" media="screen">
-    <link href="styles/cuheader.css" rel="stylesheet" media="screen">
+    <link href="styles/defaultstyle.css" rel="stylesheet" media="screen" />
+    <link href="styles/cuheader.css" rel="stylesheet" media="screen" />
   </head>
   <body>
     <div id="container">
       <div style="text-align: center;">
         <div id="cuheader">
           <div style="text-align: center;">
-            <h1 style="text-align: center;"><a href="#">your website
-                name here</a></h1>
+            <h1 style="text-align: center;"><a href="#">your website name here</a></h1>
             <div id="wrapper">
               <div style="text-align: left;"> </div>
               <div id="banner">
@@ -21,11 +20,10 @@
                   <div style="text-align: left;"> </div>
                   <h1 style="text-align: left;">Angelika Manhart</h1>
                   <div style="text-align: left;"> </div>
-                  <p style="text-align: left;">POST DOC</p>
+                  <p style="text-align: left;">LECTURER</p>
                   <div style="text-align: left;"> </div>
-                  <p style="text-align: left;">COURANT INSTITUTE, NEW
-                    YORK UNIVERSITY, NY, USA<br>
-                  </p>
+                  <p style="text-align: left;">UNIVERSITY COLLEGE LONDON,
+                    LONDON, UK </p>
                 </div>
               </div>
               <div id="nav">
@@ -40,6 +38,7 @@
               </div>
               <div id="nav">
                 <ul>
+                  <li><a href="myonuclei.html">Nuclei in Muscle Cells</a></li>
                   <li><a href="lamellipodium.html">Lamellipodium</a></li>
                   <li><a href="myxo.html">Myxobacteria</a></li>
                 </ul>
@@ -48,93 +47,87 @@
                 <div id="content">
                   <div id="contentbar" class="contentbar4">
                     <h3>Lamellipodia</h3>
-                    <p>Lamellipodia are sheet-like cellular structures
-                      that consist of a dense actin network an several
-                      accessory proteins. Many celltypes use this
-                      structure to crawl on flat surfaces.</p>
+                    <p style="text-align: left;">Lamellipodia are sheet-like
+                      cellular structures that consist of a dense
+                      actin network an several accessory proteins. Many
+                      celltypes use this structure to crawl on flat surfaces.</p>
                   </div>
-                  <b><font size="+1">The Filament Based Lamellipodium
-                      Model (FBLM)</font></b><br>
-                  <br>
-                  <div style="text-align: left;"><span
-                      style="font-style: italic;">Collaboration with<br>
-                      &nbsp;&nbsp;&nbsp;</span> <a
-                      href="https://homepage.univie.ac.at/christian.schmeiser/">Christian
+                  <b><font size="+1">The Filament Based Lamellipodium Model
+                      (FBLM)</font></b><br />
+                  <br />
+                  <div style="text-align: left;">
+                    <div>
+                      <div style="text-align: right;"><img src="images/web_lamellipodium.jpg"
 
-                      Schmeiser</a>, University of Vienna, Austria<span
-                      style="font-style: italic;"><br>
-                    </span>&nbsp;&nbsp;&nbsp; <a
-                      href="http://researchers.uq.edu.au/researcher/16475">Dietmar
+                          alt="lamelliodium" title="lamelliodium" style="width: 312px; height: 207px;"
 
-                      Ölz</a>, NYU, USA<br>
-                    &nbsp;&nbsp;&nbsp; <a
-                      href="http://www2.mathematik.uni-mainz.de/%7Esfaknikj/">Nikolaos
+                          align="right" /></div>
+                      <div style="margin-left: 80px;"><span style="font-style: italic;">Collaboration
+                          with</span></div>
+                      <span style="font-style: italic;"></span></div>
+                    <div style="margin-left: 40px;"><span style="font-style: italic;">
+                           </span><a href="https://homepage.univie.ac.at/christian.schmeiser/">Christian
 
-                      Sfakianakis</a>, Mainz, Germany<br>
-                    &nbsp;&nbsp;&nbsp; Stefanie Hirsch, University of
-                    Vienna, Austria</div>
-                  <br>
+
+
+                        Schmeiser</a>, University of Vienna, Austria</div>
+                    <span style="font-style: italic;"> </span>  <a href="http://researchers.uq.edu.au/researcher/16475">Dietmar
+
+
+
+                      Ölz</a>, NYU, USA<br />
+                       <a href="http://www2.mathematik.uni-mainz.de/%7Esfaknikj/">Nikolaos
+
+
+
+                      Sfakianakis</a>, Mainz, Germany<br />
+                       Stefanie Hirsch, University of Vienna, Austria</div>
+                  <br />
                   <div align="left"><i>Project Description:</i> The FBLM
-                    (Filament Based Lamellipodium Model) is a
-                    continuous, nonlinear PDE model whose derivation is
-                    based on the microscopic description of actin
-                    filaments and interacting proteins. It links
-                    macroscopic phenomena, such as chemotaxis induced
-                    shape changes, cell-cell interactions, etc. to the
-                    underlying biological players.<br>
+                    (Filament Based Lamellipodium Model) is a continuous,
+                    nonlinear PDE model whose derivation is based on the
+                    microscopic description of actin filaments and interacting
+                    proteins. It links macroscopic phenomena, such as chemotaxis
+                    induced shape changes, cell-cell interactions, etc. to the
+                    underlying biological players.<br />
                   </div>
                   <ul>
                     <li>
-                      <div align="left">See the&nbsp;<a
-                          href="publications.html">Publications-Page</a>
+                      <div align="left">See the <a href="publications.html">Publications-Page</a>
                         to find related published material.</div>
                     </li>
                     <li>
-                      <div align="left">Find related Multimedia Material
-                        below</div>
+                      <div align="left">Find related Multimedia Material below</div>
                     </li>
                   </ul>
-                  <br>
-                  <table style="width: 100%; text-align: left;
-                    margin-left: auto; margin-right: auto;"
+                  <br />
+                  <table style="width: 100%; text-align: left;                     margin-left: auto; margin-right: auto;"
+
                     cellspacing="2" cellpadding="2" border="0">
                     <tbody>
                       <tr>
-                        <td><span style="font-style: italic;">AudioSlides
-
-
-                            Presentation</span></td>
                         <td><span style="font-style: italic;">Interactive
-
-
-                            Presentation of PhD thesis</span><br>
+                            Presentation of PhD thesis</span><br />
                         </td>
-                        <td valign="top">Interactive Overview over
-                          Project<br>
+                        <td valign="top">Interactive Overview over Project<br />
                         </td>
                       </tr>
                       <tr>
-                        <td><iframe marginheight="0" marginwidth="0"
-                            style="border: 0pt none ;"
-src="http://audioslides.elsevier.com//ViewerSmall.aspx?source=1&amp;doi=10.1016/j.jtbi.2015.06.044"
-                            scrolling="no" width="258" height="231"
-                            frameborder="0"> </iframe><br>
-                        </td>
-                        <td align="center"> <a
-href="http://prezi.com/x1xdegckguka/?utm_campaign=share&amp;utm_medium=copy&amp;rc=ex0share"><img
-                              src="files/prezi_phD.png" alt="prezi_phD"
-                              width="305" border="0" height="204"></a> </td>
-                        <td valign="top" align="center"><a
-href="http://prezi.com/8qi5hecqjyuz/?utm_campaign=share&amp;utm_medium=copy&amp;rc=ex0share"><img
-                              src="images/lamellipodium_prezi.png"
-                              alt="prezi_overview" width="272"
-                              border="0" height="210"></a><br>
+                        <td align="center"> <a href="http://prezi.com/x1xdegckguka/?utm_campaign=share&amp;utm_medium=copy&amp;rc=ex0share"><img
+
+                              src="files/prezi_phD.png" alt="prezi_phD" height="204"
+
+                              width="305" border="0" /></a> </td>
+                        <td valign="top" align="center"><a href="http://prezi.com/8qi5hecqjyuz/?utm_campaign=share&amp;utm_medium=copy&amp;rc=ex0share"><img
+
+                              src="images/lamellipodium_prezi.png" alt="prezi_overview"
+
+                              height="210" width="272" border="0" /></a><br />
                         </td>
                       </tr>
                     </tbody>
                   </table>
-                  <span style="font-style: italic;">:</span><span
-                    style="font-weight: bold;"><br>
+                  <span style="font-style: italic;">:</span><span style="font-weight: bold;"><br />
                   </span></div>
               </div>
             </div>
