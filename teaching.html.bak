@@ -1,13 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>Manhart, Teaching</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="styles/defaultstyle.css" rel="stylesheet" media="screen">
     <link href="styles/cuheader.css" rel="stylesheet" media="screen">
   </head>
-  <body vlink="#551A8B" text="windowtext" bgcolor="#000000"
-    alink="#EE0000" link="#0000EE">
+  <body link="#0000EE" vlink="#551A8B" bgcolor="#000000" alink="#EE0000"
+    text="windowtext">
     <div id="container">
       <div id="cuheader">
         <h1><a href="#">cyour website name here</a></h1>
@@ -16,9 +16,8 @@
         <div id="banner">
           <div id="name">
             <h1>Angelika Manhart</h1>
-            <p>POST DOC</p>
-            <p>COURANT INSTITUTE, NEW YORK UNIVERSITY, NY, USA<br>
-            </p>
+            <p>LECTURER<br>
+              UNIVERSITY COLLEGE LONDON, LONDON, UK </p>
           </div>
         </div>
         <div id="nav">
@@ -40,15 +39,23 @@
                 Statement</a>.<i><br>
               </i></p>
             <p> </p>
-            <table border="0" cellspacing="2" cellpadding="2"
-              width="100%">
+            <table cellspacing="2" cellpadding="2" width="100%"
+              border="0">
               <tbody>
                 <tr>
                   <td valign="top"><b>Past<br>
+                    </b>First Term 2019<b><br>
+                    </b>Lecturer: MATH0008: <i><font color="#009900">Applied
+
+                        Mathematics 1</font></i><br>
+                    University College London<b><br>
+                      <br>
                     </b>Fall Term 2017<br>
                     Lecturer:<i> College Bridge Course for the <a
                         href="https://www.nymathcircle.org/">New York
                         Math Circle</a>: <font color="#009900">Mathematical
+
+
 
 
                         Modeling with Differential Equations</font><br>
@@ -59,6 +66,8 @@
                         color="#009900">Numerical Analysis</font><b>.</b></i>
                     <a
                       href="https://piazza.com/demo_login?nid=iyaavi2oqw33jw&amp;auth=9931b46">Class
+
+
 
 
 
@@ -84,7 +93,7 @@
                   </td>
                   <td valign="top"><img
                       src="images/Newton_Global_1D.png" alt="newton"
-                      width="462" height="218"><br>
+                      height="218" width="462"><br>
                     <br>
                   </td>
                 </tr>
