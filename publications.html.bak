@@ -33,30 +33,28 @@
               <span style="font-weight: bold;"><font size="+1">    Publications</font><br />
                 <br />
                 <span style="font-style: italic;">    Preprints</span></span><br />
+              <span style="font-weight: bold;"><span style="font-style:                       italic;">   
+                  Published/Accepted</span></span><br />
               <ul>
-                <li> <a href="https://petrusashercolobus.wixsite.com/pacevess">P.
+                <li><a href="https://petrusashercolobus.wixsite.com/pacevess">P.
                     Aceves-Sanchez</a>, <a href="https://www.imperial.ac.uk/people/p.degond">P.
                     Degond</a>, <a href="https://www.imperial.ac.uk/people/e.keaveny">E.E.
                     Keaveny</a>, A. Manhart, <a href="https://saramerinoaceituno.wordpress.com/">S.
                     Merino-Aceituno</a>, <a href="https://sites.google.com/site/dianepeurichard/home">D.
-                    Peurichard</a>, <span style="color: #009900;">Large-scale
-                    dynamics of self-propelled particles moving through
-                    obstacles: model derivation and pattern formation</span> -<i>
-                    submitted, <a href="https://arxiv.org/abs/2004.12638">link
-                      to arXiv</a></i></li>
+                    Peurichard</a>, <a href="https://link.springer.com/article/10.1007/s11538-020-00805-z?wt_mc=Internal.Event.1.SEM.ArticleAuthorIncrementalIssue#citeas"><span
+                      style="color: #009900;">Large-scale dynamics of
+                      self-propelled particles moving through obstacles: model
+                      derivation and pattern formation</span></a><i>. Bulletin
+                    of Mathematical Biology (2020) 82(129)</i> </li>
               </ul>
               <ul>
-                <li><i>S. Hittmeir, L. Kanzler, A. Manhart and C. Schmeiser, </i><font
+                <li>S. Hittmeir, L. Kanzler, A. Manhart and C. Schmeiser,<i> </i><font
                     color="#009900">Kinetic modelling of colonies of
-                    myxobacteria</font><i> - submitted, <a href="https://arxiv.org/abs/2001.02711">link
-                      to arXiv</a><br />
-                  </i></li>
+                    myxobacteria</font><i> - accepted in Kinetic and Related
+                    Models, <a href="https://arxiv.org/abs/2001.02711">link to
+                      arXiv</a></i></li>
               </ul>
-              <span style="font-weight: bold;"><span style="font-weight:
-                  bold;"><span style="color: rgb(51, 51, 51);
-                    font-weight: normal;"> <span style="font-style:
-                      italic;"><span style="font-weight: bold;">    Published/
-                        Accepted</span></span></span></span></span></div>
+            </div>
             <div>
               <ul>
                 <li>N. Ierushalmi, M. Malik-Garbi, A. Manhart, E. Abu Shah, B.
@@ -104,16 +102,8 @@
               <ul>
                 <li><a href="https://www.mskcc.org/research-areas/labs/members/stefanie-windner">S.
 
-
-
-
-
                     Windner</a>, A. Manhart, A. Brown, <a href="https://cims.nyu.edu/%7Emogilner/">A.
                     Mogilner</a> and <a href="https://www.mskcc.org/research-areas/labs/mary-baylies">M.
-
-
-
-
 
                     Baylies</a>, <font color="#009900">Nuclear scaling is
                     coordinated among individual nuclei in multinucleated muscle
@@ -121,62 +111,40 @@
                   </i></li>
               </ul>
               <ul>
-                <li><span style="color: rgb(51, 51, 51); font-weight:
-                    normal;"><span style="font-style: italic;">A. Manhart, <a href="https://rdcu.be/5oXH"><font
-                          color="#009900">Counter-propagating wave patterns in a
-                          swarm model with memory</font></a>. <i><font color="#000000">Journal
-                          of Mathematical Biology (2018)
-                          https://doi.org/10.1007/s00285-018-1287-x</font></i></span></span>
-                </li>
+                <li> A. Manhart, <a href="https://rdcu.be/5oXH"><font color="#009900">Counter-propagating
+                      wave patterns in a swarm model with memory</font></a>. <i>Journal
+                    of Mathematical Biology (2018)
+                    https://doi.org/10.1007/s00285-018-1287-x</i> </li>
               </ul>
               <ul>
-                <li><span style="color: rgb(51, 51, 51); font-weight:
-                    normal;"><span style="font-style: italic;">A. Manhart, <a href="https://www.mskcc.org/research-areas/labs/members/stefanie-windner">S.
+                <li>A. Manhart, <a href="https://www.mskcc.org/research-areas/labs/members/stefanie-windner">S.
 
-
-
-                        Windner</a>, <a href="https://www.mskcc.org/research-areas/labs/mary-baylies">M.
-
-
-
-                        Baylies</a> and <a href="https://cims.nyu.edu/%7Emogilner/">A.
-                        Mogilner</a>, <a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006208"><font
-                          color="#009900">Mechanical positioning of multiple
-                          nuclei in muscle cells</font></a><b>. </b></span></span><span
-                    style="color: rgb(51, 51,
-                    51); font-weight: normal;"><span style="font-style:
-                      italic;"><span style="color: rgb(0, 153, 0);
-                        font-style: italic;"><font color="#333333"><font color="#000000">PLOS
+                    Windner</a>, <a href="https://www.mskcc.org/research-areas/labs/mary-baylies">M.
+                    Baylies</a> and <a href="https://cims.nyu.edu/%7Emogilner/">A.
+                    Mogilner</a>, <a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006208"><font
+                      color="#009900">Mechanical positioning of multiple nuclei
+                      in muscle cells</font></a><b>. </b><span style="color: rgb(51, 51,                     51); font-weight: normal;"><span
+                      style="font-style:                       italic;"><span style="color: rgb(0, 153, 0);                         font-style: italic;"><font
+                          color="#333333"><font color="#000000">PLOS
                             Computational Biology (2018) 14(6):e1006208</font></font></span></span></span>
                 </li>
               </ul>
-              <span style="font-weight: bold;"><span style="font-weight:
-                  bold;"><span style="color: rgb(51, 51, 51);
-                    font-weight: normal;"><span style="font-style:
-                      italic;"><span style="font-weight: bold;"><span style="font-weight: bold;"><span
-                            style="font-weight: bold;">
-                            <ul style="font-weight: normal;">
-                              <li><a href="https://sites.google.com/site/degond/Home">P.
-
-
-
-                                  Degond</a>, A. Manhart, <a href="https://sites.google.com/site/homeofhuiyu/">H.
-
-
-
-                                  Yu</a>, <font color="#000000"><font color="#33cc00"><a
-                                      href="https://www.worldscientific.com/doi/abs/10.1142/S0218202518400043"><font
-                                        color="#009900">An age-structured
-                                        continuum model for myxobacteria</font></a>
-                                    <a href="files/IBM_video.avi">(Movie)</a> </font></font><span
-                                  style="color:
-                                  rgb(0, 153, 0); font-style: italic;"><font color="#333333"><font
-                                      color="#000000">- Mathematical Models
-                                      &amp; Methods in Applied Sciences (2018)
-                                      28(9):1737–1770<br />
-                                    </font></font></span></li>
-                            </ul>
-                          </span></span></span></span></span></span></span>
+              <span style="color: rgb(51, 51, 51); font-weight: normal;"><span style="font-weight: bold;"><span
+                    style="font-weight: bold;"><span style="font-weight: bold;">
+                      <ul style="font-weight: normal;">
+                        <li><a href="https://sites.google.com/site/degond/Home">P.
+                            Degond</a>, A. Manhart, <a href="https://sites.google.com/site/homeofhuiyu/">H.
+                            Yu</a>, <font color="#000000"><font color="#33cc00"><a
+                                href="https://www.worldscientific.com/doi/abs/10.1142/S0218202518400043"><font
+                                  color="#009900">An age-structured continuum
+                                  model for myxobacteria</font></a> <a href="files/IBM_video.avi">(Movie)</a>
+                            </font></font><span style="color:rgb(0, 153, 0); font-style: italic;"><font
+                              color="#333333"><font color="#000000">-
+                                Mathematical Models &amp; Methods in Applied
+                                Sciences (2018) 28(9):1737–1770<br />
+                              </font></font></span></li>
+                      </ul>
+                    </span></span></span></span>
               <ul>
                 <li><a href="http://cims.nyu.edu/%7Emogilner/">A. Mogilner</a>,
                   A. Manhart, <a href="http://www.annualreviews.org/eprint/fYTMpjNcxkgp6xvEiBtG/full/10.1146/annurev-fluid-010816-060238"><font
@@ -186,8 +154,7 @@
                     50:347-370<br />
                   </i></li>
               </ul>
-              <span style="font-weight: bold;"><span style="font-weight:
-                  bold;">
+              <span style="font-weight: bold;"><span style="font-weight:                   bold;">
                   <ul style="font-weight: normal;">
                     <li><a href="https://sites.google.com/site/degond/Home">P.
                         Degond</a>, A. Manhart, <a href="https://sites.google.com/site/homeofhuiyu/">H.
@@ -197,29 +164,28 @@
                         Yu</a>, <a href="https://arxiv.org/pdf/1509.03124.pdf"
                         style="color: rgb(0, 153, 0);">Continuum model of
                         nematic alignment of self-propelled particles</a>.<span
-                        style="color: rgb(0, 153, 0); font-style:
-                        italic;"><font color="#333333"> Discrete and Continuous
-                          Dynamical Systems - B (2017), 22:3379-84</font></span></li>
+                        style="color: rgb(0, 153, 0); font-style:                         italic;"><font
+                          color="#333333"> Discrete and Continuous Dynamical
+                          Systems - B (2017), 22:3379-84</font></span></li>
                   </ul>
                 </span></span> <span style="font-weight: bold;"><span style="font-weight: bold;">
-                </span></span><span style="font-weight: bold;"><span style="font-weight:
-                  bold;"><span style="color: rgb(51, 51, 51);
-                    font-weight: normal;"><span style="font-style:
-                      italic;"><span style="font-weight: bold;"></span></span></span></span></span><span
-                style="font-weight: bold;"><span style="font-weight:
-                  bold;"><span style="color: rgb(51, 51, 51);
-                    font-weight: normal;"><span style="font-style:
-                      italic;"> </span></span> <span style="color:
-                    rgb(51, 51, 51);"><span style="font-weight: bold;">
+                </span></span><span style="font-weight: bold;"><span style="font-weight:                   bold;"><span
+                    style="color: rgb(51, 51, 51);                     font-weight: normal;"><span
+                      style="font-style:                       italic;"><span style="font-weight: bold;"></span></span></span></span></span><span
+                style="font-weight: bold;"><span style="font-weight:                   bold;"><span
+                    style="color: rgb(51, 51, 51);                     font-weight: normal;"><span
+                      style="font-style:                       italic;"> </span></span>
+                  <span style="color:                     rgb(51, 51, 51);"><span
+                      style="font-weight: bold;">
                       <ul style="font-weight: normal;">
                         <li>S. Hirsch, A. Manhart, <a href="http://homepage.univie.ac.at/Christian.Schmeiser/">C.
 
 
 
-                            Schmeiser</a>, <a style="color: rgb(0, 153,
-                            0);" href="https://rdcu.be/6aOy">Mathematical
-                            Modeling of Myosin Induced Bistability of
-                            Lamellipodial Fragments</a>. <span style="font-style: italic;">Journal
+                            Schmeiser</a>, <a style="color: rgb(0, 153,                             0);"
+                            href="https://rdcu.be/6aOy">Mathematical Modeling of
+                            Myosin Induced Bistability of Lamellipodial
+                            Fragments</a>. <span style="font-style: italic;">Journal
                             of Mathematical Biology (2017) 74(1-2):1-22</span></li>
                       </ul>
                       <ul style="font-weight: normal;">
@@ -234,8 +200,8 @@
                             Schmeiser</a>, N. Sfakianakis,<a style="color: rgb(0, 153, 0);"
                             href="files/ManOelSchmSfa-numerics.pdf"> </a><a style="color: rgb(0, 153, 0);"
                             href="files/FBLMNumerics.pdf">Numerical Treatment of
-                            the Filament Based Lamellipodium Model</a> (<a style="color:
-                            rgb(204, 0, 0);" href="files/Movie_AdhesionPatches_Spikes.avi">Movie1</a><span
+                            the Filament Based Lamellipodium Model</a> (<a style="color:                             rgb(204, 0, 0);"
+                            href="files/Movie_AdhesionPatches_Spikes.avi">Movie1</a><span
                             style="color: rgb(204, 0, 0);">, </span><a style="color: rgb(204, 0, 0);"
                             href="files/Movie_AdhesionPatches_Stripes.avi">Movie2</a>)
                           <span style="font-style: italic;">-<font color="#999999">
@@ -255,15 +221,15 @@
                         <li>A. Manhart, <a href="http://homepage.univie.ac.at/Christian.Schmeiser/">C.
 
 
-                            Schmeiser</a>, <a href="https://rdcu.be/6aOR" style="color:
-                            rgb(0, 153, 0);">Existence of and decay to
-                            equilibrium of the filament end density along the
-                            leading edge of the lamellipodium</a>. <span style="font-style: italic;">Journal
-                            of Mathematical Biology (2016), 74:169-193</span></li>
+                            Schmeiser</a>, <a href="https://rdcu.be/6aOR" style="color:                             rgb(0, 153, 0);">Existence
+                            of and decay to equilibrium of the filament end
+                            density along the leading edge of the lamellipodium</a>.
+                          <span style="font-style: italic;">Journal of
+                            Mathematical Biology (2016), 74:169-193</span></li>
                       </ul>
                       <ul>
-                        <li><font style="color: rgb(51, 51, 51);
-                            font-weight: normal;">A. Manhart, <a href="http://homepage.univie.ac.at/dietmar.oelz/">D.
+                        <li><font style="color: rgb(51, 51, 51);                             font-weight: normal;">A. Manhart,
+                            <a href="http://homepage.univie.ac.at/dietmar.oelz/">D.
 
 
                               Oelz</a>, <a href="http://homepage.univie.ac.at/Christian.Schmeiser/">C.
@@ -276,11 +242,11 @@
                                 style="color: rgb(0, 153, 0);">An extended
                                 Filament Based Lamellipodium Model produces
                                 various moving cell shapes in the presence of
-                                chemotactic signals</span></a>.</font><font style="color: rgb(51, 51, 51); font-weight:
-                            normal;"> <span style="font-style: italic;">Journal
-                              of Theoretical Biology, 382 (2015), pp. 244-258</span>
-                            (<a style="color: rgb(204,
-                              0, 0);" href="files/Movie_Chemotaxis.mp4">Movie1</a><span
+                                chemotactic signals</span></a>.</font><font style="color: rgb(51, 51, 51); font-weight:                             normal;">
+                            <span style="font-style: italic;">Journal of
+                              Theoretical Biology, 382 (2015), pp. 244-258</span>
+                            (<a style="color: rgb(204,                               0, 0);"
+                              href="files/Movie_Chemotaxis.mp4">Movie1</a><span
                               style="color: rgb(204, 0, 0);">, </span><a style="color: rgb(204, 0, 0);"
                               href="files/Movie_Chemotaxis_Turning.mp4">Movie2</a>)</font></li>
                       </ul>
@@ -293,8 +259,8 @@
 
                     Schmeiser</a>, <a style="color: rgb(0, 153, 0);" href="file:///web/amanhart/files/ManSch-myosin.pdf"
                     target="_blank">A kinetic transport model for actin-myosin
-                    interaction</a><span style="color:
-                    rgb(51, 51, 51);">.</span>      </li>
+                    interaction</a><span style="color:                     rgb(51, 51, 51);">.</span> 
+                      </li>
               </ul>
               <p>   <b> <i>Publications related to past internships</i></b><br />
               </p>
@@ -310,34 +276,31 @@
                       Willinger</a>,</span> <font color="#009900">A
                     retrospective assessment of four antigen assays for the
                     detection of invasive candidiasis among high risk
-                    hospitalized patients</font>.<i> </i><i><span style="font-family: -webkit-system-font, Helvetica
-                      Neue, Helvetica, sans-serif;" class="">Mycopathologia
-                      (2018) 183(3):513-519</span></i></li>
+                    hospitalized patients</font>.<i> </i><i><span style="font-family: -webkit-system-font, Helvetica                       Neue, Helvetica, sans-serif;"
+                      class="">Mycopathologia (2018) 183(3):513-519</span></i></li>
               </ul>
-              <span style="font-weight: bold;"><span style="font-weight:
-                  bold;"><span style="color: rgb(51, 51, 51);"><span style="font-weight: bold;"><span
+              <span style="font-weight: bold;"><span style="font-weight:                   bold;"><span
+                    style="color: rgb(51, 51, 51);"><span style="font-weight: bold;"><span
                         style="font-weight: bold;"><span style="font-weight: bold;"><span
-                            style="color:
-                            rgb(51, 51, 51);"><span style="font-weight:
-                              bold;"><span style="font-weight: bold;"><span style="font-weight: bold;"><span
+                            style="color:                             rgb(51, 51, 51);"><span
+                              style="font-weight:                               bold;"><span
+                                style="font-weight: bold;"><span style="font-weight: bold;"><span
                                     style="color: rgb(51, 51, 51);"><span style="font-weight: bold;">
-                                      <p><span style="font-weight:
-                                          bold;"><span style="font-weight: bold;"><span
-                                              style="color: rgb(51, 51,
-                                              51);"><span style="font-weight:
-                                                bold;"><span style="font-weight:
-                                                  bold;"><span style="font-weight:
-                                                    bold;"><span style="color:
-                                                      rgb(51, 51, 51);"><span style="font-weight:
-                                                        bold;"><span style="font-weight:
-                                                          bold;"><span style="font-weight:
-                                                          bold;"><span style="color:
-                                                          rgb(51, 51,                                                          51);"><span
-                                                                style="font-weight:
-                                                          bold;"> </span></span></span></span></span></span></span></span></span></span></span></span></p>
+                                      <p><span style="font-weight:                                           bold;"><span
+                                            style="font-weight: bold;"><span style="color: rgb(51, 51,                                               51);"><span
+                                                style="font-weight:                                                 bold;"><span
+                                                  style="font-weight:                                                   bold;"><span
+                                                    style="font-weight:                                                     bold;"><span
+                                                      style="color:                                                       rgb(51, 51, 51);"><span
+                                                        style="font-weight:                                                         bold;"><span
+                                                          style="font-weight:                                                           bold;"><span
+                                                            style="font-weight:                                                           bold;"><span
+                                                              style="color:                                                           rgb(51, 51,                                                          51);"><span
+                                                                style="font-weight:                                                           bold;">
+                                                              </span></span></span></span></span></span></span></span></span></span></span></span></p>
                                       <ul style="font-weight: bold;">
-                                        <li><strong style="font-weight:
-                                            normal;">M. Summerer</strong><span style="font-weight: normal;">,
+                                        <li><strong style="font-weight:                                             normal;">M.
+                                            Summerer</strong><span style="font-weight: normal;">,
                                           </span><strong style="font-weight: normal;">J.
 
 
@@ -409,8 +372,8 @@
 
                                             Sanguansermsri</strong><strong style="font-weight: normal;">,
                                             A. Kloss-Brandstätter, </strong><a
-                                            style="color: rgb(0, 153,
-                                            0); font-weight: normal;" href="http://www.biomedcentral.com/1471-2148/14/17/">Large-scale
+                                            style="color: rgb(0, 153,                                             0); font-weight: normal;"
+                                            href="http://www.biomedcentral.com/1471-2148/14/17/">Large-scale
 mitochondrial
 
 
@@ -447,21 +410,21 @@ mitochondrial
                                             style="font-weight: normal;">:17</span></li>
                                       </ul>
                                     </span></span></span></span></span></span></span></span></span></span></span></span><span
-                style="font-weight: bold;"><span style="font-weight:
-                  bold;"><span style="color: rgb(51, 51, 51);"><span style="font-weight: bold;"><span
+                style="font-weight: bold;"><span style="font-weight:                   bold;"><span
+                    style="color: rgb(51, 51, 51);"><span style="font-weight: bold;"><span
                         style="font-weight: bold;"><span style="font-weight: bold;"><span
-                            style="color:
-                            rgb(51, 51, 51);"><span style="font-weight:
-                              bold;"><span style="font-weight: bold;"><span style="font-weight: bold;"><span
+                            style="color:                             rgb(51, 51, 51);"><span
+                              style="font-weight:                               bold;"><span
+                                style="font-weight: bold;"><span style="font-weight: bold;"><span
                                     style="color: rgb(51, 51, 51);"><span style="font-weight: bold;"></span></span></span></span></span></span></span></span></span></span></span></span><span
                 style="font-weight: normal;"></span><span style="font-weight: bold;"><span
-                  style="font-weight:
-                  bold;"><span style="color: rgb(51, 51, 51);"><span style="font-weight: bold;">
+                  style="font-weight:                   bold;"><span style="color: rgb(51, 51, 51);"><span
+                      style="font-weight: bold;">
                       <ul style="font-weight: bold;">
                       </ul>
                     </span></span></span></span><span style="font-weight: bold;"><span
-                  style="font-weight:
-                  bold;"><span style="color: rgb(51, 51, 51);"><span style="font-weight: bold;">
+                  style="font-weight:                   bold;"><span style="color: rgb(51, 51, 51);"><span
+                      style="font-weight: bold;">
                       <ul>
                       </ul>
                     </span></span></span></span></div>
