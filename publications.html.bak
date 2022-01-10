@@ -35,15 +35,24 @@
                 <span style="font-style: italic;">    Preprints/Submitted</span></span></div>
             <div>
               <ul>
-                <li>B.D. Karkaria, A. Manhart, A.J.H. Fedorec, C.P. Barnes,
-                  Chaos in small microbial communities. <i><a href="https://www.biorxiv.org/content/10.1101/2021.09.06.459097v1.abstract">Preprint
+                <li>H.Z. Ford, A. Manhart, J.R. Chubb, <font color="#009900">Signalling
+                    centre vortices coordinate collective behaviour in social
+                    amoebae.</font> <i><a href="https://www.biorxiv.org/content/10.1101/2022.01.07.475371v1">Preprint
                       on bioRxiv</a>.</i></li>
+              </ul>
+              <ul>
+                <li>B.D. Karkaria, A. Manhart, A.J.H. Fedorec, C.P. Barnes, <font
+                    color="#009900">Chaos in small microbial communities.</font>
+                  <i><a href="https://www.biorxiv.org/content/10.1101/2021.09.06.459097v1.abstract">Preprint
+                      on bioRxiv</a>.</i><br />
+                  <i></i></li>
               </ul>
               <ul>
                 <li>F. Kenny, S. Marcotti, R. Bell, J. Easton, M.
                   Díaz-de-la-Loza, C. Phillippeos, F. Watt, A. Manhart, T. Shaw,
-                  B. Stramer. A supracellular actin network coordinates
-                  anisotropic ECM remodelling in fibrotic fibroblasts. <i>Submitted.</i></li>
+                  B. Stramer. <font color="#009900"> A supracellular actin
+                    network coordinates anisotropic ECM remodelling in fibrotic
+                    fibroblasts.</font> <i>Submitted.</i></li>
               </ul>
             </div>
             <div><br />
