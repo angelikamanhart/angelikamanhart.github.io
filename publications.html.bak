@@ -35,19 +35,6 @@
                 <span style="font-style: italic;">    Preprints/Submitted</span></span></div>
             <div>
               <ul>
-                <li>H.Z. Ford, A. Manhart, J.R. Chubb, <font color="#009900">Signalling
-                    centre vortices coordinate collective behaviour in social
-                    amoebae.</font> <i><a href="https://www.biorxiv.org/content/10.1101/2022.01.07.475371v1">Preprint
-                      on bioRxiv</a>.</i></li>
-              </ul>
-              <ul>
-                <li>B.D. Karkaria, A. Manhart, A.J.H. Fedorec, C.P. Barnes, <font
-                    color="#009900">Chaos in small microbial communities.</font>
-                  <i><a href="https://www.biorxiv.org/content/10.1101/2021.09.06.459097v1.abstract">Preprint
-                      on bioRxiv</a>.</i><br />
-                  <i></i></li>
-              </ul>
-              <ul>
                 <li>F. Kenny, S. Marcotti, R. Bell, J. Easton, M.
                   Díaz-de-la-Loza, C. Phillippeos, F. Watt, A. Manhart, T. Shaw,
                   B. Stramer. <font color="#009900"> A supracellular actin
@@ -62,9 +49,22 @@
                   Published/Accepted</span></span></div>
             <div>
               <ul>
-                <li><span style="font-weight: bold;"><span style="font-style:                       italic;"></span></span>V.
-                  Leech V, J.W. Hazel, J.C. Gatlin, A.E. Lindsay, A. Manhart, <a
-                    href="https://www.sciencedirect.com/science/article/pii/S0022519321003556"><span
+                <li> H.Z. Ford, A. Manhart, J.R. Chubb, <a href="https://elifesciences.org/articles/83796"><font
+                      color="#009900">Controlling periodic long-range signalling
+                      to drive a morphogenetic transition.</font></a> <i>eLife
+                    (2023) 12:e83796</i></li>
+              </ul>
+              <ul>
+                <li>B.D. Karkaria, A. Manhart, A.J.H. Fedorec, C.P. Barnes, <font
+                    color="#009900">Chaos in small microbial communities.</font>
+                  <i>To appear in PLOS Comp Bio</i> - <i><a href="https://www.biorxiv.org/content/10.1101/2021.09.06.459097v1.abstract">preprint
+                      on bioRxiv</a>.</i></li>
+              </ul>
+            </div>
+            <div>
+              <ul>
+                <li>V. Leech, J.W. Hazel, J.C. Gatlin, A.E. Lindsay, A. Manhart,
+                  <a href="https://www.sciencedirect.com/science/article/pii/S0022519321003556"><span
                       style="color: #009900;">Mathematical modeling accurately
                       predicts the dynamics and scaling of nuclear growth in
                       discrete cytoplasmic volumes</span></a>. <i> Journal of
@@ -84,10 +84,9 @@
                     of Mathematical Biology (2020) 82(129)</i> </li>
               </ul>
               <ul>
-                <li>S. Hittmeir, L. Kanzler, A. Manhart and C. Schmeiser,<i> </i><font
-                    color="#009900">Kinetic modelling of colonies of
-                    myxobacteria</font><i>. Kinetic and Related Models (2021)
-                    14(1):1-24 - <a href="https://arxiv.org/abs/2001.02711">link
+                <li>S. Hittmeir, L. Kanzler, A. Manhart and C. Schmeiser,<font color="#009900">Kinetic
+                    modelling of colonies of myxobacteria</font><i>. Kinetic and
+                    Related Models (2021) 14(1):1-24 - <a href="https://arxiv.org/abs/2001.02711">link
                       to arXiv</a></i></li>
               </ul>
             </div>

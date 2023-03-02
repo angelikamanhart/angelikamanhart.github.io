@@ -46,21 +46,19 @@
               <div id="page">
                 <div id="content">
                   <div id="contentbar" class="contentbar4">
-                    <h3>Lamellipodia</h3>
+                    <h3 style="text-align: left;">Lamellipodia</h3>
                     <p style="text-align: left;">Lamellipodia are sheet-like
-                      cellular structures that consist of a dense
-                      actin network an several accessory proteins. Many
-                      celltypes use this structure to crawl on flat surfaces.</p>
+                      cellular structures that consist of a dense actin network
+                      an several accessory proteins. Many cell types use this
+                      structure to crawl on flat surfaces.</p>
                   </div>
                   <b><font size="+1">The Filament Based Lamellipodium Model
                       (FBLM)</font></b><br />
                   <br />
                   <div style="text-align: left;">
                     <div>
-                      <div style="text-align: right;"><img src="images/web_lamellipodium.jpg"
-
-                          alt="lamelliodium" title="lamelliodium" style="width: 312px; height: 207px;"
-
+                      <div style="text-align: right;"><img src="images/web_lamellipodium.jpg"
+                          alt="lamelliodium" title="lamelliodium" style="width: 312px; height: 207px;"
                           align="right" /></div>
                       <div style="margin-left: 80px;"><span style="font-style: italic;">Collaboration
                           with</span></div>
@@ -101,8 +99,7 @@
                     </li>
                   </ul>
                   <br />
-                  <table style="width: 100%; text-align: left;                     margin-left: auto; margin-right: auto;"
-
+                  <table style="width: 100%; text-align: left;                     margin-left: auto; margin-right: auto;"
                     cellspacing="2" cellpadding="2" border="0">
                     <tbody>
                       <tr>
@@ -113,15 +110,11 @@
                         </td>
                       </tr>
                       <tr>
-                        <td align="center"> <a href="http://prezi.com/x1xdegckguka/?utm_campaign=share&amp;utm_medium=copy&amp;rc=ex0share"><img
-
-                              src="files/prezi_phD.png" alt="prezi_phD" height="204"
-
+                        <td align="center"> <a href="http://prezi.com/x1xdegckguka/?utm_campaign=share&amp;utm_medium=copy&amp;rc=ex0share"><img
+                              src="files/prezi_phD.png" alt="prezi_phD" height="204"
                               width="305" border="0" /></a> </td>
-                        <td valign="top" align="center"><a href="http://prezi.com/8qi5hecqjyuz/?utm_campaign=share&amp;utm_medium=copy&amp;rc=ex0share"><img
-
-                              src="images/lamellipodium_prezi.png" alt="prezi_overview"
-
+                        <td valign="top" align="center"><a href="http://prezi.com/8qi5hecqjyuz/?utm_campaign=share&amp;utm_medium=copy&amp;rc=ex0share"><img
+                              src="images/lamellipodium_prezi.png" alt="prezi_overview"
                               height="210" width="272" border="0" /></a><br />
                         </td>
                       </tr>
