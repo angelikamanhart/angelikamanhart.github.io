@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How to Tame Infinity — Angelika Manhart</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ink:      #0a1f44;
+      --mid:      #2a4a6b;
+      --muted:    #5b95b8;
+      --accent:   #0d3b7a;
+      --accent2:  #1a6fa8;
+      --pale:     #ddeaf3;
+      --white:    #ffffff;
+      --bg:       #f0f6fa;
+      --border:   #c8dde8;
+      --serif:    'DM Serif Display', Georgia, serif;
+      --sans:     'DM Sans', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--sans); background: var(--white); color: var(--ink); font-size: 17px; line-height: 1.72; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(224,237,247,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw; height: 62px;
+    }
+    .nav-name { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .hamburger { display: none; }
+
+    .container { max-width: 760px; margin: 0 auto; padding: 0 5vw; }
+
+    header {
+      padding: 3rem 0 2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2.5rem;
+    }
+    .breadcrumb { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.8rem; }
+    .breadcrumb a { color: var(--accent2); text-decoration: none; font-weight: 600; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .essay-image {
+      width: 100%;
+      max-width: 500px;
+      display: block;
+      margin: 0 auto 2.5rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    .essay-body p {
+      color: var(--mid);
+      font-weight: 300;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      margin-bottom: 1.4rem;
+    }
+
+    footer { text-align: center; padding: 1.8rem 5vw; font-size: 0.78rem; color: var(--muted); border-top: 1px solid var(--border); margin-top: 4rem; }
+
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 62px; left: 0; right: 0;
+        background: rgba(224,237,247,0.97);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 5vw;
+        gap: 0.5rem;
+      }
+      .nav-links.open { display: flex; }
+      .hamburger {
+        display: flex; align-items: center; justify-content: center;
+        background: none; border: none; cursor: pointer;
+        width: 38px; height: 38px; padding: 0;
+      }
+      .hamburger svg { width: 22px; height: 22px; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-name" href="index.html">Angelika Manhart</a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li style="display:none;"><a href="teaching.html">Teaching</a></li>
+      <li><a href="outreach.html">Outreach & Art</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <svg viewBox="0 0 24 24" fill="none"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+  <script>document.querySelector('.nav-links').addEventListener('click',function(e){if(e.target.tagName==='A')this.classList.remove('open');})</script>
+
+  <div class="container">
+    <header>
+      <div class="breadcrumb"><a href="outreach.html">Outreach & Art</a> &rsaquo; Popular Science Writing</div>
+      <h1>How to Tame Infinity</h1>
+      <p class="meta">Angelika Manhart &middot; 2016 &middot; Originally published on Cooper Square Review</p>
+    </header>
+
+    <img class="essay-image" src="how_to_tame/how_to_tame.png" alt="How to Tame Infinity — illustration"/>
+
+    <div class="essay-body">
+      <p>I first knew I wanted to be a mathematician when Jenny and I started taking illegal shortcuts.</p>
+
+      <p>Jenny was my best friend in primary school. Every day we&rsquo;d walk home from school together. Me, short and blond-haired with two pigtails sticking out right and left, her with a red ribbon in her thick, black hair. Both of us giggling and chatting about very important matters, like sticker collections or which Backstreet Boy was the cutest.</p>
+
+      <p>Our route always started at the school playground and ended at the tall cherry tree, which we climbed every autumn to pick the ripest cherries. Right in the middle of our path was a large, square lawn, always perfectly well-kept and the pride of its caretaker, the scary old lady who lived next door. We needed to get from one corner to the opposing corner, which left us with two choices: Either we could be good girls and stay on the path, which meant going straight, then turning left at a 90 degree angle, then going straight again. Or we could be bad girls and run diagonally through the grass, at risk of getting caught by the scary lady.</p>
+
+      <p>Jenny was always the more daring one. &ldquo;C&rsquo;mon,&rdquo; she would say, &ldquo;we&rsquo;d be so much quicker and the old witch won&rsquo;t catch us!&rdquo; And many times we&rsquo;d make a dash for it, often followed by the old lady&rsquo;s voice shouting, &ldquo;Next time, I&rsquo;ll tell your parents!&rdquo;</p>
+
+      <p>One quiet day during the summer holidays, I was walking home from the playground by myself. Jenny had gone to the Philippines to visit her mother&rsquo;s family and even the old caretaker seemed to be on vacation. When I reached the critical corner, I pondered my route. Clearly the illegal route was fastest, but what if I zigzagged? I could stay on the path until halfway to the corner, make a 90 degree turn left to enter the grass, then turn right until I hit the path again and continue in the same way to the other end. Wouldn&rsquo;t that take just as long as staying on the path? With measured steps I tried it out and proved my idea: there was no advantage. What if I zigzagged more, increasing the number of 90 degree turns? Same effect, it took me the same number of steps. But the more zigzags I added, the closer my path came to the diagonal short-cut, which was clearly shorter. How was that possible? My stepping experiments soon ran into problems, because the size of my sandals limited the number of zigzags, and I went home puzzled and confused.</p>
+
+      <p>Over dinner, I told my mum, a high school maths teacher, about my dilemma, carefully leaving out the details about the illegal lawn crossing. She smiled and explained that I was right that all my zigzag routes were equally long, but if I would have <em>infinitely many</em> zigzags, each of them <em>infinitely tiny</em>, then suddenly it would be the diagonal shortcut. The length of the path would then jump to that route&rsquo;s shorter length. My pigtails wiggled as I shook my head in disbelief. In my head tiny, tiny zigzag lines were swirling and I was amazed how my mum could stay so calm and make sense of all of this.</p>
+
+      <p>This was the moment I realized that mathematics was not just about Susie buying four apples and Tom buying two apples and them happily eating their six apples. There seemed to be an entire universe out there, populated by infinitely small and infinitely large things, and mathematicians were somehow able to navigate through it. It was then that I decided I wanted to become part of that world and learn how to tame &mdash; or at least talk to &mdash; those curious, infinite beings.</p>
+    </div>
+  </div>
+
+  <footer>&copy; 2025 Manhart A &middot; University of Vienna &middot; Faculty of Mathematics</footer>
+
+</body>
+</html>

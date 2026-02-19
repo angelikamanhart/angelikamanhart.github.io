@@ -1,325 +1,1230 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
-    <title>Manhart, Publications</title>
-    <link href="styles/defaultstyle.css" rel="stylesheet" media="screen" />
-    <link href="styles/cuheader.css" rel="stylesheet" media="screen" />
-  </head>
-  <body>
-    <div id="container">
-      <div id="cuheader">
-        <h1><a href="#">your website name here</a></h1>
-        <div id="wrapper">
-          <div id="banner">
-            <div id="name">
-              <h1>Angelika Manhart</h1>
-                  ASSISTANT PROFESSOR FOR MATHEMATICAL BIOLOGY</div>
-            <div>     UNIVERSITY OF VIENNA, AUSTRIA</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Publications — Angelika Manhart</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <style>
+    :root {
+      --ink:      #0a1f44;
+      --mid:      #2a4a6b;
+      --muted:    #5b95b8;
+      --accent:   #0d3b7a;
+      --accent2:  #1a6fa8;
+      --pale:     #ddeaf3;
+      --white:    #ffffff;
+      --bg:       #f0f6fa;
+      --border:   #c8dde8;
+      --serif:    'DM Serif Display', Georgia, serif;
+      --sans:     'DM Sans', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--sans); background: var(--white); color: var(--ink); font-size: 17px; line-height: 1.72; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(224,237,247,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw; height: 62px;
+    }
+    .nav-name { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .hamburger { display: none; }
+
+    /* SECTIONS */
+    .section-wrap { padding: 5rem 5vw; max-width: 1140px; margin: 0 auto; }
+    .full-bleed { padding: 5rem 5vw; }
+    .full-bleed .inner { max-width: 1140px; margin: 0 auto; }
+    hr.divider { border: none; border-top: 1px solid var(--border); }
+    .section-label { font-size: 0.73rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent2); margin-bottom: 0.5rem; }
+    .section-title { font-family: var(--serif); font-size: clamp(1.7rem, 2.6vw, 2.3rem); color: var(--ink); margin-bottom: 0.9rem; }
+    .section-intro { max-width: 660px; color: var(--mid); font-weight: 300; font-size: 1.05rem; margin-bottom: 2.8rem; line-height: 1.75; }
+
+    footer { text-align: center; padding: 1.8rem 5vw; font-size: 0.78rem; color: var(--muted); border-top: 1px solid var(--border); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+
+    /* RESPONSIVE */
+    @media (max-width: 800px) {
+      .pub-item { grid-template-columns: 1fr auto; }
+      .pub-thumb { display: none; }
+      .pub-year { font-size: 0.72rem; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 62px; left: 0; right: 0;
+        background: rgba(224,237,247,0.97);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 5vw;
+        gap: 0.5rem;
+      }
+      .nav-links.open { display: flex; }
+      .hamburger {
+        display: flex; align-items: center; justify-content: center;
+        background: none; border: none; cursor: pointer;
+        width: 38px; height: 38px; padding: 0;
+      }
+      .hamburger svg { width: 22px; height: 22px; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
+    }
+
+    /* PUBLICATIONS */
+    .pub-filters { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .pub-filter-btn { padding: 0.45rem 1.1rem; border: 2px solid var(--border); border-radius: 100px; background: var(--white); color: var(--mid); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .pub-filter-btn:hover { border-color: var(--accent2); color: var(--accent2); }
+    .pub-filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .pub-list { display: flex; flex-direction: column; gap: 1.1rem; }
+    .pub-item { background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--accent2); padding: 1.4rem 1.6rem; border-radius: 0 8px 8px 0; display: grid; grid-template-columns: 64px 1fr auto; gap: 0.5rem 1.2rem; align-items: start; }
+    .pub-item.hidden { display: none; }
+    .pub-thumb { width: 64px; height: 64px; border-radius: 6px; background: var(--pale); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; }
+    .pub-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .pub-thumb svg { width: 28px; height: 28px; opacity: 0.35; }
+    .pub-title-row { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.25rem; }
+    .pub-title { font-family: var(--serif); font-size: 1rem; color: var(--ink); }
+    .pub-tag { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.15rem 0.55rem; border-radius: 4px; color: #fff; white-space: nowrap; vertical-align: middle; position: relative; top: -1px; }
+    .pub-tag-data { background: #2e7d32; }
+    .pub-tag-theorem { background: #c62828; }
+    .pub-tag-other { background: #795548; }
+    .pub-meta { font-size: 0.84rem; color: var(--muted); font-weight: 300; }
+    .pub-meta strong { color: var(--mid); font-weight: 600; }
+    .pub-year { font-size: 0.78rem; font-weight: 700; color: var(--accent2); letter-spacing: 0.06em; white-space: nowrap; padding-top: 0.2rem; }
+    .pub-links { display: flex; gap: 0.5rem; margin-top: 0.65rem; flex-wrap: wrap; }
+    .pub-link { font-size: 0.73rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.2rem 0.6rem; border: 1px solid var(--border); border-radius: 4px; color: var(--mid); text-decoration: none; transition: all 0.2s; }
+    .pub-link:hover { border-color: var(--accent2); color: var(--accent2); }
+
+    /* COAUTHORSHIP NETWORK */
+    .pub-network-toggle { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.55rem 1.3rem; border: 2px solid var(--border); border-radius: 8px; background: var(--white); color: var(--mid); font-family: var(--sans); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-bottom: 1.5rem; }
+    .pub-network-toggle .toggle-thumb { width: 28px; height: 28px; border-radius: 4px; border: 1px solid var(--border); overflow: hidden; flex-shrink: 0; background: var(--pale); }
+    .pub-network-toggle .toggle-thumb svg { width: 100%; height: 100%; }
+    .pub-network-toggle:hover { border-color: var(--accent2); color: var(--accent2); }
+    .pub-network-toggle .toggle-arrow { transition: transform 0.3s; font-size: 0.7rem; }
+    .pub-network-toggle.open .toggle-arrow { transform: rotate(180deg); }
+    .pub-network-wrap { max-height: 0; overflow: hidden; transition: max-height 0.5s ease, opacity 0.4s ease; opacity: 0; margin-bottom: 0; }
+    .pub-network-wrap.open { max-height: 850px; opacity: 1; margin-bottom: 2rem; }
+    .pub-network-inner { background: var(--white); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .pub-network-legend { display: flex; gap: 1.2rem; align-items: center; padding: 0.5rem 1.2rem; border-bottom: 1px solid var(--border); font-size: 0.75rem; color: var(--mid); flex-wrap: wrap; }
+    .pub-network-legend .legend-item { display: flex; align-items: center; gap: 0.35rem; }
+    .pub-network-legend .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .pub-network-legend .legend-sq { width: 10px; height: 10px; border-radius: 2px; }
+    #network-graph { width: 100%; height: 700px; display: block; }
+    #network-tooltip { position: fixed; background: var(--ink); color: white; padding: 0.5rem 0.8rem; border-radius: 6px; font-size: 0.78rem; pointer-events: none; opacity: 0; transition: opacity 0.15s; max-width: 260px; line-height: 1.5; z-index: 200; }
+    #network-tooltip .tt-name { font-weight: 700; font-size: 0.85rem; margin-bottom: 0.15rem; }
+    #network-tooltip .tt-count { opacity: 0.7; }
+    .net-node circle { cursor: pointer; stroke-width: 2; transition: r 0.2s; }
+    .net-node text { pointer-events: none; font-size: 10px; fill: var(--ink); font-weight: 500; }
+    .net-link { stroke: #c8dde8; stroke-opacity: 0.5; }
+    .net-link.highlighted { stroke: var(--accent); stroke-opacity: 0.9; stroke-width: 2.5 !important; }
+    .net-node.dimmed circle, .net-node.dimmed rect { opacity: 0.15; }
+    .net-node.dimmed text { opacity: 0.1; }
+    .net-link.dimmed { stroke-opacity: 0.05; }
+    .net-node.selected circle { stroke: #e05c2a; stroke-width: 3; }
+    .net-node.selected rect { stroke: #e05c2a; stroke-width: 3; }
+    .pub-network-status { display: none; align-items: center; gap: 0.6rem; margin-bottom: 1rem; padding: 0.5rem 1rem; background: var(--pale); border: 1px solid var(--border); border-radius: 6px; font-size: 0.85rem; color: var(--mid); }
+    .pub-network-status.active { display: inline-flex; }
+    .pub-network-status .clear-btn { background: none; border: none; color: var(--accent2); font-weight: 600; cursor: pointer; font-size: 0.85rem; text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-name" href="index.html">Manhart</a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li style="display:none;"><a href="teaching.html">Teaching</a></li>
+      <li><a href="outreach.html">Outreach & Art</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <svg viewBox="0 0 24 24" fill="none"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+  <script>document.querySelector('.nav-links').addEventListener('click',function(e){if(e.target.tagName==='A')this.classList.remove('open');})</script>
+
+  <!-- PUBLICATIONS -->
+  <div id="publications" class="full-bleed" style="background: var(--bg);">
+    <div class="inner">
+      <div class="">
+        <p class="section-label">Selected Works</p>
+        <h2 class="section-title">Publications</h2>
+        <p class="section-intro">Peer-reviewed articles and book chapters.</p>
+      </div>
+      <!-- Network toggle + collapsible panel -->
+      <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: stretch; margin-bottom: 1.5rem;">
+      <button class="pub-network-toggle" id="networkToggle" style="margin-bottom: 0;">
+        <div class="toggle-thumb"><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="4" fill="#e05c2a" stroke="#c04010" stroke-width="1"/><circle cx="6" cy="8" r="2.5" fill="#c0392b" stroke="#fff" stroke-width="0.5"/><circle cx="22" cy="8" r="2.5" fill="#059669" stroke="#fff" stroke-width="0.5"/><circle cx="8" cy="22" r="2" fill="#059669" stroke="#fff" stroke-width="0.5"/><circle cx="20" cy="20" r="2" fill="#c0392b" stroke="#fff" stroke-width="0.5"/><line x1="14" y1="14" x2="6" y2="8" stroke="#c8dde8" stroke-width="0.8"/><line x1="14" y1="14" x2="22" y2="8" stroke="#c8dde8" stroke-width="0.8"/><line x1="14" y1="14" x2="8" y2="22" stroke="#c8dde8" stroke-width="0.8"/><line x1="14" y1="14" x2="20" y2="20" stroke="#c8dde8" stroke-width="0.8"/><rect x="9" y="10" width="4" height="4" rx="0.8" fill="#fca5a5" stroke="#c0392b" stroke-width="0.6"/><rect x="17" y="16" width="4" height="4" rx="0.8" fill="#a7f3d0" stroke="#059669" stroke-width="0.6"/></svg></div>
+        <span class="toggle-arrow">&#9660;</span> Show Co-authorship Network
+      </button>
+      <a href="research.html" class="pub-network-toggle" style="text-decoration: none; margin-bottom: 0;">
+        <div class="toggle-thumb"><svg viewBox="0 0 28 28"><circle cx="8" cy="14" r="6" fill="none" stroke="#2563eb" stroke-width="1.5"/><circle cx="20" cy="8" r="4" fill="none" stroke="#059669" stroke-width="1.5"/><circle cx="22" cy="20" r="5" fill="none" stroke="#d97706" stroke-width="1.5"/><rect x="13" y="12" width="3" height="3" rx="0.5" fill="#fca5a5" stroke="#c62828" stroke-width="0.6"/><rect x="11" y="18" width="3" height="3" rx="0.5" fill="#a7f3d0" stroke="#059669" stroke-width="0.6"/><rect x="18" y="14" width="3" height="3" rx="0.5" fill="#e5e7eb" stroke="#6b7280" stroke-width="0.6"/><line x1="8" y1="14" x2="13" y2="13" stroke="#c8dde8" stroke-width="0.8"/><line x1="20" y1="8" x2="18" y2="14" stroke="#c8dde8" stroke-width="0.8"/><line x1="22" y1="20" x2="14" y2="19" stroke="#c8dde8" stroke-width="0.8"/></svg></div>
+        <span>View Research Map &rarr;</span>
+      </a>
+      </div>
+      <div class="pub-network-wrap" id="networkWrap">
+        <div class="pub-network-inner">
+          <div class="pub-network-legend">
+            <div class="legend-item"><svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="5" fill="var(--muted)" stroke="#fff" stroke-width="1"/></svg><span>= Authors</span></div>
+            <div class="legend-item"><svg width="12" height="12" viewBox="0 0 12 12"><rect x="1" y="1" width="10" height="10" rx="2" fill="var(--pale)" stroke="var(--muted)" stroke-width="1.5"/></svg><span>= Publications</span></div>
+            <div class="legend-item" style="margin-left:auto;"><div class="legend-dot" style="background:#c0392b;"></div><span>Proofs</span></div>
+            <div class="legend-item"><div class="legend-dot" style="background:#059669;"></div><span>Data</span></div>
           </div>
-          <div id="nav">
-            <ul>
-             <li><a href="index.html">Home</a></li>
-              <li><a href="research.html">Research</a></li>
-              <li><a href="publications.html">Publications</a></li>
-                <li><a href="astra.html">ASTRA Project: MOHECCE</a></li>
-              <li><a href="other.html">Other Activities</a></li>
-            </ul>
-          </div>
-          <div id="page">
-              <br />
-              <div>
-              <span style="font-weight: bold;"><font size="+1">    Collaborative Network</font></span>
-              </div>  
-                <br />
-              <div style="text-align: center;"><img src="images/collNetwork.png"
-                  alt="coll network" title="coll network" style="width: 810px; height: 710px;" /></div>
-            <div>
-                <br />
-              <span style="font-weight: bold;"><font size="+1">    Publications</font><br />
-                <br />
-                <span style="font-style: italic;">    Preprints/Submitted</span></span></div>
-            <div>
-              
-            </div>
-            <br />
-            <div>
-              <span style="font-weight: bold; font-style: italic;">  
-                  Published/Accepted</span></div>
-           
-            <div>
-                <ul>
-                <li>Lancaster, C., Manhart, A. and Pichaud, F. <a href="https://www.cell.com/current-biology/fulltext/S0960-9822(25)00664-5"><font
-                      color="#009900">Integrins coordinate basal surface contraction and oriented cell growth to enable thickening of a curved epithelium.</font></a>. <i> Current Biology (2025), <br />
-                  </i></li>
-              </ul>  
-               <ul>
-                <li>Leech, V., Dalwadi, M. P., &amp; Manhart, A. <span style="color: #009900;">A
-                    dynamical analysis of the alignment mechanism between two
-                    interacting cells</span>. <i> Bulletin of Math Bio, 87(2):23 (2025), <a href="https://www.biorxiv.org/content/10.1101/2024.07.23.604626v2">link
-                      to bioRxiv</a><br />
-                  </i></li>
-              </ul>  
-              <ul>
-                <li>V. Leech, F.N. Kenny, S. Marcotti, T.J. Shaw, B.M. Stramer
-                  &amp; A. Manhart. <span style="color: #009900;">Derivation
-                    and simulation of a computational model of active cell
-                    populations: How overlap avoidance, deformability, cell-cell
-                    junctions and cytoskeletal forces affect alignment</span>. <i>PLoS
-                    Computational Biology 20.7 (2024): e1011879</i></li>
-              </ul>
-              <ul>
-                <li>F.N. Kenny et al. <span style="color: #009900;">Autocrine
-                    IL-6 drives cell and extracellular matrix anisotropy in scar
-                    fibroblasts</span>. <i>Matrix Biology 123 (2023): 1-16</i></li>
-              </ul>
-              <ul>
-                <li>H.Z. Ford, A. Manhart, J.R. Chubb, <a href="https://elifesciences.org/articles/83796"><font
-                      color="#009900">Controlling periodic long-range signalling
-                      to drive a morphogenetic transition.</font></a> <i>eLife
-                    (2023) 12:e83796</i></li>
-                </ul>
-              <ul>  
-                <li>P. Degond, A. Manhart, S. Merino-Aceituno, D. Peurichard
-                  &amp; L. Sala. <span style="color: #009900;">How environment
-                    affects active particle swarms: a case study</span>. <i>Royal
-                    Society Open Science, 9(12), 220791 (2022)<br />
-                  </i></li>
-              </ul>
-              <ul>
-                <li>B.D. Karkaria, A. Manhart, A.J.H. Fedorec, C.P. Barnes, <font
-                    color="#009900">Chaos in small microbial communities.</font>
-                  <i>PLoS Computational Biology 18 (10) e1010548</i></li>
-              </ul>
-                <ul>
-                <li>V. Leech, J.W. Hazel, J.C. Gatlin, A.E. Lindsay, A. Manhart,
-                  <a href="https://www.sciencedirect.com/science/article/pii/S0022519321003556"
-                    style="color: #009900;">Mathematical modeling accurately
-                    predicts the dynamics and scaling of nuclear growth in
-                    discrete cytoplasmic volumes</a>. <i> Journal of
-                    Theoretical Biology (2021): 110936<br />
-                  </i></li>
-              </ul>
-              <ul>
-                <li><a href="https://petrusashercolobus.wixsite.com/pacevess">P.
-                    Aceves-Sanchez</a>, <a href="https://www.imperial.ac.uk/people/p.degond">P.
-                    Degond</a>, <a href="https://www.imperial.ac.uk/people/e.keaveny">E.E.
-                    Keaveny</a>, A. Manhart, <a href="https://saramerinoaceituno.wordpress.com/">S.
-                    Merino-Aceituno</a>, <a href="https://sites.google.com/site/dianepeurichard/home">D.
-                    Peurichard</a>, <a href="https://link.springer.com/article/10.1007/s11538-020-00805-z?wt_mc=Internal.Event.1.SEM.ArticleAuthorIncrementalIssue#citeas"><span
-                      style="color: #009900;">Large-scale dynamics of
-                      self-propelled particles moving through obstacles: model
-                      derivation and pattern formation</span></a><i>. Bulletin
-                    of Mathematical Biology (2020) 82(129)</i> </li>
-              </ul>
-              <ul>
-                <li>S. Hittmeir, L. Kanzler, A. Manhart and C. Schmeiser,<font color="#009900">Kinetic
-                    modelling of colonies of myxobacteria</font><i>. Kinetic and
-                    Related Models (2021) 14(1):1-24 - <a href="https://arxiv.org/abs/2001.02711">link
-                      to arXiv</a></i></li>
-              </ul>
-            
-              <ul>
-                <li>N. Ierushalmi, M. Malik-Garbi, A. Manhart, E. Abu Shah, B.
-                  Goode, <a href="https://cims.nyu.edu/%7Emogilner/">A.
-                    Mogilner</a> and <a href="https://phys.technion.ac.il/en/people/faculty/person/73">K.
-                    Keren</a>, <a href="https://elifesciences.org/articles/55368"><font
-                      color="#009900">Centering and symmetry breaking in
-                      confined contracting actomyosin networks</font></a><i>.
-                    eLife (2020) e55368<br />
-                  </i></li>
-              </ul>
-              <ul>
-                <li>A. Manhart, M. Azevedo, <a href="https://www.mskcc.org/research-areas/labs/mary-baylies">M.
-
-
-                    Baylies</a> and <a href="https://cims.nyu.edu/%7Emogilner/">A.
-                    Mogilner</a> <a href="https://www.molbiolcell.org/doi/abs/10.1091/mbc.E19-12-0711"><font
-                      color="#009900">Reverse engineering forces responsible for
-                      dynamic clustering and spreading of multiple nuclei in
-                      developing muscle cells</font></a>. <i>Molecular Biology
-                    of the Cell (2020) mbc-E19 </i></li>
-              </ul>
-              <ul>
-                <li>D. Bhaskar, A. Manhart, J. Milzman, J.T. Nardini, K. Storey,
-                  C.M. Topaz, L. Ziegelmeier <a href="https://arxiv.org/abs/1908.09081"><span
-                      style="color: #009900;">Analyzing collective motion using
-                      machine learning and topology</span></a><i>. Chaos (2019)
-                    29(12),123125 - link <a href="https://arxiv.org/abs/1908.09081">to
-                      arXiv</a></i></li>
-              </ul>
-              <ul>
-                <li>A. Manhart, A. Icheva, C. Guerin, T. Klar, R.
-                  Boujemaa-Paterski, <a href="http://www.cytomorpholab.com/index.php?page=lab-members">M.
-                    Thery, L. Blanchoin</a>, <a href="https://cims.nyu.edu/%7Emogilner/">A.
-                    Mogilner</a>, <a href="https://elifesciences.org/articles/42413"><font
-                      color="#009900">Quantitative regulation of the dynamic
-                      steady state of actin networks</font></a><i>. eLife (2019)
-                    8:e42413</i></li>
-              </ul>
-              <ul>
-                <li><a href="https://www.mskcc.org/research-areas/labs/members/stefanie-windner">S.
-
-                    Windner</a>, A. Manhart, A. Brown, <a href="https://cims.nyu.edu/%7Emogilner/">A.
-                    Mogilner</a> and <a href="https://www.mskcc.org/research-areas/labs/mary-baylies">M.
-                    Baylies</a>, <font color="#009900">Nuclear scaling is
-                    coordinated among individual nuclei in multinucleated muscle
-                    fibers</font><i>. Dev Cell (2019) 49(1), 48-62<br />
-                  </i></li>
-              </ul>
-              <ul>
-                <li> A. Manhart, <a href="https://rdcu.be/5oXH"><font color="#009900">Counter-propagating
-                      wave patterns in a swarm model with memory</font></a>. <i>Journal
-                    of Mathematical Biology (2018)
-                    https://doi.org/10.1007/s00285-018-1287-x</i> </li>
-              </ul>
-              <ul>
-                <li>A. Manhart, <a href="https://www.mskcc.org/research-areas/labs/members/stefanie-windner">S.
-
-                    Windner</a>, <a href="https://www.mskcc.org/research-areas/labs/mary-baylies">M.
-                    Baylies</a> and <a href="https://cims.nyu.edu/%7Emogilner/">A.
-                    Mogilner</a>, <a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006208"><font
-                      color="#009900">Mechanical positioning of multiple nuclei
-                      in muscle cells</font></a><b>. </b><span style="color: rgb(51, 51,                     51); font-weight: normal;"><span
-                      style="font-style:                       italic;"><span style="color: rgb(0, 153, 0);                         font-style: italic;"><font
-                          color="#333333"><font color="#000000">PLOS
-                            Computational Biology (2018) 14(6):e1006208</font></font></span></span></span>
-                </li>
-              </ul>
-                <ul style="font-weight: normal;">
-                        <li><a href="https://sites.google.com/site/degond/Home">P.
-                            Degond</a>, A. Manhart, <a href="https://sites.google.com/site/homeofhuiyu/">H.
-                            Yu</a>, <font color="#000000"><font color="#33cc00"><a
-                                href="https://www.worldscientific.com/doi/abs/10.1142/S0218202518400043"><font
-                                  color="#009900">An age-structured continuum
-                                  model for myxobacteria</font></a> <a href="files/IBM_video.avi">(Movie)</a>
-                            </font></font><span style="color:rgb(0, 153, 0); font-style: italic;"><font
-                              color="#333333"><font color="#000000">-
-                                Mathematical Models &amp; Methods in Applied
-                                Sciences (2018) 28(9):1737–1770<br />
-                              </font></font></span></li>
-                      </ul>
-             
-              <ul>
-                <li><a href="http://cims.nyu.edu/%7Emogilner/">A. Mogilner</a>,
-                  A. Manhart, <a href="http://www.annualreviews.org/eprint/fYTMpjNcxkgp6xvEiBtG/full/10.1146/annurev-fluid-010816-060238"><font
-                      color="#009900">Intracellular fluid mechanics: coupling
-                      cytoplasmic flow with active cytoskeletal gel</font></a>.
-                  Review article<i>. Annular Review of Fluid Mechanics (2018)
-                    50:347-370<br />
-                  </i></li>
-              </ul>
-                <ul style="font-weight: normal;">
-                    <li><a href="https://sites.google.com/site/degond/Home">P.
-                        Degond</a>, A. Manhart, <a href="https://sites.google.com/site/homeofhuiyu/">H.
-
-
-
-                        Yu</a>, <a href="https://arxiv.org/pdf/1509.03124.pdf"
-                        style="color: rgb(0, 153, 0);">Continuum model of
-                        nematic alignment of self-propelled particles</a>.<span
-                        style="color: rgb(0, 153, 0); font-style:                         italic;"><font
-                          color="#333333"> Discrete and Continuous Dynamical
-                          Systems - B (2017), 22:3379-84</font></span></li>
-                  </ul>
-               <ul style="font-weight: normal;">
-                        <li>S. Hirsch, A. Manhart, <a href="http://homepage.univie.ac.at/Christian.Schmeiser/">C.
-
-
-
-                            Schmeiser</a>, <a style="color: rgb(0, 153,                             0);"
-                            href="https://rdcu.be/6aOy">Mathematical Modeling of
-                            Myosin Induced Bistability of Lamellipodial
-                            Fragments</a>. <span style="font-style: italic;">Journal
-                            of Mathematical Biology (2017) 74(1-2):1-22</span></li>
-                      </ul>
-                
-                      <ul style="font-weight: normal;">
-                        <li>A. Manhart, <a href="https://homepage.univie.ac.at/dietmar.oelz/">D.
-                Oelz</a>, <a href="http://homepage.univie.ac.at/Christian.Schmeiser/">C.
-                 Schmeiser</a>, N. Sfakianakis,<a style="color: rgb(0, 153, 0);"
-                            href="files/ManOelSchmSfa-numerics.pdf"> </a><a style="color: rgb(0, 153, 0);"
-                            href="files/FBLMNumerics.pdf">Numerical Treatment of
-                            the Filament Based Lamellipodium Model</a> (<a style="color:                             rgb(204, 0, 0);"
-                            href="files/Movie_AdhesionPatches_Spikes.avi">Movie1</a><span
-                            style="color: rgb(204, 0, 0);">, </span><a style="color: rgb(204, 0, 0);"
-                            href="files/Movie_AdhesionPatches_Stripes.avi">Movie2</a>)
-                          <span style="font-style: italic;">-<font color="#999999">
-                            </font></span>in <i>Modeling Cellular Systems</i>,
-                          eds. F. Graw, F. Matthäus, and J. Pahle, Springer,
-                          (2017)</li>
-                      </ul>
-                      <ul style="font-weight: normal;">
-                        <li><a href="http://cims.nyu.edu/%7Emogilner/">A.
-                            Mogilner</a>, A. Manhart, <a href="files/Mol.%20Biol.%20Cell-2016-Mogilner-3379-84.pdf"><font
-                              color="#009900">Agent-based modeling in cell
-                              biology</font></a>. Review article. <i>Molecular
-                            Biology of the Cell, (2016), </i><span style="font-style: italic;"><i>27:</i>3379-84</span></li>
-                      </ul>
-                      
-                      <ul style="font-weight: normal;">
-                        <li>A. Manhart, <a href="http://homepage.univie.ac.at/Christian.Schmeiser/">C.
-
-
-                            Schmeiser</a>, <a href="https://rdcu.be/6aOR" style="color:                             rgb(0, 153, 0);">Existence
-                            of and decay to equilibrium of the filament end
-                            density along the leading edge of the lamellipodium</a>.
-                          <span style="font-style: italic;">Journal of
-                            Mathematical Biology (2016), 74:169-193</span></li>
-                      </ul>
-                      <ul>
-                        <li><font style="color: rgb(51, 51, 51);                             font-weight: normal;">A. Manhart,
-                            <a href="http://homepage.univie.ac.at/dietmar.oelz/">D.
-
-
-                              Oelz</a>, <a href="http://homepage.univie.ac.at/Christian.Schmeiser/">C.
-
-
-                              Schmeiser</a> , <a href="http://www2.mathematik.uni-mainz.de/%7Esfaknikj/">N.
-
-
-                              Sfakianakis</a>, <a href="files/Chemotaxis_ManOelSchSfa.pdf"><span
-                                style="color: rgb(0, 153, 0);">An extended
-                                Filament Based Lamellipodium Model produces
-                                various moving cell shapes in the presence of
-                                chemotactic signals</span></a>.</font><font style="color: rgb(51, 51, 51); font-weight:                             normal;">
-                            <span style="font-style: italic;">Journal of
-                              Theoretical Biology, 382 (2015), pp. 244-258</span>
-                            (<a style="color: rgb(204,                               0, 0);"
-                              href="files/Movie_Chemotaxis.mp4">Movie1</a><span
-                              style="color: rgb(204, 0, 0);">, </span><a style="color: rgb(204, 0, 0);"
-                              href="files/Movie_Chemotaxis_Turning.mp4">Movie2</a>)</font></li>
-                      </ul>
-                
-                      <p>   <b> <i>Past preprints</i></b><br />
-                      </p>
-                    
-              <ul>
-                <li> A. Manhart, <a href="http://homepage.univie.ac.at/Christian.Schmeiser/">C.
-
-
-                    Schmeiser</a>, <a style="color: rgb(0, 153, 0);" href="file:///web/amanhart/files/ManSch-myosin.pdf"
-                    target="_blank">A kinetic transport model for actin-myosin
-                    interaction</a><span style="color:                     rgb(51, 51, 51);">.</span> 
-                      </li>
-              </ul>
-              <p>   <b> <i>Publications related to past internships</i></b><br />
-              </p>
-              <ul>
-                <li>B. Hartl, I. Zeller, A. Manhart, B. Selitsch, C.  Lass-Flörl and B. Willinger <font color="#009900">A
-                    retrospective assessment of four antigen assays for the detection of invasive candidiasis among high risk hospitalized patients</font>.<i> Mycopathologia (2018), 183(3):513-519</i></li>
-              </ul>
-                <ul>
-                M. Summerer, J. Horst, G. Erhart, H. Weißensteiner, S. Schönherr, D. Pacher, L. Forer, D. Horst, A. Manhart, B. Horst, T. Sanguansermsri, A. Kloss-Brandstätter, <a
-                                            style="color: rgb(0, 153,                                             0); font-weight: normal;"
-                                            href="http://www.biomedcentral.com/1471-2148/14/17/">Large-scale mitochondrial DNA analysis in Southeast Asia reveals evolutionary effects of cultural isolation in the multi-ethnic population of Myanmar.</a> <em
-                                            style="font-weight: normal;">BMC Evolutionary Biology (2014), 14:17</em>
-                
-               </ul> 
-              
-          </div>
+          <svg id="network-graph"></svg>
         </div>
       </div>
+      <div id="network-tooltip"></div>
+
+      <div class="pub-network-status" id="networkStatus">
+        <span id="networkStatusText">Filtering by: —</span>
+        <button class="clear-btn" id="networkClear">Clear</button>
+      </div>
+
+      <div class="pub-filters">
+        <button class="pub-filter-btn active" data-filter="all">All</button>
+        <button class="pub-filter-btn" data-filter="data">Contains data</button>
+        <button class="pub-filter-btn" data-filter="theorem">Contains proofs</button>
+      </div>
+
+      <div class="pub-list reveal">
+
+        <div class="pub-item" data-category="data" data-authors="Lancaster,Manhart A,Pichaud" data-title="Integrins coordinate basal surface contraction and oriented cell growth to enable thickening of a curved epithelium">
+          <div class="pub-thumb"><img src="publications/eye_development_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">Integrins coordinate basal surface contraction and oriented cell growth to enable thickening of a curved epithelium</p><span class="pub-tag pub-tag-data">Contains data</span></div>
+            <p class="pub-meta">Lancaster C, Manhart A, Pichaud F &middot; <strong>Current Biology</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/eye_development.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.1016/j.cub.2025.05.048" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2025</span>
+        </div>
+
+        <div class="pub-item" data-category="theorem" data-authors="Leech,Dalwadi,Manhart A" data-title="A dynamical analysis of the alignment mechanism between two interacting cells">
+          <div class="pub-thumb"><img src="publications/cell_alignment_analytical_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">A dynamical analysis of the alignment mechanism between two interacting cells</p><span class="pub-tag pub-tag-theorem">Contains proofs</span></div>
+            <p class="pub-meta">Leech V, Dalwadi MP, Manhart A &middot; <strong>Bulletin of Mathematical Biology</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/cell_alignment_analytical.pdf" target="_blank">PDF</a></div>
+          </div>
+          <span class="pub-year">2024</span>
+        </div>
+
+        <div class="pub-item" data-category="data" data-authors="Leech,Kenny,Marcotti,Shaw,Stramer,Manhart A" data-title="Derivation and simulation of a computational model of active cell populations">
+          <div class="pub-thumb"><img src="publications/cell_alignment_computational_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">Derivation and simulation of a computational model of active cell populations: How overlap avoidance, deformability, cell-cell junctions and cytoskeletal forces affect alignment</p><span class="pub-tag pub-tag-data">Contains data</span></div>
+            <p class="pub-meta">Leech V, Kenny FN, Marcotti S, Shaw TJ, Stramer BM, Manhart A &middot; <strong>PLOS Computational Biology</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/cell_alignment_computational.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.1371/journal.pcbi.1011879" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2024</span>
+        </div>
+
+        <div class="pub-item" data-category="data" data-authors="Ford,Manhart A,Chubb" data-title="Controlling periodic long-range signalling to drive a morphogenetic transition">
+          <div class="pub-thumb"><img src="publications/periodic_long_range_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">Controlling periodic long-range signalling to drive a morphogenetic transition</p><span class="pub-tag pub-tag-data">Contains data</span></div>
+            <p class="pub-meta">Ford HZ, Manhart A, Chubb JR &middot; <strong>eLife</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/periodic_long_range_signalling_dicty.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.7554/elife.83796" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2023</span>
+        </div>
+
+        <div class="pub-item" data-category="data" data-authors="Kenny,Marcotti,DeFreitas,Drudi,Leech,Bell,Easton,Diaz-de-la-Loza,Fleck,Allison,Phillippeos,Manhart A,Shaw,Stramer" data-title="Autocrine IL-6 drives cell and extracellular matrix anisotropy in scar fibroblasts">
+          <div class="pub-thumb"><img src="publications/cell_alignment_biology_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">Autocrine IL-6 drives cell and extracellular matrix anisotropy in scar fibroblasts</p><span class="pub-tag pub-tag-data">Contains data</span></div>
+            <p class="pub-meta">Kenny FN, Marcotti S, DeFreitas DB, Drudi EM, Leech V, Bell RE, Easton J, Diaz-de-la-Loza MdC, Fleck R, Allison L, Phillippeos C, Manhart A, Shaw TJ, Stramer BM &middot; <strong>Matrix Biology</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/cell_alignment_biology.pdf" target="_blank">PDF</a></div>
+          </div>
+          <span class="pub-year">2023</span>
+        </div>
+
+        <div class="pub-item" data-category="theorem" data-authors="Degond,Manhart A,Merino-Aceituno,Peurichard,Sala" data-title="How environment affects active particle swarms: a case study">
+          <div class="pub-thumb"><img src="publications/environment_swarm_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">How environment affects active particle swarms: a case study</p><span class="pub-tag pub-tag-theorem">Contains proofs</span></div>
+            <p class="pub-meta">Degond P, Manhart A, Merino-Aceituno S, Peurichard D, Sala L &middot; <strong>Royal Society Open Science</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/environment_particle_swarms.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.1098/rsos.220791" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2022</span>
+        </div>
+
+        <div class="pub-item" data-category="theorem" data-authors="Karkaria,Rao,Manhart A,Fedorec,Barnes" data-title="Chaos in synthetic microbial communities">
+          <div class="pub-thumb"><img src="publications/chaos_synthetic_communities_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">Chaos in synthetic microbial communities</p><span class="pub-tag pub-tag-theorem">Contains proofs</span></div>
+            <p class="pub-meta">Karkaria BD, Rao C, Manhart A, Fedorec, Barnes CP &middot; <strong>PLOS Computational Biology</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/chaos_synthetic_communities.pdf" target="_blank">PDF</a></div>
+          </div>
+          <span class="pub-year">2022</span>
+        </div>
+
+        <div class="pub-item" data-category="data" data-authors="Leech,Hazel,Gatlin,Lindsay,Manhart A" data-title="Mathematical modeling accurately predicts the dynamics and scaling of nuclear growth">
+          <div class="pub-thumb"><img src="publications/leech_nuclear_scaling_paper_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">Mathematical modeling accurately predicts the dynamics and scaling of nuclear growth in discrete cytoplasmic volumes</p><span class="pub-tag pub-tag-data">Contains data</span></div>
+            <p class="pub-meta">Leech V, Hazel JW, Gatlin JC, Lindsay AE, Manhart A &middot; <strong>Journal of Theoretical Biology</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/leech_nuclear_scaling_paper.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.1016/j.jtbi.2021.110936" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2022</span>
+        </div>
+
+        <div class="pub-item" data-category="theorem" data-authors="Hittmeir,Kanzler,Manhart A,Schmeiser" data-title="Kinetic modelling of colonies of myxobacteria">
+          <div class="pub-thumb"><img src="publications/kinetic_myxobacteria_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">Kinetic modelling of colonies of myxobacteria</p><span class="pub-tag pub-tag-theorem">Contains proofs</span></div>
+            <p class="pub-meta">Hittmeir S, Kanzler L, Manhart A, Schmeiser C &middot; <strong>Kinetic &amp; Related Models</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/kinetic_myxobacteria.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.3934/krm.2020046" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2021</span>
+        </div>
+
+        <div class="pub-item" data-category="theorem" data-authors="Aceves-Sanchez,Degond,Keaveny,Manhart A,Merino-Aceituno,Peurichard" data-title="Large-Scale Dynamics of Self-propelled Particles Moving Through Obstacles">
+          <div class="pub-thumb"><img src="publications/swimmer_obstacle_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">Large-Scale Dynamics of Self-propelled Particles Moving Through Obstacles: Model Derivation and Pattern Formation</p><span class="pub-tag pub-tag-theorem">Contains proofs</span></div>
+            <p class="pub-meta">Aceves-Sanchez P, Degond P, Keaveny EE, Manhart A, Merino-Aceituno S, Peurichard D &middot; <strong>Bulletin of Mathematical Biology</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/swimmer_obstacle.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.1007/s11538-020-00805-z" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2020</span>
+        </div>
+
+        <div class="pub-item" data-category="data" data-authors="Manhart A,Azevedo,Baylies,Mogilner" data-title="Reverse-engineering forces responsible for dynamic clustering and spreading of multiple nuclei">
+          <div class="pub-thumb"><img src="publications/reverse_engineer_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">Reverse-engineering forces responsible for dynamic clustering and spreading of multiple nuclei in developing muscle cells</p><span class="pub-tag pub-tag-data">Contains data</span></div>
+            <p class="pub-meta">Manhart A, Azevedo M, Baylies MK, Mogilner A &middot; <strong>Molecular Biology of the Cell</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/reverse_engineer.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.1091/mbc.e19-12-0711" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2020</span>
+        </div>
+
+        <div class="pub-item" data-category="data" data-authors="Ierushalmi,Malik-Garbi,Manhart A,Shah,Goode,Mogilner,Keren" data-title="Centering and symmetry breaking in confined contracting actomyosin networks">
+          <div class="pub-thumb"><img src="publications/centering_symmetry_actomyosin_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">Centering and symmetry breaking in confined contracting actomyosin networks</p><span class="pub-tag pub-tag-data">Contains data</span></div>
+            <p class="pub-meta">Ierushalmi N, Malik-Garbi M, Manhart A, Shah EA, Goode BL, Mogilner A, Keren K &middot; <strong>eLife</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/centering_symmetry_actin.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.7554/elife.55368" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2020</span>
+        </div>
+
+        <div class="pub-item" data-category="theorem" data-authors="Bhaskar,Manhart A,Milzman,Nardini,Storey,Topaz,Ziegelmeier" data-title="Analyzing collective motion with machine learning and topology">
+          <div class="pub-thumb"><img src="publications/tda_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">Analyzing collective motion with machine learning and topology</p><span class="pub-tag pub-tag-theorem">Contains proofs</span></div>
+            <p class="pub-meta">Bhaskar D, Manhart A, Milzman J, Nardini JT, Storey KM, Topaz CM, Ziegelmeier L &middot; <strong>Chaos</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/tda.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.1063/1.5125493" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2019</span>
+        </div>
+
+        <div class="pub-item" data-category="data" data-authors="Windner,Manhart A,Brown,Mogilner,Baylies" data-title="Nuclear Scaling Is Coordinated among Individual Nuclei in Multinucleated Muscle Fibers">
+          <div class="pub-thumb"><img src="publications/scaling_myonuclei_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">Nuclear Scaling Is Coordinated among Individual Nuclei in Multinucleated Muscle Fibers</p><span class="pub-tag pub-tag-data">Contains data</span></div>
+            <p class="pub-meta">Windner SE, Manhart A, Brown A, Mogilner A, Baylies MK &middot; <strong>Developmental Cell</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/scaling_myonuclei.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.1016/j.devcel.2019.02.020" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2019</span>
+        </div>
+
+        <div class="pub-item" data-category="data" data-authors="Manhart A,Icheva,Guerin,Klar,Boujemaa-Paterski,Thery,Blanchoin,Mogilner" data-title="Quantitative regulation of the dynamic steady state of actin networks">
+          <div class="pub-thumb"><img src="publications/quantitative_actin_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">Quantitative regulation of the dynamic steady state of actin networks</p><span class="pub-tag pub-tag-data">Contains data</span></div>
+            <p class="pub-meta">Manhart A, Icheva TA, Guerin C, Klar T, Boujemaa-Paterski R, Thery M, Blanchoin L, Mogilner A &middot; <strong>eLife</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/quantitative_actin.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.7554/elife.42413" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2019</span>
+        </div>
+
+        <div class="pub-item" data-category="theorem" data-authors="Manhart A" data-title="Counter-propagating wave patterns in a swarm model with memory">
+          <div class="pub-thumb"><img src="publications/swarm_model_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">Counter-propagating wave patterns in a swarm model with memory</p><span class="pub-tag pub-tag-theorem">Contains proofs</span></div>
+            <p class="pub-meta">Manhart A &middot; <strong>Journal of Mathematical Biology</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/swarm_model_memory.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.1007/s00285-018-1287-x" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2018</span>
+        </div>
+
+        <div class="pub-item" data-category="theorem" data-authors="Degond,Manhart A,Yu" data-title="An age-structured continuum model for myxobacteria">
+          <div class="pub-thumb"><img src="publications/age_structured_myxobacteria.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">An age-structured continuum model for myxobacteria</p><span class="pub-tag pub-tag-theorem">Contains proofs</span></div>
+            <p class="pub-meta">Degond P, Manhart A, Yu H &middot; <strong>Mathematical Models and Methods in Applied Sciences</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/age_structured_myxobacteria.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.1142/s0218202518400043" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2018</span>
+        </div>
+
+        <div class="pub-item" data-category="data" data-authors="Manhart A,Windner,Baylies,Mogilner" data-title="Mechanical positioning of multiple nuclei in muscle cells">
+          <div class="pub-thumb"><img src="publications/mechanical_positioning_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">Mechanical positioning of multiple nuclei in muscle cells</p><span class="pub-tag pub-tag-data">Contains data</span></div>
+            <p class="pub-meta">Manhart A, Windner S, Baylies M, Mogilner A &middot; <strong>PLoS Computational Biology</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/mechanical_positioning_myonuclei.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.1371/journal.pcbi.1006208" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2018</span>
+        </div>
+
+        <div class="pub-item" data-category="data" data-authors="Mogilner,Manhart A" data-title="Intracellular Fluid Mechanics: Coupling Cytoplasmic Flow with Active Cytoskeletal Gel">
+          <div class="pub-thumb"><img src="publications/annurev_fluid.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">Intracellular Fluid Mechanics: Coupling Cytoplasmic Flow with Active Cytoskeletal Gel</p><span class="pub-tag pub-tag-data">Contains data</span></div>
+            <p class="pub-meta">Mogilner A, Manhart A &middot; <strong>Annual Review of Fluid Mechanics</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/annurev_fluid.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.1146/annurev-fluid-010816-060238" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2018</span>
+        </div>
+
+        <div class="pub-item" data-category="data" data-authors="Hartl,Zeller,Manhart A,Selitsch,Lass-Floerl,Willinger" data-title="A Retrospective Assessment of Four Antigen Assays for the Detection of Invasive Candidiasis">
+          <div class="pub-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">A Retrospective Assessment of Four Antigen Assays for the Detection of Invasive Candidiasis Among High-Risk Hospitalized Patients</p><span class="pub-tag pub-tag-data">Contains data</span></div>
+            <p class="pub-meta">Hartl B, Zeller I, Manhart A, Selitsch B, Lass-Floerl C, Willing B &middot; <strong>Mycopathologia</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/antigen_assay_candidiasis.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.1007/s11046-017-0238-1" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2018</span>
+        </div>
+
+        <div class="pub-item" data-category="theorem" data-authors="Degond,Manhart A,Yu" data-title="A continuum model for nematic alignment of self-propelled particles">
+          <div class="pub-thumb"><img src="publications/continuum_nematic_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">A continuum model for nematic alignment of self-propelled particles</p><span class="pub-tag pub-tag-theorem">Contains proofs</span></div>
+            <p class="pub-meta">Degond P, Manhart A, Yu H &middot; <strong>Discrete &amp; Continuous Dynamical Systems - B</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/continuum_nematic.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.3934/dcdsb.2017063" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2017</span>
+        </div>
+
+        <div class="pub-item" data-category="theorem" data-authors="Manhart A,Oelz,Schmeiser,Sfakianakis" data-title="Numerical Treatment of the Filament Based Lamellipodium Model">
+          <div class="pub-thumb"><img src="publications/numerical_FBLM_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">Numerical Treatment of the Filament Based Lamellipodium Model</p><span class="pub-tag pub-tag-theorem">Contains proofs</span></div>
+            <p class="pub-meta">Manhart A, Oelz D, Schmeiser C, Sfakianakis N &middot; <strong>Modelling Cellular Systems</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/numerical_FBLM.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.1007/978-3-319-45833-5" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2017</span>
+        </div>
+
+        <div class="pub-item" data-category="theorem" data-authors="Manhart A,Schmeiser" data-title="Existence of and decay to equilibrium of the filament end density">
+          <div class="pub-thumb"><img src="publications/existence_leading_edge_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">Existence of and decay to equilibrium of the filament end density along the leading edge of the lamellipodium</p><span class="pub-tag pub-tag-theorem">Contains proofs</span></div>
+            <p class="pub-meta">Manhart A, Schmeiser C &middot; <strong>Journal of Mathematical Biology</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/existence_leading_edge.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.1007/s00285-016-1027-z" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2017</span>
+        </div>
+
+        <div class="pub-item" data-category="theorem" data-authors="Hirsch,Manhart A,Schmeiser" data-title="Mathematical modeling of Myosin induced bistability of Lamellipodial fragments">
+          <div class="pub-thumb"><img src="publications/myosin_bistability_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">Mathematical modeling of Myosin induced bistability of Lamellipodial fragments</p><span class="pub-tag pub-tag-theorem">Contains proofs</span></div>
+            <p class="pub-meta">Hirsch S, Manhart A, Schmeiser C &middot; <strong>Journal of Mathematical Biology</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/modelling_myosin_bistability.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.1007/s00285-016-1008-2" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2017</span>
+        </div>
+
+        <div class="pub-item" data-category="data" data-authors="Manhart A,Mogilner" data-title="Agent-based modeling: case study in cleavage furrow models">
+          <div class="pub-thumb"><img src="publications/agent_based_furrow_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">Agent-based modeling: case study in cleavage furrow models</p><span class="pub-tag pub-tag-data">Contains data</span></div>
+            <p class="pub-meta">Manhart A, Mogilner A &middot; <strong>Molecular Biology of the Cell</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/agent_based_cleavage_furrow.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.1091/mbc.E16-01-0013" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2016</span>
+        </div>
+
+        <div class="pub-item" data-category="theorem" data-authors="Manhart A,Oelz,Schmeiser,Sfakianakis" data-title="An extended Filament Based Lamellipodium Model">
+          <div class="pub-thumb"><img src="publications/extended_FBLM_shapes_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">An extended Filament Based Lamellipodium Model produces various moving cell shapes in the presence of chemotactic signals</p><span class="pub-tag pub-tag-theorem">Contains proofs</span></div>
+            <p class="pub-meta">Manhart A, Oelz D, Schmeiser C, Sfakianakis N &middot; <strong>Journal of Theoretical Biology</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/extended_FBLM_shapes.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.1016/j.jtbi.2015.06.044" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2015</span>
+        </div>
+
+        <div class="pub-item" data-category="data" data-authors="Summerer,J. Horst,Erhart,Weissensteiner,Schoenherr,Pacher,Forer,D. Horst,Manhart A,B. Horst,Sanguansermsri,Kloss-Brandstaetter" data-title="Large-scale mitochondrial DNA analysis in Southeast Asia">
+          <div class="pub-thumb"><img src="publications/mtDNA_myanmar_thumb.png" alt="thumbnail"/></div>
+          <div>
+            <div class="pub-title-row"><p class="pub-title">Large-scale mitochondrial DNA analysis in Southeast Asia reveals evolutionary effects of cultural isolation in the multi-ethnic population of Myanmar</p><span class="pub-tag pub-tag-data">Contains data</span></div>
+            <p class="pub-meta">Summerer M, Horst J, Erhart G, Weissensteiner H, Schoenherr S, Pacher D, Forer L, Horst D, Manhart A, Horst B, Sanguansermsri T, Kloss-Brandstaetter A &middot; <strong>BMC Evolutionary Biology</strong></p>
+            <div class="pub-links"><a class="pub-link" href="publications/mtDNA_myanmar.pdf" target="_blank">PDF</a><a class="pub-link" href="https://doi.org/10.1186/1471-2148-14-17" target="_blank">DOI</a></div>
+          </div>
+          <span class="pub-year">2014</span>
+        </div>
+
+      </div>
     </div>
-  </body>
+  </div>
+
+
+
+  <script>
+    // ── UNIFIED PUBLICATION FILTER ──
+    var activeCategory = 'all';
+    var activeNetworkFilter = null; // { type: 'author'|'pub', value: string }
+
+    function filterPublications() {
+      var statusEl = document.getElementById('networkStatus');
+      var statusText = document.getElementById('networkStatusText');
+      document.querySelectorAll('.pub-item').forEach(function(item) {
+        var catMatch = (activeCategory === 'all') || item.getAttribute('data-category') === activeCategory;
+        var netMatch = true;
+        if (activeNetworkFilter) {
+          if (activeNetworkFilter.type === 'author') {
+            var authors = (item.getAttribute('data-authors') || '').split(',');
+            netMatch = authors.indexOf(activeNetworkFilter.value) !== -1;
+          } else {
+            var title = item.getAttribute('data-title') || '';
+            netMatch = title === activeNetworkFilter.value;
+          }
+        }
+        if (catMatch && netMatch) { item.classList.remove('hidden'); } else { item.classList.add('hidden'); }
+      });
+      if (activeNetworkFilter) {
+        statusEl.classList.add('active');
+        var label = activeNetworkFilter.type === 'author' ? activeNetworkFilter.value : ('"' + activeNetworkFilter.value.slice(0, 50) + (activeNetworkFilter.value.length > 50 ? '...' : '') + '"');
+        statusText.textContent = 'Filtering by ' + activeNetworkFilter.type + ': ' + label;
+      } else {
+        statusEl.classList.remove('active');
+      }
+    }
+
+    document.querySelectorAll('.pub-filter-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.pub-filter-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        activeCategory = btn.getAttribute('data-filter');
+        filterPublications();
+      });
+    });
+
+    document.getElementById('networkClear').addEventListener('click', function() {
+      activeNetworkFilter = null;
+      filterPublications();
+      if (window._networkDeselectAll) window._networkDeselectAll();
+    });
+
+    // ── NETWORK TOGGLE ──
+    var networkInitialized = false;
+    document.getElementById('networkToggle').addEventListener('click', function() {
+      var wrap = document.getElementById('networkWrap');
+      var btn = this;
+      var isOpen = wrap.classList.toggle('open');
+      btn.classList.toggle('open', isOpen);
+      var thumb = btn.querySelector('.toggle-thumb').outerHTML;
+      btn.innerHTML = isOpen
+        ? thumb + '<span class="toggle-arrow">&#9650;</span> Hide Co-authorship Network'
+        : thumb + '<span class="toggle-arrow">&#9660;</span> Show Co-authorship Network';
+      if (isOpen && !networkInitialized) { networkInitialized = true; setTimeout(initNetwork, 550); }
+    });
+
+    // ── D3 COAUTHORSHIP NETWORK ──
+    function initNetwork() {
+      var publications = [
+        { title: "Integrins coordinate basal surface contraction and oriented cell growth to enable thickening of a curved epithelium", year: 2025, category: "Data", authors: ["Lancaster","Manhart","Pichaud"] },
+        { title: "A dynamical analysis of the alignment mechanism between two interacting cells", year: 2024, category: "Theorem", authors: ["Leech","Dalwadi","Manhart"] },
+        { title: "Derivation and simulation of a computational model of active cell populations", year: 2024, category: "Data", authors: ["Leech","Kenny","Marcotti","Shaw","Stramer","Manhart"] },
+        { title: "Controlling periodic long-range signalling to drive a morphogenetic transition", year: 2023, category: "Data", authors: ["Ford","Manhart","Chubb"] },
+        { title: "Autocrine IL-6 drives cell and extracellular matrix anisotropy in scar fibroblasts", year: 2023, category: "Data", authors: ["Kenny","Marcotti","DeFreitas","Drudi","Leech","Bell","Easton","Diaz-de-la-Loza","Fleck","Allison","Phillippeos","Manhart","Shaw","Stramer"] },
+        { title: "How environment affects active particle swarms: a case study", year: 2022, category: "Theorem", authors: ["Degond","Manhart","Merino-Aceituno","Peurichard","Sala"] },
+        { title: "Chaos in synthetic microbial communities", year: 2022, category: "Theorem", authors: ["Karkaria","Rao","Manhart","Fedorec","Barnes"] },
+        { title: "Mathematical modeling accurately predicts the dynamics and scaling of nuclear growth", year: 2022, category: "Data", authors: ["Leech","Hazel","Gatlin","Lindsay","Manhart"] },
+        { title: "Kinetic modelling of colonies of myxobacteria", year: 2021, category: "Theorem", authors: ["Hittmeir","Kanzler","Manhart","Schmeiser"] },
+        { title: "Large-Scale Dynamics of Self-propelled Particles Moving Through Obstacles", year: 2020, category: "Theorem", authors: ["Aceves-Sanchez","Degond","Keaveny","Manhart","Merino-Aceituno","Peurichard"] },
+        { title: "Reverse-engineering forces responsible for dynamic clustering and spreading of multiple nuclei", year: 2020, category: "Data", authors: ["Manhart","Azevedo","Baylies","Mogilner"] },
+        { title: "Centering and symmetry breaking in confined contracting actomyosin networks", year: 2020, category: "Data", authors: ["Ierushalmi","Malik-Garbi","Manhart","Shah","Goode","Mogilner","Keren"] },
+        { title: "Analyzing collective motion with machine learning and topology", year: 2019, category: "Theorem", authors: ["Bhaskar","Manhart","Milzman","Nardini","Storey","Topaz","Ziegelmeier"] },
+        { title: "Nuclear Scaling Is Coordinated among Individual Nuclei in Multinucleated Muscle Fibers", year: 2019, category: "Data", authors: ["Windner","Manhart","Brown","Mogilner","Baylies"] },
+        { title: "Quantitative regulation of the dynamic steady state of actin networks", year: 2019, category: "Data", authors: ["Manhart","Icheva","Guerin","Klar","Boujemaa-Paterski","Thery","Blanchoin","Mogilner"] },
+        { title: "Counter-propagating wave patterns in a swarm model with memory", year: 2018, category: "Theorem", authors: ["Manhart"] },
+        { title: "An age-structured continuum model for myxobacteria", year: 2018, category: "Theorem", authors: ["Degond","Manhart","Yu"] },
+        { title: "Mechanical positioning of multiple nuclei in muscle cells", year: 2018, category: "Data", authors: ["Manhart","Windner","Baylies","Mogilner"] },
+        { title: "Intracellular Fluid Mechanics: Coupling Cytoplasmic Flow with Active Cytoskeletal Gel", year: 2018, category: "Data", authors: ["Mogilner","Manhart"] },
+        { title: "A Retrospective Assessment of Four Antigen Assays for the Detection of Invasive Candidiasis", year: 2018, category: "Data", authors: ["Hartl","Zeller","Manhart","Selitsch","Lass-Floerl","Willinger"] },
+        { title: "A continuum model for nematic alignment of self-propelled particles", year: 2017, category: "Theorem", authors: ["Degond","Manhart","Yu"] },
+        { title: "Numerical Treatment of the Filament Based Lamellipodium Model", year: 2017, category: "Theorem", authors: ["Manhart","Oelz","Schmeiser","Sfakianakis"] },
+        { title: "Agent-based modeling: case study in cleavage furrow models", year: 2016, category: "Data", authors: ["Manhart","Mogilner"] },
+        { title: "Existence of and decay to equilibrium of the filament end density", year: 2017, category: "Theorem", authors: ["Manhart","Schmeiser"] },
+        { title: "Mathematical modeling of Myosin induced bistability of Lamellipodial fragments", year: 2017, category: "Theorem", authors: ["Hirsch","Manhart","Schmeiser"] },
+        { title: "An extended Filament Based Lamellipodium Model", year: 2015, category: "Theorem", authors: ["Manhart","Oelz","Schmeiser","Sfakianakis"] },
+        { title: "Large-scale mitochondrial DNA analysis in Southeast Asia", year: 2014, category: "Data", authors: ["Summerer","J. Horst","Erhart","Weissensteiner","Schoenherr","Pacher","Forer","D. Horst","Manhart","B. Horst","Sanguansermsri","Kloss-Brandstaetter"] }
+      ];
+
+      var CENTER = "Manhart";
+      var authorCategory = {
+        "Aceves-Sanchez":"Theorem","Allison":"Data","Azevedo":"Data","Barnes":"Theorem","Baylies":"Data",
+        "Bell":"Data","Bhaskar":"Theorem","Blanchoin":"Data","Boujemaa-Paterski":"Data","Brown":"Data",
+        "Chubb":"Data","Dalwadi":"Theorem","DeFreitas":"Data","Degond":"Theorem","Diaz-de-la-Loza":"Data",
+        "Drudi":"Data","Easton":"Data","Erhart":"Data","Fedorec":"Theorem","Fleck":"Data",
+        "Ford":"Data","Forer":"Data","Gatlin":"Data","Goode":"Data","Guerin":"Data",
+        "Hartl":"Data","Hazel":"Data","Hirsch":"Theorem","Hittmeir":"Theorem","B. Horst":"Data",
+        "D. Horst":"Data","J. Horst":"Data","Icheva":"Data","Ierushalmi":"Data","Kanzler":"Theorem",
+        "Karkaria":"Theorem","Keaveny":"Theorem","Kenny":"Data","Keren":"Data","Klar":"Data","Lancaster":"Data",
+        "Kloss-Brandstaetter":"Data","Lass-Floerl":"Data","Leech":"Data","Lindsay":"Data","Malik-Garbi":"Data",
+        "Manhart":"Theorem","Marcotti":"Data","Merino-Aceituno":"Theorem","Milzman":"Theorem","Mogilner":"Data",
+        "Nardini":"Theorem","Oelz":"Theorem","Pacher":"Data","Peurichard":"Theorem","Phillippeos":"Data","Pichaud":"Data",
+        "Rao":"Theorem","Sala":"Theorem","Sanguansermsri":"Data","Schmeiser":"Theorem","Schoenherr":"Data",
+        "Selitsch":"Data","Sfakianakis":"Theorem","Shah":"Data","Shaw":"Data","Storey":"Theorem",
+        "Stramer":"Data","Summerer":"Data","Thery":"Data","Topaz":"Theorem","Weissensteiner":"Data",
+        "Willinger":"Data","Windner":"Data","Yu":"Theorem","Zeller":"Data","Ziegelmeier":"Theorem"
+      };
+
+      // Build author nodes
+      var nodeMap = {};
+      publications.forEach(function(pub) {
+        pub.authors.forEach(function(a) {
+          if (!nodeMap[a]) nodeMap[a] = { id: a, papers: [], count: 0 };
+          nodeMap[a].papers.push(pub.title);
+          if (a !== CENTER) nodeMap[a].count++;
+        });
+      });
+      var nodes = Object.values(nodeMap);
+
+      // Build pub nodes
+      var pubNodes = publications.map(function(pub, i) {
+        return { id: '_pub_' + i, isPub: true, pub: pub, title: pub.title, year: pub.year, category: pub.category };
+      });
+
+      // Links: author -> pub
+      var pubLinks = [];
+      publications.forEach(function(pub, i) {
+        pub.authors.forEach(function(author) {
+          pubLinks.push({ source: author, target: '_pub_' + i });
+        });
+      });
+
+      // ── PRESET POSITIONS ──
+      // Paste exported layout JSON here to lock the arrangement on load.
+      // Keys are node ids, values are {x, y}. Leave empty to use force layout.
+      var PRESET_POSITIONS = {
+  "Lancaster": {
+    "x": 149.3,
+    "y": 369.9
+  },
+  "Manhart": {
+    "x": 450,
+    "y": 323.1
+  },
+  "Pichaud": {
+    "x": 162.8,
+    "y": 406.3
+  },
+  "Leech": {
+    "x": 572.8,
+    "y": 575.4
+  },
+  "Dalwadi": {
+    "x": 534.3,
+    "y": 623.2
+  },
+  "Kenny": {
+    "x": 642.3,
+    "y": 590.2
+  },
+  "Marcotti": {
+    "x": 662.5,
+    "y": 575.5
+  },
+  "Shaw": {
+    "x": 681.3,
+    "y": 552.5
+  },
+  "Stramer": {
+    "x": 618.2,
+    "y": 596.9
+  },
+  "Ford": {
+    "x": 85.4,
+    "y": 330
+  },
+  "Chubb": {
+    "x": 102.1,
+    "y": 303.1
+  },
+  "DeFreitas": {
+    "x": 716.5,
+    "y": 610.7
+  },
+  "Drudi": {
+    "x": 753.5,
+    "y": 529.1
+  },
+  "Bell": {
+    "x": 738.4,
+    "y": 569.5
+  },
+  "Easton": {
+    "x": 694.9,
+    "y": 633.1
+  },
+  "Diaz-de-la-Loza": {
+    "x": 780.7,
+    "y": 542.8
+  },
+  "Fleck": {
+    "x": 746.5,
+    "y": 604.8
+  },
+  "Allison": {
+    "x": 776.5,
+    "y": 504.6
+  },
+  "Phillippeos": {
+    "x": 768.6,
+    "y": 574.6
+  },
+  "Degond": {
+    "x": 746.2,
+    "y": 300.6
+  },
+  "Merino-Aceituno": {
+    "x": 776.6,
+    "y": 360.9
+  },
+  "Peurichard": {
+    "x": 783.5,
+    "y": 331.4
+  },
+  "Sala": {
+    "x": 814.9,
+    "y": 397.9
+  },
+  "Karkaria": {
+    "x": 443.5,
+    "y": -56.8
+  },
+  "Rao": {
+    "x": 483.7,
+    "y": -57
+  },
+  "Fedorec": {
+    "x": 457.9,
+    "y": -32
+  },
+  "Barnes": {
+    "x": 512.9,
+    "y": -41
+  },
+  "Hazel": {
+    "x": 482,
+    "y": 676.7
+  },
+  "Gatlin": {
+    "x": 534.6,
+    "y": 680
+  },
+  "Lindsay": {
+    "x": 505.5,
+    "y": 695.2
+  },
+  "Hittmeir": {
+    "x": 749,
+    "y": 64.2
+  },
+  "Kanzler": {
+    "x": 774.1,
+    "y": 98.7
+  },
+  "Schmeiser": {
+    "x": 632.7,
+    "y": 84.3
+  },
+  "Aceves-Sanchez": {
+    "x": 822.5,
+    "y": 254.7
+  },
+  "Keaveny": {
+    "x": 832.6,
+    "y": 291.1
+  },
+  "Azevedo": {
+    "x": 138.9,
+    "y": 223.4
+  },
+  "Baylies": {
+    "x": 208.8,
+    "y": 151.1
+  },
+  "Mogilner": {
+    "x": 258.7,
+    "y": 126.1
+  },
+  "Ierushalmi": {
+    "x": 69.6,
+    "y": 179.3
+  },
+  "Malik-Garbi": {
+    "x": 85.2,
+    "y": 139.5
+  },
+  "Shah": {
+    "x": 77.8,
+    "y": 211.1
+  },
+  "Goode": {
+    "x": 100.5,
+    "y": 166.8
+  },
+  "Keren": {
+    "x": 114.7,
+    "y": 123
+  },
+  "Bhaskar": {
+    "x": 368.5,
+    "y": 702.4
+  },
+  "Milzman": {
+    "x": 377.1,
+    "y": 667.9
+  },
+  "Nardini": {
+    "x": 339.8,
+    "y": 661.5
+  },
+  "Storey": {
+    "x": 416.8,
+    "y": 672.9
+  },
+  "Topaz": {
+    "x": 402.9,
+    "y": 699.1
+  },
+  "Ziegelmeier": {
+    "x": 334.6,
+    "y": 689.8
+  },
+  "Windner": {
+    "x": 234.8,
+    "y": 81.8
+  },
+  "Brown": {
+    "x": 168.6,
+    "y": 83.6
+  },
+  "Icheva": {
+    "x": 282.9,
+    "y": -11.8
+  },
+  "Guerin": {
+    "x": 322.6,
+    "y": -27.3
+  },
+  "Klar": {
+    "x": 283.9,
+    "y": -44.1
+  },
+  "Boujemaa-Paterski": {
+    "x": 320.8,
+    "y": -57.1
+  },
+  "Thery": {
+    "x": 355.9,
+    "y": -47.1
+  },
+  "Blanchoin": {
+    "x": 252.3,
+    "y": -16.2
+  },
+  "Yu": {
+    "x": 740.4,
+    "y": 245.7
+  },
+  "Hartl": {
+    "x": 268.4,
+    "y": 630.8
+  },
+  "Zeller": {
+    "x": 237.5,
+    "y": 612.3
+  },
+  "Selitsch": {
+    "x": 267.6,
+    "y": 591.4
+  },
+  "Lass-Floerl": {
+    "x": 298.4,
+    "y": 613
+  },
+  "Willinger": {
+    "x": 237.2,
+    "y": 573.1
+  },
+  "Oelz": {
+    "x": 597.4,
+    "y": 15.7
+  },
+  "Sfakianakis": {
+    "x": 625.5,
+    "y": 27.9
+  },
+  "Hirsch": {
+    "x": 709.5,
+    "y": 111.1
+  },
+  "Summerer": {
+    "x": 128.1,
+    "y": 533.2
+  },
+  "J. Horst": {
+    "x": 90.9,
+    "y": 473.3
+  },
+  "Erhart": {
+    "x": 151.9,
+    "y": 576.3
+  },
+  "Weissensteiner": {
+    "x": 103.4,
+    "y": 510.1
+  },
+  "Schoenherr": {
+    "x": 70.9,
+    "y": 448.8
+  },
+  "Pacher": {
+    "x": 92.3,
+    "y": 538.6
+  },
+  "Forer": {
+    "x": 72,
+    "y": 500
+  },
+  "D. Horst": {
+    "x": 118.8,
+    "y": 566
+  },
+  "B. Horst": {
+    "x": 124.8,
+    "y": 487.9
+  },
+  "Sanguansermsri": {
+    "x": 98.9,
+    "y": 438.2
+  },
+  "Kloss-Brandstaetter": {
+    "x": 156.6,
+    "y": 543.9
+  },
+  "_pub_0": {
+    "x": 311.8,
+    "y": 374.8
+  },
+  "_pub_1": {
+    "x": 503.7,
+    "y": 464.9
+  },
+  "_pub_2": {
+    "x": 563.9,
+    "y": 481.2
+  },
+  "_pub_3": {
+    "x": 270.3,
+    "y": 329.8
+  },
+  "_pub_4": {
+    "x": 623.9,
+    "y": 480.9
+  },
+  "_pub_5": {
+    "x": 651.2,
+    "y": 365
+  },
+  "_pub_6": {
+    "x": 457.1,
+    "y": 115.1
+  },
+  "_pub_7": {
+    "x": 480.8,
+    "y": 520.4
+  },
+  "_pub_8": {
+    "x": 626.7,
+    "y": 186.1
+  },
+  "_pub_9": {
+    "x": 664.4,
+    "y": 306.5
+  },
+  "_pub_10": {
+    "x": 290.3,
+    "y": 258.8
+  },
+  "_pub_11": {
+    "x": 238.7,
+    "y": 228.2
+  },
+  "_pub_12": {
+    "x": 402.9,
+    "y": 528
+  },
+  "_pub_13": {
+    "x": 291,
+    "y": 198.8
+  },
+  "_pub_14": {
+    "x": 361.5,
+    "y": 109.7
+  },
+  "_pub_15": {
+    "x": 519.3,
+    "y": 382.8
+  },
+  "_pub_16": {
+    "x": 620.2,
+    "y": 265.8
+  },
+  "_pub_17": {
+    "x": 341.4,
+    "y": 166.2
+  },
+  "_pub_18": {
+    "x": 392.3,
+    "y": 197.8
+  },
+  "_pub_19": {
+    "x": 345.4,
+    "y": 477
+  },
+  "_pub_20": {
+    "x": 607.1,
+    "y": 324.4
+  },
+  "_pub_21": {
+    "x": 574.7,
+    "y": 156.1
+  },
+  "_pub_22": {
+    "x": 345.5,
+    "y": 235.3
+  },
+  "_pub_23": {
+    "x": 522.2,
+    "y": 187.1
+  },
+  "_pub_24": {
+    "x": 574.7,
+    "y": 216.1
+  },
+  "_pub_25": {
+    "x": 523.7,
+    "y": 124.6
+  },
+  "_pub_26": {
+    "x": 244.9,
+    "y": 441.6
+  }
+};
+
+      var allNodes = nodes.concat(pubNodes);
+      var svg = d3.select('#network-graph');
+      var tooltip = document.getElementById('network-tooltip');
+      var W = svg.node().clientWidth;
+      var H = svg.node().clientHeight;
+      var g = svg.append('g');
+
+      svg.call(d3.zoom().scaleExtent([0.3, 3]).on('zoom', function(e) { g.attr('transform', e.transform); }));
+
+      var rScale = d3.scaleSqrt().domain([1, 27]).range([5, 20]);
+      nodes.forEach(function(n) {
+        if (n.id === CENTER) { n._r = 16; }
+        else { n._r = rScale(n.papers.length); }
+      });
+
+      var simulation = d3.forceSimulation(allNodes)
+        .force('link', d3.forceLink(pubLinks).id(function(d) { return d.id; }).distance(80).strength(0.5))
+        .force('charge', d3.forceManyBody().strength(function(d) { return d.isPub ? -300 : -120; }))
+        .force('center', d3.forceCenter(W / 2, H / 2))
+        .force('collision', d3.forceCollide(function(d) { return d.isPub ? 30 : (d._r || 8) + 6; }));
+
+      var link = g.append('g').selectAll('line').data(pubLinks).join('line')
+        .attr('class', 'net-link').attr('stroke-width', 1);
+
+      var node = g.append('g').selectAll('g').data(allNodes).join('g').attr('class', 'net-node')
+        .call(d3.drag()
+          .on('start', function(e, d) { if (!e.active && !hasPreset) simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+          .on('drag', function(e, d) { d.fx = e.x; d.fy = e.y; if (hasPreset) { d.x = e.x; d.y = e.y; simulation.tick(); } })
+          .on('end', function(e, d) { if (!hasPreset) { if (!e.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; } })
+        );
+
+      // Author circles
+      node.filter(function(d) { return !d.isPub; }).append('circle')
+        .attr('r', function(d) { return d._r || 8; })
+        .attr('fill', function(d) {
+          if (d.id === CENTER) return '#e05c2a';
+          var cat = authorCategory[d.id] || 'Data';
+          return cat === 'Theorem' ? '#c0392b' : '#059669';
+        })
+        .attr('stroke', function(d) { return d.id === CENTER ? '#c04010' : '#fff'; })
+        .attr('stroke-width', function(d) { return d.id === CENTER ? 3 : 1.5; });
+
+      // Publication squares
+      node.filter(function(d) { return d.isPub; }).append('rect')
+        .attr('width', 20).attr('height', 20).attr('x', -10).attr('y', -10)
+        .attr('fill', function(d) { return d.category === 'Theorem' ? '#fca5a5' : '#a7f3d0'; })
+        .attr('stroke', function(d) { return d.category === 'Theorem' ? '#c0392b' : '#059669'; })
+        .attr('stroke-width', 2).attr('rx', 3);
+
+      // Author labels
+      node.filter(function(d) { return !d.isPub; }).append('text')
+        .attr('dy', function(d) { return (d._r || 8) + 11; })
+        .attr('text-anchor', 'middle')
+        .text(function(d) { return d.id; })
+        .style('font-weight', function(d) { return d.id === CENTER ? '700' : '400'; })
+        .style('font-size', function(d) { return d.id === CENTER ? '13px' : '11px'; });
+
+      // Hover behavior
+      node.on('mouseover', function(event, d) {
+        if (d.isPub) {
+          var authorIds = pubLinks.filter(function(l) {
+            return (typeof l.target === 'object' ? l.target.id : l.target) === d.id;
+          }).map(function(l) { return typeof l.source === 'object' ? l.source.id : l.source; });
+          node.classed('dimmed', function(n) { return !n.isPub && authorIds.indexOf(n.id) === -1; });
+          link.classed('dimmed', function(l) { return (typeof l.target === 'object' ? l.target.id : l.target) !== d.id; });
+          link.classed('highlighted', function(l) { return (typeof l.target === 'object' ? l.target.id : l.target) === d.id; });
+          tooltip.innerHTML = '<div class="tt-name">' + d.title + '</div><div class="tt-count">' + d.year + ' &middot; ' + (d.category === 'Theorem' ? 'Proofs' : d.category) + '</div>';
+        } else {
+          var connPubIds = pubLinks.filter(function(l) {
+            return (typeof l.source === 'object' ? l.source.id : l.source) === d.id;
+          }).map(function(l) { return typeof l.target === 'object' ? l.target.id : l.target; });
+          node.classed('dimmed', function(n) {
+            if (n.id === d.id) return false;
+            if (n.isPub) return connPubIds.indexOf(n.id) === -1;
+            var theirPubs = pubLinks.filter(function(l) {
+              return (typeof l.source === 'object' ? l.source.id : l.source) === n.id;
+            }).map(function(l) { return typeof l.target === 'object' ? l.target.id : l.target; });
+            return !connPubIds.some(function(p) { return theirPubs.indexOf(p) !== -1; });
+          });
+          link.classed('dimmed', function(l) { return (typeof l.source === 'object' ? l.source.id : l.source) !== d.id; });
+          link.classed('highlighted', function(l) { return (typeof l.source === 'object' ? l.source.id : l.source) === d.id; });
+          tooltip.innerHTML = '<div class="tt-name">' + d.id + '</div><div class="tt-count">' + d.papers.length + ' publication' + (d.papers.length > 1 ? 's' : '') + '</div>';
+        }
+        tooltip.style.opacity = 1;
+      })
+      .on('mousemove', function(event) {
+        tooltip.style.left = (event.clientX + 14) + 'px';
+        tooltip.style.top = (event.clientY - 10) + 'px';
+      })
+      .on('mouseleave', function() {
+        node.classed('dimmed', false);
+        link.classed('dimmed', false).classed('highlighted', false);
+        tooltip.style.opacity = 0;
+      });
+
+      // Click to filter publications
+      var selectedNode = null;
+      node.on('click', function(event, d) {
+        event.stopPropagation();
+        if (selectedNode === d) {
+          // Deselect
+          selectedNode = null;
+          activeNetworkFilter = null;
+          node.classed('selected', false);
+        } else {
+          selectedNode = d;
+          node.classed('selected', function(n) { return n === d; });
+          if (d.isPub) {
+            activeNetworkFilter = { type: 'pub', value: d.title };
+          } else {
+            activeNetworkFilter = { type: 'author', value: d.id };
+          }
+        }
+        filterPublications();
+      });
+
+      // Allow deselect by clicking on background
+      svg.on('click', function() {
+        if (selectedNode) {
+          selectedNode = null;
+          activeNetworkFilter = null;
+          node.classed('selected', false);
+          filterPublications();
+        }
+      });
+
+      // Expose deselect for the Clear button
+      window._networkDeselectAll = function() {
+        selectedNode = null;
+        node.classed('selected', false);
+      };
+
+      simulation.on('tick', function() {
+        link.attr('x1', function(d) { return d.source.x; }).attr('y1', function(d) { return d.source.y; })
+            .attr('x2', function(d) { return d.target.x; }).attr('y2', function(d) { return d.target.y; });
+        node.attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; });
+      });
+
+      // Apply preset positions or pre-settle with force layout
+      var hasPreset = Object.keys(PRESET_POSITIONS).length > 0;
+      var hasNewNodes = false;
+      g.style('opacity', 0);
+      function updatePositions() {
+        link.attr('x1', function(d) { return d.source.x; }).attr('y1', function(d) { return d.source.y; })
+            .attr('x2', function(d) { return d.target.x; }).attr('y2', function(d) { return d.target.y; });
+        node.attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; });
+      }
+
+      if (hasPreset) {
+        allNodes.forEach(function(n) {
+          var pos = PRESET_POSITIONS[n.id];
+          if (pos) { n.x = pos.x; n.y = pos.y; n.fx = pos.x; n.fy = pos.y; }
+          else { hasNewNodes = true; }
+        });
+        if (hasNewNodes) {
+          for (var i = 0; i < 300; i++) simulation.tick();
+        }
+        simulation.alpha(0).stop();
+        updatePositions();
+      } else {
+        for (var i = 0; i < 300; i++) simulation.tick();
+        simulation.alpha(0.3).restart();
+      }
+      g.transition().duration(600).style('opacity', 1);
+
+      // ── EXPORT LAYOUT BUTTON ──
+      var exportBtn = document.createElement('button');
+      exportBtn.textContent = 'Export Layout';
+      exportBtn.style.cssText = 'position:absolute;bottom:8px;right:8px;padding:0.4rem 0.9rem;background:var(--accent2);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:0.75rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;opacity:0.7;z-index:10;';
+      exportBtn.title = 'Copy current node positions as JSON to clipboard (also logged to console)';
+      var netInner = document.querySelector('.pub-network-inner');
+      if (netInner) { netInner.style.position = 'relative'; netInner.appendChild(exportBtn); }
+      exportBtn.addEventListener('click', function() {
+        var positions = {};
+        allNodes.forEach(function(n) { positions[n.id] = { x: Math.round(n.x * 10) / 10, y: Math.round(n.y * 10) / 10 }; });
+        var json = JSON.stringify(positions, null, 2);
+        console.log('// Paste this into PRESET_POSITIONS:\n' + json);
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(json).then(function() { exportBtn.textContent = 'Copied!'; setTimeout(function() { exportBtn.textContent = 'Export Layout'; }, 2000); });
+        } else {
+          exportBtn.textContent = 'See console'; setTimeout(function() { exportBtn.textContent = 'Export Layout'; }, 2000);
+        }
+      });
+    }
+
+    // ── SCROLL REVEAL ──
+    var reveals = document.querySelectorAll('.reveal');
+    if (reveals.length && 'IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.1 });
+      reveals.forEach(function(el) { el.style.opacity = '0'; el.style.transform = 'translateY(20px)'; el.style.transition = 'opacity 0.6s ease, transform 0.6s ease'; obs.observe(el); });
+    }
+  </script>
+</body>
 </html>

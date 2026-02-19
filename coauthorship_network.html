@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Co-authorship Network — Angelika Manhart</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #f0f6fa;
+      color: #0a1f44;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      padding: 1rem 2rem;
+      background: #0a1f44;
+      color: white;
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      flex-shrink: 0;
+    }
+    header h1 { font-size: 1.1rem; font-weight: 600; }
+    header p  { font-size: 0.82rem; opacity: 0.6; }
+    #legend {
+      display: flex; gap: 1.5rem; align-items: center;
+      padding: 0.6rem 2rem;
+      background: white;
+      border-bottom: 1px solid #c8dde8;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+    .legend-item { display: flex; align-items: center; gap: 0.4rem; }
+    .legend-dot  { width: 12px; height: 12px; border-radius: 50%; }
+    #tooltip {
+      position: fixed;
+      background: #0a1f44;
+      color: white;
+      padding: 0.6rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s;
+      max-width: 260px;
+      line-height: 1.5;
+      z-index: 100;
+    }
+    #tooltip .tt-name  { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.2rem; }
+    #tooltip .tt-count { opacity: 0.7; }
+    #tooltip .tt-pubs  { margin-top: 0.4rem; font-size: 0.75rem; opacity: 0.85; }
+    svg { flex: 1; width: 100%; }
+    .node circle { cursor: pointer; stroke-width: 2; transition: r 0.2s; }
+    .node text   { pointer-events: none; font-size: 11px; fill: #0a1f44; font-weight: 500; }
+    .link { stroke: #5b95b8; stroke-opacity: 0.4; }
+    .link.highlighted { stroke: #0d3b7a; stroke-opacity: 0.9; stroke-width: 2.5 !important; }
+    .node.dimmed circle { opacity: 0.15; }
+    .node.dimmed text   { opacity: 0.1; }
+    .link.dimmed { stroke-opacity: 0.05; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Co-authorship Network — Angelika Manhart</h1>
+  <p>Hover a node to highlight connections · Drag to rearrange · Layout auto-saves</p>
+  <button id="resetBtn" style="margin-left:auto; padding:0.5rem 1rem; background:#e05c2a; color:white; border:none; border-radius:6px; cursor:pointer; font-size:0.8rem; font-weight:600; letter-spacing:0.03em; text-transform:uppercase;">Reset Layout</button>
+</header>
+
+<div id="legend">
+  <strong style="font-size:0.8rem; color:#0a1f44;">Circles</strong>
+  <span style="font-size:0.78rem; color:#5b95b8;">= Authors (size = # of shared publications)</span>
+  <span style="margin-left:1rem; font-weight:600; font-size:0.8rem;">Squares</span>
+  <span style="font-size:0.78rem; color:#5b95b8;">= Publications</span>
+  <div class="legend-item" style="margin-left:auto;">
+    <div class="legend-dot" style="background:#e05c2a; width:18px; height:18px;"></div>
+    <span>Angelika Manhart</span>
+  </div>
+  <div class="legend-item">
+    <div class="legend-dot" style="background:#1a6fa8;"></div>
+    <span>Theorem</span>
+  </div>
+  <div class="legend-item">
+    <div class="legend-dot" style="background:#059669;"></div>
+    <span>Data</span>
+  </div>
+  <div class="legend-item">
+    <div class="legend-dot" style="background:#6b7280;"></div>
+    <span>Neither</span>
+  </div>
+</div>
+
+<div id="tooltip"></div>
+<svg id="graph"></svg>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────────
+const publications = [
+  { title: "A dynamical analysis of the alignment mechanism between two interacting cells", year: 2024, category: "Theorem", authors: ["Leech V","Dalwadi MP","Manhart A"] },
+  { title: "Derivation and simulation of a computational model of active cell populations", year: 2024, category: "Data", authors: ["Leech V","Kenny FN","Marcotti S","Shaw TJ","Stramer BM","Manhart A"] },
+  { title: "Controlling periodic long-range signalling to drive a morphogenetic transition", year: 2023, category: "Data", authors: ["Ford HZ","Manhart A","Chubb JR"] },
+  { title: "Autocrine IL-6 drives cell and extracellular matrix anisotropy in scar fibroblasts", year: 2023, category: "Data", authors: ["Kenny FN","Marcotti S","DeFreitas DB","Drudi EM","Leech V","Bell RE","Easton J","Diaz-de-la-Loza MdC","Fleck R","Allison L","Phillippeos C","Manhart A","Shaw TJ","Stramer BM"] },
+  { title: "How environment affects active particle swarms: a case study", year: 2022, category: "Theorem", authors: ["Degond P","Manhart A","Merino-Aceituno S","Peurichard D","Sala L"] },
+  { title: "Chaos in synthetic microbial communities", year: 2022, category: "Theorem", authors: ["Karkaria BD","Rao C","Manhart A","Fedorec AJH","Barnes CP"] },
+  { title: "Mathematical modeling accurately predicts the dynamics and scaling of nuclear growth", year: 2022, category: "Data", authors: ["Leech V","Hazel JW","Gatlin JC","Lindsay AE","Manhart A"] },
+  { title: "Kinetic modelling of colonies of myxobacteria", year: 2021, category: "Theorem", authors: ["Hittmeir S","Kanzler L","Manhart A","Schmeiser C"] },
+  { title: "Large-Scale Dynamics of Self-propelled Particles Moving Through Obstacles", year: 2020, category: "Theorem", authors: ["Aceves-Sanchez P","Degond P","Keaveny EE","Manhart A","Merino-Aceituno S","Peurichard D"] },
+  { title: "Reverse-engineering forces responsible for dynamic clustering and spreading of multiple nuclei", year: 2020, category: "Data", authors: ["Manhart A","Azevedo M","Baylies MK","Mogilner A"] },
+  { title: "Centering and symmetry breaking in confined contracting actomyosin networks", year: 2020, category: "Data", authors: ["Ierushalmi N","Malik-Garbi M","Manhart A","Shah EA","Goode BL","Mogilner A","Keren K"] },
+  { title: "Analyzing collective motion with machine learning and topology", year: 2019, category: "Neither", authors: ["Bhaskar D","Manhart A","Milzman J","Nardini JT","Storey KM","Topaz CM","Ziegelmeier L"] },
+  { title: "Nuclear Scaling Is Coordinated among Individual Nuclei in Multinucleated Muscle Fibers", year: 2019, category: "Data", authors: ["Windner SE","Manhart A","Brown A","Mogilner A","Baylies MK"] },
+  { title: "Quantitative regulation of the dynamic steady state of actin networks", year: 2019, category: "Data", authors: ["Manhart A","Icheva TA","Guerin C","Klar T","Boujemaa-Paterski R","Thery M","Blanchoin L","Mogilner A"] },
+  { title: "Counter-propagating wave patterns in a swarm model with memory", year: 2018, category: "Theorem", authors: ["Manhart A"] },
+  { title: "An age-structured continuum model for myxobacteria", year: 2018, category: "Theorem", authors: ["Degond P","Manhart A","Yu H"] },
+  { title: "Mechanical positioning of multiple nuclei in muscle cells", year: 2018, category: "Data", authors: ["Manhart A","Windner SE","Baylies MK","Mogilner A"] },
+  { title: "Intracellular Fluid Mechanics: Coupling Cytoplasmic Flow with Active Cytoskeletal Gel", year: 2018, category: "Neither", authors: ["Mogilner A","Manhart A"] },
+  { title: "A Retrospective Assessment of Four Antigen Assays for the Detection of Invasive Candidiasis", year: 2018, category: "Data", authors: ["Hartl B","Zeller I","Manhart A","Selitsch B","Lass-Floerl C","Willinger B"] },
+  { title: "A continuum model for nematic alignment of self-propelled particles", year: 2017, category: "Theorem", authors: ["Degond P","Manhart A","Yu H"] },
+  { title: "Numerical Treatment of the Filament Based Lamellipodium Model", year: 2017, category: "Theorem", authors: ["Manhart A","Oelz D","Schmeiser C","Sfakianakis N"] },
+  { title: "Agent-based modeling: case study in cleavage furrow models", year: 2016, category: "Neither", authors: ["Manhart A","Mogilner A"] },
+  { title: "Existence of and decay to equilibrium of the filament end density", year: 2017, category: "Theorem", authors: ["Manhart A","Schmeiser C"] },
+  { title: "Mathematical modeling of Myosin induced bistability of Lamellipodial fragments", year: 2017, category: "Theorem", authors: ["Hirsch S","Manhart A","Schmeiser C"] },
+  { title: "An extended Filament Based Lamellipodium Model", year: 2015, category: "Theorem", authors: ["Manhart A","Oelz D","Schmeiser C","Sfakianakis N"] },
+  { title: "Large-scale mitochondrial DNA analysis in Southeast Asia", year: 2014, category: "Data", authors: ["Summerer M","Horst J","Erhart G","Weissensteiner H","Schoenherr S","Pacher D","Forer L","Horst D","Manhart A","Horst B","Sanguansermsri T","Kloss-Brandstaetter A"] },
+];
+
+const CENTER = "Manhart A";
+
+// Category assignment per author (dominant category from Category2)
+const authorCategory = {
+  "Aceves-Sanchez P": "Theorem", "Allison L": "Data", "Azevedo M": "Data", "Barnes CP": "Theorem", "Baylies MK": "Data",
+  "Bell RE": "Data", "Bhaskar D": "Neither", "Blanchoin L": "Data", "Boujemaa-Paterski R": "Data", "Brown A": "Data",
+  "Chubb JR": "Data", "Dalwadi MP": "Theorem", "DeFreitas DB": "Data", "Degond P": "Theorem", "Diaz-de-la-Loza MdC": "Data",
+  "Drudi EM": "Data", "Easton J": "Data", "Erhart G": "Data", "Fedorec AJH": "Theorem", "Fleck R": "Data",
+  "Ford HZ": "Data", "Forer L": "Data", "Gatlin JC": "Data", "Goode BL": "Data", "Guerin C": "Data",
+  "Hartl B": "Data", "Hazel JW": "Data", "Hirsch S": "Theorem", "Hittmeir S": "Theorem", "Horst B": "Data",
+  "Horst D": "Data", "Horst J": "Data", "Icheva TA": "Data", "Ierushalmi N": "Data", "Kanzler L": "Theorem",
+  "Karkaria BD": "Theorem", "Keaveny EE": "Theorem", "Kenny FN": "Data", "Keren K": "Data", "Klar T": "Data",
+  "Kloss-Brandstaetter A": "Data", "Lass-Floerl C": "Data", "Leech V": "Data", "Lindsay AE": "Data", "Malik-Garbi M": "Data",
+  "Manhart A": "Theorem", "Marcotti S": "Data", "Merino-Aceituno S": "Theorem", "Milzman J": "Neither", "Mogilner A": "Data",
+  "Nardini JT": "Neither", "Oelz D": "Theorem", "Pacher D": "Data", "Peurichard D": "Theorem", "Phillippeos C": "Data",
+  "Rao C": "Theorem", "Sala L": "Theorem", "Sanguansermsri T": "Data", "Schmeiser C": "Theorem", "Schoenherr S": "Data",
+  "Selitsch B": "Data", "Sfakianakis N": "Theorem", "Shah EA": "Data", "Shaw TJ": "Data", "Storey KM": "Neither",
+  "Stramer BM": "Data", "Summerer M": "Data", "Thery M": "Data", "Topaz CM": "Neither", "Weissensteiner H": "Data",
+  "Willinger B": "Data", "Windner SE": "Data", "Yu H": "Theorem", "Zeller I": "Data", "Ziegelmeier L": "Neither"
+};
+
+// Build nodes and edges
+const nodeMap = {};
+const edgeMap = {};
+
+publications.forEach(pub => {
+  pub.authors.forEach(a => {
+    if (!nodeMap[a]) nodeMap[a] = { id: a, papers: [], count: 0 };
+    nodeMap[a].papers.push(pub.title);
+    if (a !== CENTER) nodeMap[a].count++;
+  });
+
+  // All pairs (including edges between co-authors that don't involve Manhart A)
+  const authors = pub.authors;
+  for (let i = 0; i < authors.length; i++) {
+    for (let j = i + 1; j < authors.length; j++) {
+      const a = authors[i], b = authors[j];
+      const key = [a, b].sort().join('|||');
+      if (!edgeMap[key]) edgeMap[key] = { source: a, target: b, weight: 0, papers: [] };
+      edgeMap[key].weight++;
+      edgeMap[key].papers.push(pub.title);
+    }
+  }
+});
+
+const nodes = Object.values(nodeMap);
+const links = Object.values(edgeMap);
+
+// ── D3 FORCE GRAPH ────────────────────────────────────────────────────────────
+const svg    = d3.select('#graph');
+const tooltip = document.getElementById('tooltip');
+
+function draw() {
+  svg.selectAll('*').remove();
+  const W = svg.node().clientWidth;
+  const H = svg.node().clientHeight;
+
+  const g = svg.append('g');
+
+  // Zoom
+  svg.call(d3.zoom().scaleExtent([0.4, 3]).on('zoom', e => g.attr('transform', e.transform)));
+
+  // Node radius scale
+  const maxPapers = d3.max(nodes, d => d.id === CENTER ? 99 : links.filter(l => l.source === d.id || l.target === d.id).reduce((s,l) => s + l.weight, 0));
+  const rScale = d3.scaleSqrt().domain([1, maxPapers]).range([6, 22]);
+
+  const centerNode = nodes.find(n => n.id === CENTER);
+  centerNode._r = 28;
+  nodes.forEach(n => {
+    if (n.id !== CENTER) {
+      const totalWeight = links.filter(l => l.source === n.id || l.target === n.id).reduce((s,l) => s + l.weight, 0);
+      n._r = rScale(totalWeight);
+      n._weight = totalWeight;
+    }
+  });
+
+  // Create visible publication nodes (super-nodes)
+  const pubNodes = publications.map((pub, i) => ({
+    id: `_pub_${i}`,
+    isPub: true,
+    pub: pub,
+    title: pub.title,
+    year: pub.year,
+    category: pub.category
+  }));
+
+  // Links: authors to publications (no more author-to-author direct links)
+  const pubLinks = [];
+  publications.forEach((pub, i) => {
+    pub.authors.forEach(author => {
+      pubLinks.push({ source: author, target: `_pub_${i}` });
+    });
+  });
+
+  const allNodes = [...nodes, ...pubNodes];
+
+  const simulation = d3.forceSimulation(allNodes)
+    .force('link', d3.forceLink(pubLinks).id(d => d.id).distance(100).strength(0.6))
+    .force('charge', d3.forceManyBody().strength(d => d.isPub ? -400 : -150))
+    .force('center', d3.forceCenter(W / 2, H / 2))
+    .force('collision', d3.forceCollide(d => d.isPub ? 40 : d._r + 8));
+
+  // Links (author-to-publication)
+  const link = g.append('g')
+    .selectAll('line')
+    .data(pubLinks)
+    .join('line')
+    .attr('class', 'link')
+    .attr('stroke', '#c8dde8')
+    .attr('stroke-width', 1)
+    .attr('stroke-opacity', 0.5);
+
+  // All nodes (authors + publications)
+  const node = g.append('g')
+    .selectAll('g')
+    .data(allNodes)
+    .join('g')
+    .attr('class', 'node')
+    .call(d3.drag()
+      .on('start', (e, d) => { if (!e.active) simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+      .on('drag',  (e, d) => { d.fx = e.x; d.fy = e.y; })
+      .on('end',   (e, d) => { if (!e.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; })
+    );
+
+  // Author nodes: circles
+  node.filter(d => !d.isPub).append('circle')
+    .attr('r', d => d._r || 10)
+    .attr('fill', d => {
+      if (d.id === CENTER) return '#e05c2a';  // orange
+      const cat = authorCategory[d.id] || 'Neither';
+      if (cat === 'Theorem') return '#1a6fa8';  // blue
+      if (cat === 'Data')    return '#059669';  // green
+      if (cat === 'Neither') return '#6b7280';  // gray
+      return '#6b7280';
+    })
+    .attr('stroke', d => d.id === CENTER ? '#c04010' : '#ffffff')
+    .attr('stroke-width', d => d.id === CENTER ? 3 : 1.5);
+
+  // Publication nodes: squares
+  node.filter(d => d.isPub).append('rect')
+    .attr('width', 24).attr('height', 24)
+    .attr('x', -12).attr('y', -12)
+    .attr('fill', d => {
+      const cat = d.category;
+      if (cat === 'Theorem') return '#bfdbfe';  // light blue
+      if (cat === 'Data')    return '#a7f3d0';  // light green
+      if (cat === 'Neither') return '#e5e7eb';  // light gray
+      return '#e5e7eb';
+    })
+    .attr('stroke', d => {
+      const cat = d.category;
+      if (cat === 'Theorem') return '#1a6fa8';
+      if (cat === 'Data')    return '#059669';
+      if (cat === 'Neither') return '#6b7280';
+      return '#9ca3af';
+    })
+    .attr('stroke-width', 2)
+    .attr('rx', 3);
+
+  // Labels (authors only, skip pub nodes to avoid clutter)
+  node.filter(d => !d.isPub).append('text')
+    .attr('dy', d => d._r + 12)
+    .attr('text-anchor', 'middle')
+    .text(d => d.id === CENTER ? 'Manhart A' : d.id)
+    .style('font-weight', d => d.id === CENTER ? '700' : '400')
+    .style('font-size', d => d.id === CENTER ? '13px' : '10px');
+
+  // Hover
+  node.on('mouseover', function(event, d) {
+      if (d.isPub) {
+        // Hovering a publication node
+        const authorIds = pubLinks.filter(l => {
+          const tid = typeof l.target === 'object' ? l.target.id : l.target;
+          return tid === d.id;
+        }).map(l => typeof l.source === 'object' ? l.source.id : l.source);
+
+        node.classed('dimmed', n => !n.isPub && !authorIds.includes(n.id));
+        link.classed('dimmed', l => {
+          const tid = typeof l.target === 'object' ? l.target.id : l.target;
+          return tid !== d.id;
+        });
+        link.classed('highlighted', l => {
+          const tid = typeof l.target === 'object' ? l.target.id : l.target;
+          return tid === d.id;
+        });
+
+        tooltip.innerHTML = `
+          <div class="tt-name">${d.title}</div>
+          <div class="tt-count">${d.year} · ${d.category} · ${authorIds.length} authors</div>
+        `;
+      } else {
+        // Hovering an author node
+        const connectedPubs = pubLinks.filter(l => {
+          const sid = typeof l.source === 'object' ? l.source.id : l.source;
+          return sid === d.id;
+        }).map(l => typeof l.target === 'object' ? l.target : allNodes.find(n => n.id === l.target));
+
+        node.classed('dimmed', n => {
+          if (n.id === d.id) return false;
+          if (n.isPub) return !connectedPubs.find(p => p.id === n.id);
+          // Other authors: dim if they don't share any publications
+          const theirPubs = pubLinks.filter(l => {
+            const sid = typeof l.source === 'object' ? l.source.id : l.source;
+            return sid === n.id;
+          }).map(l => typeof l.target === 'object' ? l.target.id : l.target);
+          return !connectedPubs.some(p => theirPubs.includes(p.id));
+        });
+
+        link.classed('dimmed', l => {
+          const sid = typeof l.source === 'object' ? l.source.id : l.source;
+          return sid !== d.id;
+        });
+        link.classed('highlighted', l => {
+          const sid = typeof l.source === 'object' ? l.source.id : l.source;
+          return sid === d.id;
+        });
+
+        const paperTitles = connectedPubs.map(p => p.pub ? p.pub.title : p.title);
+        tooltip.innerHTML = `
+          <div class="tt-name">${d.id}</div>
+          <div class="tt-count">${d.id === CENTER ? publications.length + ' publications total' : connectedPubs.length + ' shared paper' + (connectedPubs.length > 1 ? 's' : '') + ' with Manhart A'}</div>
+          ${paperTitles.length ? `<div class="tt-pubs">${paperTitles.slice(0,3).map(p => '· ' + p.slice(0,60) + (p.length > 60 ? '…' : '')).join('<br/>')}</div>` : ''}
+        `;
+      }
+      tooltip.style.opacity = 1;
+    })
+    .on('mousemove', event => {
+      tooltip.style.left = (event.clientX + 14) + 'px';
+      tooltip.style.top  = (event.clientY - 10) + 'px';
+    })
+    .on('mouseleave', function() {
+      node.classed('dimmed', false);
+      link.classed('dimmed', false).classed('highlighted', false);
+      tooltip.style.opacity = 0;
+    });
+
+  simulation.on('tick', () => {
+    link
+      .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+      .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+    node.attr('transform', d => `translate(${d.x},${d.y})`);
+  });
+
+  // Auto-settle: run simulation invisibly for 300 ticks before showing
+  g.style('opacity', 0);
+  for (let i = 0; i < 300; i++) simulation.tick();
+  g.transition().duration(800).style('opacity', 1);
+  simulation.alpha(0.3).restart();
+
+  // Try to restore saved positions from localStorage
+  try {
+    const saved = localStorage.getItem('coauthorship-layout');
+    if (saved) {
+      const positions = JSON.parse(saved);
+      allNodes.forEach(n => {
+        if (positions[n.id]) {
+          n.x = positions[n.id].x;
+          n.y = positions[n.id].y;
+          n.fx = positions[n.id].x;
+          n.fy = positions[n.id].y;
+        }
+      });
+      simulation.alpha(0).stop();
+      simulation.tick();
+    }
+  } catch (e) { /* ignore */ }
+
+  // Save layout on window unload
+  window.addEventListener('beforeunload', () => {
+    const positions = {};
+    allNodes.forEach(n => { positions[n.id] = { x: n.x, y: n.y }; });
+    localStorage.setItem('coauthorship-layout', JSON.stringify(positions));
+  });
+}
+
+draw();
+window.addEventListener('resize', draw);
+
+// Reset button
+document.getElementById('resetBtn').addEventListener('click', () => {
+  localStorage.removeItem('coauthorship-layout');
+  location.reload();
+});
+</script>
+</body>
+</html>

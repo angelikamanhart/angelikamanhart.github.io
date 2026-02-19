@@ -1,119 +1,399 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
-    <title>Manhart, Home</title>
-    <link href="styles/defaultstyle.css" rel="stylesheet" media="screen" />
-    <link href="styles/cuheader.css" rel="stylesheet" media="screen" />
-  </head>
-  <body>
-    <div id="container">
-      <div id="cuheader">
-        <h1><br />
-        </h1>
-        <h1><a href="#">your website name here</a></h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manhart — Mathematical Biology</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ink:      #0a1f44;
+      --mid:      #2a4a6b;
+      --muted:    #5b95b8;
+      --accent:   #0d3b7a;
+      --accent2:  #1a6fa8;
+      --pale:     #ddeaf3;
+      --white:    #ffffff;
+      --bg:       #f0f6fa;
+      --border:   #c8dde8;
+      --serif:    'DM Serif Display', Georgia, serif;
+      --sans:     'DM Sans', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body { font-family: var(--sans); background: var(--white); color: var(--ink); font-size: 17px; line-height: 1.72; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(224,237,247,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw; height: 62px;
+    }
+    .nav-name { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .hamburger { display: none; }
+
+    /* HERO SHELL */
+    #hero-shell {
+      position: relative;
+      background-color: #f0f6fa;
+      overflow: hidden;
+    }
+    /* The cell image, positioned to the right, fading out */
+    #hero-shell::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('images/cells_background.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      opacity: 0.55;
+      /* Fade: fully visible on far right, gone by center */
+      -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.3) 65%, rgba(0,0,0,0) 85%);
+      mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.3) 65%, rgba(0,0,0,0) 85%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    #hero-shell::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 100px; background: linear-gradient(to bottom, transparent, #ffffff);
+      pointer-events: none; z-index: 2;
+    }
+
+    /* HERO */
+    #hero {
+      position: relative; z-index: 3;
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: center; gap: 4rem;
+      max-width: 1140px; margin: 0 auto; padding: 6rem 5vw 7rem;
+    }
+    .hero-univie-logo { position: absolute; bottom: 1.5rem; right: 5vw; height: 200px; z-index: 4; opacity: 0.85; }
+    .hero-text { animation: fadeUp 0.7s ease both; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent2); background: var(--pale);
+      padding: 0.3rem 0.9rem; border-radius: 100px; margin-bottom: 1.2rem;
+      border: 1px solid var(--border);
+    }
+    .hero-name { font-family: var(--serif); font-size: clamp(2.6rem, 4.5vw, 3.8rem); line-height: 1.1; color: var(--ink); margin-bottom: 0.5rem; }
+    .hero-name em { font-style: italic; color: var(--accent2); }
+    .hero-title { font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 1rem; }
+    .hero-tagline { font-size: 1.08rem; font-weight: 500; color: var(--mid); max-width: 520px; margin-bottom: 1.8rem; line-height: 1.7; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 2rem; }
+    .hero-tag { font-size: 0.76rem; font-weight: 500; padding: 0.28rem 0.8rem; border-radius: 100px; background: var(--white); color: var(--mid); border: 1px solid var(--border); }
+    .hero-cta { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 0.72rem 1.6rem; font-family: var(--sans); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; border-radius: 6px; transition: all 0.2s; cursor: pointer; }
+    .btn-primary { background: var(--accent); color: #fff; border: 2px solid var(--accent); }
+    .btn-primary:hover { background: var(--accent2); border-color: var(--accent2); }
+    .btn-ghost { background: transparent; color: var(--ink); border: 2px solid var(--border); }
+    .btn-ghost:hover { border-color: var(--accent2); color: var(--accent2); }
+    .btn-outline { background: transparent; color: var(--ink); border: 2px solid var(--border); }
+    .btn-outline:hover { border-color: var(--accent2); color: var(--accent2); }
+
+    /* round photo */
+    .hero-photo-wrap { animation: fadeUp 0.7s 0.15s ease both; flex-shrink: 0; }
+    .photo-circle {
+      width: 260px; height: 260px; border-radius: 50%; overflow: hidden;
+      border: 4px solid var(--white);
+      box-shadow: 0 0 0 3px var(--accent2), 0 16px 48px rgba(13,59,122,0.15);
+      background: var(--pale);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 0.5rem; color: var(--muted);
+    }
+    .photo-circle img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
+    .photo-fallback { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+    .photo-fallback svg { opacity: 0.4; }
+    .photo-fallback span { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.45; }
+
+    /* NEWS STRIP */
+    .news-strip { background: var(--accent); color: #fff; padding: 0.75rem 5vw; font-size: 1.05rem; display: flex; align-items: center; gap: 1rem; }
+    .news-badge { background: rgba(255,255,255,0.25); padding: 0.2rem 0.6rem; border-radius: 100px; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+    .news-strip a { color: #fff; font-weight: 600; }
+
+    /* SECTIONS */
+    .section-wrap { padding: 5rem 5vw; max-width: 1140px; margin: 0 auto; }
+    .full-bleed { padding: 5rem 5vw; }
+    .full-bleed .inner { max-width: 1140px; margin: 0 auto; }
+    hr.divider { border: none; border-top: 1px solid var(--border); }
+    .section-label { font-size: 0.73rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent2); margin-bottom: 0.5rem; }
+    .section-title { font-family: var(--serif); font-size: clamp(1.7rem, 2.6vw, 2.3rem); color: var(--ink); margin-bottom: 0.9rem; }
+    .section-intro { max-width: 660px; color: var(--mid); font-weight: 300; font-size: 1.05rem; margin-bottom: 2.8rem; line-height: 1.75; }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .about-text p { color: var(--mid); font-weight: 300; margin-bottom: 1rem; }
+    .about-interests { display: flex; flex-direction: column; gap: 1.2rem; }
+    .interest-group { background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--accent2); border-radius: 0 8px 8px 0; padding: 1.2rem 1.4rem; }
+    .interest-group h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent2); margin-bottom: 0.7rem; }
+    .interest-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .interest-tag { font-size: 0.8rem; padding: 0.22rem 0.7rem; border-radius: 100px; background: var(--pale); color: var(--mid); border: 1px solid var(--border); }
+
+
+
+
+
+    /* TEAM */
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1.4rem; }
+    .team-card { text-align: center; padding: 1.8rem 1rem; background: var(--white); border: 1px solid var(--border); border-radius: 10px; transition: box-shadow 0.2s; }
+    .team-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.07); }
+    .team-avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--muted), var(--accent2)); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 1.4rem; color: var(--white); box-shadow: 0 0 0 3px var(--white), 0 0 0 4px var(--border); overflow: hidden; }
+    .team-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .team-subsection { font-family: var(--serif); font-size: 1.1rem; color: var(--ink); margin: 2rem 0 1rem; padding-bottom: 0.3rem; border-bottom: 2px solid var(--pale); }
+    .team-card h3 { font-size: 0.98rem; font-family: var(--serif); margin-bottom: 0.2rem; }
+    .team-card p { font-size: 0.8rem; color: var(--muted); font-weight: 300; }
+    .team-role { display: inline-block; margin-top: 0.5rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent2); }
+
+
+
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .contact-info { display: flex; flex-direction: column; gap: 1.1rem; }
+    .contact-row { display: flex; align-items: flex-start; gap: 1rem; }
+    .contact-row-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.07); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; }
+    .contact-row-text { font-size: 0.9rem; color: rgba(255,255,255,0.65); }
+    .contact-row-text strong { display: block; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 0.15rem; }
+    .contact-social { display: flex; gap: 0.7rem; margin-top: 1.4rem; flex-wrap: wrap; }
+    .social-link { padding: 0.45rem 1rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; font-size: 0.76rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.55); text-decoration: none; transition: all 0.2s; }
+    .social-link:hover { border-color: var(--accent2); color: var(--accent2); }
+
+    footer { text-align: center; padding: 1.8rem 5vw; font-size: 0.78rem; color: var(--muted); border-top: 1px solid var(--border); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+
+    /* RESPONSIVE */
+    @media (max-width: 800px) {
+      #hero { grid-template-columns: 1fr; padding-top: 3rem; text-align: center; }
+      .hero-photo-wrap { order: -1; display: flex; justify-content: center; }
+      .hero-tags { justify-content: center; }
+      .hero-cta { justify-content: center; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 62px; left: 0; right: 0;
+        background: rgba(224,237,247,0.97);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 5vw;
+        gap: 0.5rem;
+      }
+      .nav-links.open { display: flex; }
+      .hamburger {
+        display: flex; align-items: center; justify-content: center;
+        background: none; border: none; cursor: pointer;
+        width: 38px; height: 38px; padding: 0;
+      }
+      .hamburger svg { width: 22px; height: 22px; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-name" href="index.html">Angelika Manhart</a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li style="display:none;"><a href="teaching.html">Teaching</a></li>
+      <li><a href="outreach.html">Outreach & Art</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <svg viewBox="0 0 24 24" fill="none"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+  <script>document.querySelector('.nav-links').addEventListener('click',function(e){if(e.target.tagName==='A')this.classList.remove('open');})</script>
+
+  <!-- NEWS STRIP -->
+  <div class="news-strip">
+    <span class="news-badge">📢 News</span>
+    <p>Received the <strong>FWF ASTRA Award</strong> — 5 years of research funding for the <a href="research.html">MOHECCE project</a>! &nbsp;·&nbsp; Nov 2025: Promoted to Associate Professor for Mathematical Biology.</p>
+  </div>
+
+  <!-- HERO with hexagon pattern background -->
+  <div id="hero-shell">
+    <div id="hero">
+      <div class="hero-text">
+        <p class="hero-eyebrow">University of Vienna · Faculty of Mathematics</p>
+        <h1 class="hero-name">Angelika<br/><em>Manhart</em></h1>
+        <p class="hero-title">Associate Professor for Mathematical Biology</p>
+        <p class="hero-tagline">Using mathematics to capture, describe and better understand biological phenomena — from cytoskeletal dynamics to collective cell migration.</p>
+        <div class="hero-tags">
+          <span class="hero-tag">Mathematical Biology</span>
+          <span class="hero-tag">Collective Motion</span>
+          <span class="hero-tag">Cell Migration</span>
+          <span class="hero-tag">PDEs &amp; ODEs</span>
+          <span class="hero-tag">Agent-Based Models</span>
+          <span class="hero-tag">Cytoskeleton</span>
+        </div>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="research.html">View Research</a>
+          <a class="btn btn-ghost" href="index.html#contact">Get in Touch</a>
+        </div>
       </div>
-      <div id="wrapper">
-        <div id="banner">
-          <div id="name">
-            <h1>Angelika Manhart</h1>
-                ASSOCIATE PROFESSOR FOR MATHEMATICAL BIOLOGY</div>
-          <div>    UNIVERSITY OF VIENNA, AUSTRIA<br />
+      <div class="hero-photo-wrap">
+        <div class="photo-circle" id="photoCircle">
+          <img src="images/portrait_me.jpg" alt="Manhart" id="profileImg"/>
+        </div>
+      </div>
+    </div>
+    <img src="images/univie_logo.png" alt="University of Vienna" class="hero-univie-logo"/>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- ABOUT -->
+  <div id="about" class="full-bleed" style="background: var(--bg);">
+    <div class="inner">
+      <div class="">
+        <p class="section-label">Background</p>
+        <h2 class="section-title">About Me</h2>
+      </div>
+      <div class="about-grid reveal">
+        <div class="about-text">
+          <p>I am a researcher working at the exciting intersection of mathematics and molecular biology. I hold the position of <strong>Associate Professor for Mathematical Biology</strong> at the Faculty of Mathematics at the University of Vienna, and an honorary position as Associate Professor in Applied Mathematics at the Mathematics Department of <strong>University College London (UCL)</strong>.</p>
+          <p>I believe that good mathematical models allow us to capture, describe and ultimately better understand biological phenomena. My work spans a range of scales — from individual proteins and cytoskeletal networks to collective behaviour of cells and tissues.</p>
+
+        </div>
+        <div class="about-interests">
+          <div class="interest-group">
+            <h4>Biological Interests</h4>
+            <div class="interest-tags">
+              <span class="interest-tag">Collective motion</span>
+              <span class="interest-tag">Sperm &amp; myxobacteria</span>
+              <span class="interest-tag">Cell migration</span>
+              <span class="interest-tag">Keratocyte movement</span>
+              <span class="interest-tag">Muscle development</span>
+              <span class="interest-tag">Myonuclear positioning</span>
+              <span class="interest-tag">Cytoskeleton</span>
+              <span class="interest-tag">Actin networks</span>
+              <span class="interest-tag">Myosin &amp; cofilin</span>
+            </div>
           </div>
-        </div>
-        <div id="nav">
-          <ul>
-            <li><a href="index.html">Home</a></li>
-              <li><a href="research.html">Research</a></li>
-              <li><a href="publications.html">Publications</a></li>
-                <li><a href="astra.html">ASTRA Project: MOHECCE</a></li>
-              <li><a href="other.html">Other Activities</a></li>
-          </ul>
-        </div>
-        <div id="page">
-          <div style="margin-left: 21px;">
-            <div id="sidebar">
-              <div style="text-align: center;"><img src="images/portrait_me.jpg"
-                  alt="A. Manhart" title="A. Manhart" style="width: 201px; height: 275px;" /></div>
-              <h3>Contact</h3>
-              <p>Office: Room 9.124<br />
-                1 Oskar-Morgenstern Platz, <br />
-                University of Vienna<br />
-                Tel: 43 1 4277 50474<br />
-              </p>
-              <p>1230 Vienna</p>
-              <p> <a href="mailto:angelika.manhart@univie.ac.at">angelika.manhart[at]univie.ac.at</a><br />
-              </p>
+          <div class="interest-group">
+            <h4>Mathematical Interests</h4>
+            <div class="interest-tags">
+              <span class="interest-tag">Non-linear PDEs &amp; ODEs</span>
+              <span class="interest-tag">Traveling waves</span>
+              <span class="interest-tag">Bifurcations</span>
+              <span class="interest-tag">Agent-based models</span>
+              <span class="interest-tag">Kinetic transport equations</span>
+              <span class="interest-tag">Micro-macro passage</span>
+              <span class="interest-tag">Numerical simulations</span>
             </div>
-            I am a researcher in the interdisciplinary field of mathematics and
-            molecular biology. I am an Assistant Professor in Mathematical
-            Biology at the Faculty of Mathematics at the <a href="https://www.univie.ac.at/">University
-              of Vienna</a> and hold an honorary position as Associate Professor
-            in Applied Mathematics at the Mathematics Department of <a href="https://www.ucl.ac.uk/maths/">University
-              College London</a> (UCL).</div>
-          <div style="margin-left: 21px;">
-            <div style="text-align: center;"><br />
-            </div>
-            <font size="+1"><b>News<br />
-              </b></font>
-            <ul>
-                <li>Nov 2025: Promoted to Associate Professor for Mathematical Biology.</li>
-                <li><b>June 2025: Received the <a href="https://www.fwf.ac.at/en/news/detail/fwf-astra-awards-eur22-million-for-up-and-coming-top-researchers">ASTRA Award</a>  of the FWF! This means research funding for 5 years!</b> More details about the project can be found <a href="astra.html">here</a>.</li>
-              <li>Dec 2024: New article accepted into Bulletin of Math Bio. Link to bioRxiv: <a href="https://www.biorxiv.org/content/10.1101/2024.07.23.604626v2">A
-                  dynamical analysis of the alignment mechanism between two interacting cells</a></li>
-              <li>Fall 2024: <i>Back at work from maternity leave - finally
-                  doing research again!</i></li>
-              <li>Spring 2024: New article published in PLOS Computational
-                Biology, <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1011879">Derivation
-                  and simulation of a computational model of active cell
-                  populations: How overlap avoidance, deformability, cell-cell
-                  junctions and cytoskeletal forces affect alignment</a></li>
-              <li>Winter 2023: New article published in Matrix Biology, <a href="https://www.sciencedirect.com/science/article/pii/S0945053X23000914?via%3Dihub">Autocrine
-                  IL-6 drives cell and extracellular matrix anisotropy in scar
-                  fibroblasts</a></li>
-              <li>March 2023: New article published in eLife, <a href="https://elifesciences.org/articles/83796">Controlling
-                  periodic long-range signalling to drive a morphogenetic
-                  transition</a> - link to eLife <a href="https://elifesciences.org/articles/83796">here</a>.</li>
-            </ul>
-            <br />
-            <font size="+1"> <b>Scientific Interests</b></font><br />
-            The interplay between mathematics and biology has always interested
-            me. I believe that using good mathematical models we can capture,
-            describe and eventually better understand biological phenomena. <br />
-            <br />
-            <div style="text-align: left;"><span style="font-weight:                 bold;">Biologically
-                I am interested in</span><br />
-            </div>
-            <ul>
-              <li>Collective motion and pattern formation in e.g. sperm or
-                myxobacteria</li>
-              <li>Cell migration, e.g. keratocyte movement</li>
-              <li>Muscle development, in particular with regards to myonuclear
-                movement and size control</li>
-              <li>The cytoskeleton, particularly actin networks and the
-                interplay with accessory molecules like myosin or cofilin</li>
-            </ul>
-             <span style="font-weight: bold;">Mathematically I am interested in</span>
-            <br />
-            <ul>
-              <li>Non-linear PDEs and ODEs (traveling waves, bifurcations,
-                long-term behavior and asymptotic analysis)<br />
-              </li>
-              <li>Agent-based models<br />
-              </li>
-              <li>Kinetic transport equations</li>
-              <li>The Micro-Macro passage from particle-based to macroscopic
-                models</li>
-              <li>Numerical simulations</li>
-            </ul>
-            More details on my current and past projects can be found on my <a
-              href="research.html">research page.</a><br />
-            <br />
-            <br />
-            <br />
           </div>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+
+  <!-- TEAM -->
+  <div class="section-wrap" id="team">
+    <div class="">
+      <p class="section-label">Team Members</p>
+      <h2 class="section-title">Team</h2>
+    </div>
+    <h3 class="team-subsection">Current</h3>
+    <div class="team-grid reveal">
+      <div class="team-card">
+        <div class="team-avatar"><img src="images/team/freingruber.png" alt="Viktoria Freingruber"/></div>
+        <h3>Viktoria Freingruber</h3>
+        <span class="team-role">Postdoctoral Researcher</span>
+        <p style="font-size:0.72rem; color:var(--muted); margin-top:0.3rem;">from Spring 2026</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">LW</div>
+        <h3>Luisa Weginger</h3>
+        <span class="team-role">PhD Student</span>
+        <p style="font-size:0.72rem; color:var(--muted); margin-top:0.3rem;">from Spring 2026</p>
+      </div>
+    </div>
+    <h3 class="team-subsection">Past</h3>
+    <div class="team-grid reveal">
+      <div class="team-card">
+        <div class="team-avatar"><img src="images/team/leech.png" alt="Vivienne Leech"/></div>
+        <h3>Vivienne Leech</h3>
+        <span class="team-role">PhD Student</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" class="full-bleed" style="background: var(--ink); position: relative; overflow: hidden;">
+    <div style="position: absolute; top: 0; bottom: 0; right: 0; width: 55%; background-image: url('images/20131021_OMP_aussen_C_Gebhard_Sengmueller_010.jpg'); background-size: cover; background-position: center right; -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0) 100%); pointer-events: none; z-index: 0;"></div>
+    <div class="inner" style="position: relative; z-index: 1;">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title" style="color:#fff; font-family: var(--serif);">Contact</h2>
+      <p class="section-intro" style="font-size: 1.2rem; color: rgba(255,255,255,0.85); font-weight: 400; max-width: 580px;">Feel free to get in touch! Experimentalists looking for a modelling/computational collaborator are particularly welcome!</p>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-row">
+            <div class="contact-row-icon">✉️</div>
+            <div class="contact-row-text"><strong>Email</strong><span id="contactEmail"></span></div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon">🏛️</div>
+            <div class="contact-row-text"><strong>Office</strong>Room 9.124, 1 Oskar-Morgenstern Platz, University of Vienna</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon">📍</div>
+            <div class="contact-row-text"><strong>Address</strong>1230 Vienna, Austria</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon">📞</div>
+            <div class="contact-row-text"><strong>Tel</strong>+43 1 4277 50474</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size: 0.68rem; color: rgba(255,255,255,0.25); position: absolute; bottom: 0.8rem; right: 5vw; z-index: 1; margin: 0;">Photo: &copy; Gebhard Sengm&uuml;ller</p>
+  </div>
+
+  <footer>© 2025 Manhart A · University of Vienna · Faculty of Mathematics</footer>
+
+  <script>
+    // ── PHOTO FALLBACK ──
+    const img = document.getElementById('profileImg');
+    if (img) {
+      img.onerror = function() {
+        document.getElementById('photoCircle').innerHTML = `
+          <div class="photo-fallback">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            </svg>
+            <span>Photo</span>
+          </div>`;
+      };
+    }
+
+    // ── SCROLL REVEAL ──
+    var reveals = document.querySelectorAll('.reveal');
+    if (reveals.length && 'IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.1 });
+      reveals.forEach(function(el) { el.style.opacity = '0'; el.style.transform = 'translateY(20px)'; el.style.transition = 'opacity 0.6s ease, transform 0.6s ease'; obs.observe(el); });
+    }
+  </script>
+  <script>
+  (function(){var u='angelika.manhart',d='univie.ac.at',a=u+'@'+d;
+var contact=document.getElementById('contactEmail');
+  if(contact){contact.innerHTML='<a href="mailto:'+a+'">'+a+'</a>';}
+  })();
+  </script>
+</body>
 </html>
