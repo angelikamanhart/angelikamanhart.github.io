@@ -31,7 +31,8 @@
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 5vw; height: 62px;
     }
-    .nav-name { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); text-decoration: none; }
+    .nav-name { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+    .nav-portrait { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; object-position: center 20%; border: 2px solid var(--border); }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--accent); }
@@ -72,7 +73,7 @@
       align-items: center; gap: 4rem;
       max-width: 1140px; margin: 0 auto; padding: 6rem 5vw 7rem;
     }
-    .hero-univie-logo { position: absolute; bottom: 1.5rem; right: 5vw; height: 200px; z-index: 4; opacity: 0.85; }
+    .hero-univie-logo { position: absolute; bottom: 1.5rem; right: 5vw; height: clamp(80px, 20vw, 200px); z-index: 4; opacity: 0.85; }
     .hero-text { animation: fadeUp 0.7s ease both; }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 0.5rem;
@@ -91,8 +92,8 @@
     .btn { display: inline-block; padding: 0.72rem 1.6rem; font-family: var(--sans); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; border-radius: 6px; transition: all 0.2s; cursor: pointer; }
     .btn-primary { background: var(--accent); color: #fff; border: 2px solid var(--accent); }
     .btn-primary:hover { background: var(--accent2); border-color: var(--accent2); }
-    .btn-ghost { background: transparent; color: var(--ink); border: 2px solid var(--border); }
-    .btn-ghost:hover { border-color: var(--accent2); color: var(--accent2); }
+    .btn-ghost { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
+    .btn-ghost:hover { background: var(--accent); color: #fff; }
     .btn-outline { background: transparent; color: var(--ink); border: 2px solid var(--border); }
     .btn-outline:hover { border-color: var(--accent2); color: var(--accent2); }
 
@@ -113,8 +114,12 @@
 
     /* NEWS STRIP */
     .news-strip { background: var(--accent); color: #fff; padding: 0.75rem 5vw; font-size: 1.05rem; display: flex; align-items: center; gap: 1rem; }
-    .news-badge { background: rgba(255,255,255,0.25); padding: 0.2rem 0.6rem; border-radius: 100px; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+    .news-badge { background: rgba(255,255,255,0.25); padding: 0.2rem 0.6rem; border-radius: 100px; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: #ffd700; }
     .news-strip a { color: #fff; font-weight: 600; }
+    @media (max-width: 800px) {
+      .news-strip { font-size: 0.85rem; padding: 0.6rem 5vw; gap: 0.6rem; }
+      .news-badge { font-size: 0.7rem; padding: 0.15rem 0.5rem; }
+    }
 
     /* SECTIONS */
     .section-wrap { padding: 5rem 5vw; max-width: 1140px; margin: 0 auto; }
@@ -200,7 +205,7 @@
 
   <!-- NAV -->
   <nav>
-    <a class="nav-name" href="index.html">Angelika Manhart</a>
+    <a class="nav-name" href="index.html"><img class="nav-portrait" src="images/portrait_me.jpg" alt=""/>Angelika Manhart</a>
     <ul class="nav-links">
       <li><a href="index.html#about">About</a></li>
       <li><a href="research.html">Research</a></li>
@@ -208,6 +213,7 @@
       <li><a href="index.html#team">Team</a></li>
       <li style="display:none;"><a href="teaching.html">Teaching</a></li>
       <li><a href="outreach.html">Outreach & Art</a></li>
+      <li><a href="cv.html">CV</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
     <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
@@ -218,8 +224,8 @@
 
   <!-- NEWS STRIP -->
   <div class="news-strip">
-    <span class="news-badge">📢 News</span>
-    <p>Received the <strong>FWF ASTRA Award</strong> — 5 years of research funding for the <a href="research.html">MOHECCE project</a>! &nbsp;·&nbsp; Nov 2025: Promoted to Associate Professor for Mathematical Biology.</p>
+    <span class="news-badge">✦ News</span>
+    <p>June 2025: Received the <strong>FWF ASTRA Award</strong> — 5 years of research funding for the <a href="research.html">MOHECCE project</a>! &nbsp;·&nbsp; Nov 2025: Promoted to Associate Professor for Mathematical Biology.</p>
   </div>
 
   <!-- HERO with hexagon pattern background -->
@@ -257,22 +263,26 @@
   <!-- ABOUT -->
   <div id="about" class="full-bleed" style="background: var(--bg);">
     <div class="inner">
-      <div class="">
-        <p class="section-label">Background</p>
-        <h2 class="section-title">About Me</h2>
+      <div style="display: flex; align-items: center; gap: 1.5rem;">
+        <div>
+          <p class="section-label">Background</p>
+          <h2 class="section-title">About Me</h2>
+        </div>
+        <img src="images/outreach/i_knew2.png" alt="" style="height: 150px; opacity: 0.85;"/>
       </div>
       <div class="about-grid reveal">
         <div class="about-text">
           <p>I am a researcher working at the exciting intersection of mathematics and molecular biology. I hold the position of <strong>Associate Professor for Mathematical Biology</strong> at the Faculty of Mathematics at the University of Vienna, and an honorary position as Associate Professor in Applied Mathematics at the Mathematics Department of <strong>University College London (UCL)</strong>.</p>
-          <p>I believe that good mathematical models allow us to capture, describe and ultimately better understand biological phenomena. My work spans a range of scales — from individual proteins and cytoskeletal networks to collective behaviour of cells and tissues.</p>
-
+          <p>I believe that good mathematical models allow us to better understand biological phenomena. My work spans a range of scales — from individual proteins and cytoskeletal networks to collective behaviour of cells and tissues.</p>
+          <p>I enjoy outreach and public engagement activities and like using art as a means to communicate scientific ideas.</p>
+          <p><a href="cv.html" style="color: var(--accent2); font-weight: 500; text-decoration: none; border-bottom: 1px solid var(--accent2);">Find out more about my academic journey &rarr;</a></p>
         </div>
         <div class="about-interests">
           <div class="interest-group">
             <h4>Biological Interests</h4>
             <div class="interest-tags">
               <span class="interest-tag">Collective motion</span>
-              <span class="interest-tag">Sperm &amp; myxobacteria</span>
+              <span class="interest-tag">Myxobacteria</span>
               <span class="interest-tag">Cell migration</span>
               <span class="interest-tag">Keratocyte movement</span>
               <span class="interest-tag">Muscle development</span>
@@ -336,7 +346,7 @@
     <div class="inner" style="position: relative; z-index: 1;">
       <p class="section-label">Get in Touch</p>
       <h2 class="section-title" style="color:#fff; font-family: var(--serif);">Contact</h2>
-      <p class="section-intro" style="font-size: 1.2rem; color: rgba(255,255,255,0.85); font-weight: 400; max-width: 580px;">Feel free to get in touch! Experimentalists looking for a modelling/computational collaborator are particularly welcome!</p>
+      <p class="section-intro" style="font-size: 1.2rem; color: rgba(255,255,255,0.85); font-weight: 400; max-width: 580px;">Here are my contact details. Feel free to contact me to chat about research, discuss possible collaborations, or exchange ideas about outreach activities.</p>
       <div class="contact-grid">
         <div class="contact-info">
           <div class="contact-row">

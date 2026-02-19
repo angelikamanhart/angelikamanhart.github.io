@@ -31,7 +31,8 @@
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 5vw; height: 62px;
     }
-    .nav-name { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); text-decoration: none; }
+    .nav-name { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+    .nav-portrait { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; object-position: center 20%; border: 2px solid var(--border); }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--accent); }
@@ -45,7 +46,7 @@
     }
     h1 { 
       font-family: var(--serif); 
-      font-size: clamp(2rem, 3.5vw, 2.8rem); 
+      font-size: clamp(1.7rem, 2.6vw, 2.3rem);
       color: var(--ink); 
       margin-bottom: 0.5rem; 
     }
@@ -270,23 +271,12 @@
 
     /* CIRCULAR HUB NAVIGATION */
     .hub-container {
-      position: relative;
-      width: 900px;
-      height: 580px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 620px;
       margin: 0 auto;
-      background-image: url('images/outreach/i_knew2.png');
-      background-size: 90% auto;
-      background-position: -55% bottom;
-      background-repeat: no-repeat;
-      opacity: 1;
-    }
-    .hub-container::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top right, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.6) 35%, rgba(255,255,255,0.92) 65%, rgba(255,255,255,1) 85%);
-      pointer-events: none;
-      z-index: 0;
+      justify-items: center;
     }
 
     .hub-card {
@@ -298,7 +288,6 @@
       text-decoration: none;
       color: inherit;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: absolute;
       width: 270px;
       height: 270px;
       display: flex;
@@ -311,35 +300,13 @@
       animation-delay: var(--delay);
       box-shadow: 0 10px 40px rgba(13,59,122,0.12);
     }
-    
-    /* Position cards: row 1 has 3, row 2 has 1 on the right */
-    .hub-card:nth-child(1) {
-      top: 0;
-      left: 0;
-    }
 
-    .hub-card:nth-child(2) {
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .hub-card:nth-child(3) {
-      top: 0;
-      right: 0;
-    }
-
-    .hub-card:nth-child(4) {
-      bottom: 0;
-      right: 0;
-    }
-    
     @keyframes hubReveal {
       to {
         opacity: 1;
       }
     }
-    
+
     .hub-card::before {
       content: '';
       position: absolute;
@@ -347,35 +314,23 @@
       background: linear-gradient(135deg, var(--pale) 0%, transparent 100%);
       opacity: 0;
       transition: opacity 0.3s;
+      pointer-events: none;
+      border-radius: 50%;
     }
-    
+
     .hub-card:hover::before {
       opacity: 1;
     }
-    
+
     .hub-card:hover {
       border-color: var(--accent);
       border-width: 4px;
       box-shadow: 0 25px 70px rgba(13,59,122,0.2);
+      transform: scale(1.08);
       z-index: 10;
     }
     
-    .hub-card:nth-child(1):hover {
-      transform: scale(1.08);
-    }
-
-    .hub-card:nth-child(2):hover {
-      transform: translateX(-50%) scale(1.08);
-    }
-
-    .hub-card:nth-child(3):hover {
-      transform: scale(1.08);
-    }
-
-    .hub-card:nth-child(4):hover {
-      transform: scale(1.08);
-    }
-    
+    .hub-card > * { pointer-events: none; }
     .hub-image {
       width: 120px;
       height: 120px;
@@ -428,30 +383,13 @@
       display: none;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 620px) {
       .hub-container {
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: column;
+        grid-template-columns: 1fr;
         gap: 1.5rem;
-        position: static;
-      }
-      .hub-container::before {
-        display: none;
-      }
-      .hub-card {
-        position: static !important;
-        width: 270px !important;
-        height: 270px !important;
-        margin: 0 auto;
-        transform: none !important;
       }
       .hub-card:hover {
-        transform: scale(1.05) !important;
-      }
-      .hub-card::after {
-        display: none;
+        transform: scale(1.05);
       }
     }
   </style>
@@ -459,7 +397,7 @@
 <body>
 
   <nav>
-    <a class="nav-name" href="index.html">Angelika Manhart</a>
+    <a class="nav-name" href="index.html"><img class="nav-portrait" src="images/portrait_me.jpg" alt=""/>Angelika Manhart</a>
     <ul class="nav-links">
       <li><a href="index.html#about">About</a></li>
       <li><a href="research.html">Research</a></li>
@@ -467,6 +405,7 @@
       <li><a href="index.html#team">Team</a></li>
       <li style="display:none;"><a href="teaching.html">Teaching</a></li>
       <li><a href="outreach.html">Outreach & Art</a></li>
+      <li><a href="cv.html">CV</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
     <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
@@ -477,6 +416,7 @@
 
 <div class="container">
   <header>
+    <p class="section-label" style="font-size: 0.73rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent2); margin-bottom: 0.5rem;">Science & Society</p>
     <h1>Outreach & Art</h1>
     <p class="intro">
       I am committed to making mathematics &amp; science accessible and engaging for diverse audiences — from organizing public workshops to collaborating with artists, educating students, and communicating research through writing and illustration.
@@ -525,10 +465,11 @@
     <div class="category-header">
       <div class="category-icon"><img src="images/outreach/thumbs/csm_Bild_129_0b7b0b3e1f.jpg" alt="Workshops" style="object-position: left center;"/></div>
       <h2>Workshop & Event Organization</h2>
+      <span style="font-size: 0.65rem; color: var(--muted); margin-left: auto;">Photo: &copy; Joseph Krpelan</span>
     </div>
     <div class="projects-grid">
       <div class="project-card">
-        <div class="project-image"><img src="images/outreach/internat_day_maths_2025.jpg" alt="International Day of Mathematics Workshop" style="object-position: center 30%;"/></div>
+        <div class="project-image" style="position: relative;"><img src="images/outreach/internat_day_maths_2025.jpg" alt="International Day of Mathematics Workshop" style="object-position: center 30%;"/><span style="position: absolute; bottom: 0.4rem; right: 0.5rem; font-size: 0.65rem; color: rgba(255,255,255,0.7);">&copy; Joseph Krpelan</span></div>
         <div class="project-body">
           <div class="project-year">2025</div>
           <h3 class="project-title">Fraktale selbst basteln!</h3>
@@ -590,7 +531,7 @@
     </div>
     <div class="projects-grid">
       <div class="project-card">
-        <div class="project-image"><img src="images/outreach/rhythms.png" alt="Rhythms of Fractals & Collective Movement"/></div>
+        <div class="project-image" style="position: relative;"><img src="images/outreach/rhythms.png" alt="Rhythms of Fractals & Collective Movement"/><span style="position: absolute; bottom: 0.4rem; right: 0.5rem; font-size: 0.65rem; color: rgba(255,255,255,0.7);">&copy; Tom Harrison</span></div>
         <div class="project-body">
           <div class="project-year">2020–2021</div>
           <h3 class="project-title">Rhythms of Fractals & Collective Movement</h3>
@@ -655,14 +596,14 @@
       <div class="category-icon"><img src="images/outreach/thumbs/illustration-jocelyn-bell-burnell.jpg" alt="Women in Science" style="object-position: 35% center;"/></div>
       <h2>Women in Science Illustration Series</h2>
     </div>
-    <div class="projects-grid" style="grid-template-columns: 1fr;">
-      <div class="project-card" style="display: grid; grid-template-columns: 0.8fr 1fr;">
-        <div class="project-image" style="height: 100%;"><img src="women_in_science/Images/wis_overview.png" alt="Women in Science Series"/></div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-image" style="background: white;"><img src="women_in_science/Images/wis_overview_small.png" alt="Women in Science Series" style="object-fit: contain;"/></div>
         <div class="project-body">
           <div class="project-year">2017</div>
           <h3 class="project-title"><img src="women_in_science/wis_logo2.png" alt="Women in Science Series" style="max-width: 100%; height: auto;"/></h3>
           <p class="project-desc">
-            Women have been making dramatic scientific discoveries for millennia — even if they haven't always gotten the credit they deserve. This series of illustrations pays tribute to women pursuing a passion for science. There are Nobel-laureates from 30 years ago and innovators making waves today; biologists, chemists, physicists, computer scientists, and mathematicians; women who always knew they wanted to be scientists, and women who started grad school at 51; women from India and South Africa and North America and Iran. Eclectic by design, the exhibition aims to reflect the many different ways to be a female scientist.
+            Women have been making dramatic scientific discoveries for millennia — even if they haven't always gotten the credit they deserve. This series of illustrations pays tribute to women pursuing a passion for science. Eclectic by design, the exhibition aims to reflect the many different ways to be a female scientist.
           </p>
           <p class="project-desc">
             The series was originally designed for and published on Cooper Square Review, a Science Journalism website by the Carter Journalism Institute, NYU.
@@ -707,7 +648,7 @@
       </div>
 
       <div class="project-card">
-        <div class="project-image"><img src="how_to_tame/how_to_tame.png" alt="How to Tame Infinity"/></div>
+        <div class="project-image" style="background: white;"><img src="how_to_tame/how_to_tame.png" alt="How to Tame Infinity" style="object-fit: contain;"/></div>
         <div class="project-body">
           <div class="project-year">2016 &middot; Cooper Square Review</div>
           <h3 class="project-title">How to Tame Infinity</h3>

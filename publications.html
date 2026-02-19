@@ -31,7 +31,8 @@
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 5vw; height: 62px;
     }
-    .nav-name { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); text-decoration: none; }
+    .nav-name { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+    .nav-portrait { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; object-position: center 20%; border: 2px solid var(--border); }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--accent); }
@@ -53,6 +54,11 @@
 
     /* RESPONSIVE */
     @media (max-width: 800px) {
+      .full-bleed { padding-top: 1rem; padding-bottom: 2rem; }
+      .section-label { margin-bottom: 0.2rem; }
+      .section-title { margin-bottom: 0.3rem; }
+      .section-intro { margin-bottom: 1.2rem; }
+      .pub-filters { margin-bottom: 1rem; }
       .pub-item { grid-template-columns: 1fr auto; }
       .pub-thumb { display: none; }
       .pub-year { font-size: 0.72rem; }
@@ -136,7 +142,7 @@
 
   <!-- NAV -->
   <nav>
-    <a class="nav-name" href="index.html">Manhart</a>
+    <a class="nav-name" href="index.html"><img class="nav-portrait" src="images/portrait_me.jpg" alt=""/>Angelika Manhart</a>
     <ul class="nav-links">
       <li><a href="index.html#about">About</a></li>
       <li><a href="research.html">Research</a></li>
@@ -144,6 +150,7 @@
       <li><a href="index.html#team">Team</a></li>
       <li style="display:none;"><a href="teaching.html">Teaching</a></li>
       <li><a href="outreach.html">Outreach & Art</a></li>
+      <li><a href="cv.html">CV</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
     <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
@@ -156,20 +163,20 @@
   <div id="publications" class="full-bleed" style="background: var(--bg);">
     <div class="inner">
       <div class="">
-        <p class="section-label">Selected Works</p>
+        <p class="section-label">Scientific Articles</p>
         <h2 class="section-title">Publications</h2>
         <p class="section-intro">Peer-reviewed articles and book chapters.</p>
       </div>
       <!-- Network toggle + collapsible panel -->
       <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: stretch; margin-bottom: 1.5rem;">
+      <a href="research.html" class="pub-network-toggle" style="text-decoration: none; margin-bottom: 0;">
+        <div class="toggle-thumb"><svg viewBox="0 0 28 28"><circle cx="8" cy="14" r="6" fill="none" stroke="#2563eb" stroke-width="1.5"/><circle cx="20" cy="8" r="4" fill="none" stroke="#059669" stroke-width="1.5"/><circle cx="22" cy="20" r="5" fill="none" stroke="#d97706" stroke-width="1.5"/><rect x="13" y="12" width="3" height="3" rx="0.5" fill="#fca5a5" stroke="#c62828" stroke-width="0.6"/><rect x="11" y="18" width="3" height="3" rx="0.5" fill="#a7f3d0" stroke="#059669" stroke-width="0.6"/><rect x="18" y="14" width="3" height="3" rx="0.5" fill="#e5e7eb" stroke="#6b7280" stroke-width="0.6"/><line x1="8" y1="14" x2="13" y2="13" stroke="#c8dde8" stroke-width="0.8"/><line x1="20" y1="8" x2="18" y2="14" stroke="#c8dde8" stroke-width="0.8"/><line x1="22" y1="20" x2="14" y2="19" stroke="#c8dde8" stroke-width="0.8"/></svg></div>
+        <span>View Research Themes &rarr;</span>
+      </a>
       <button class="pub-network-toggle" id="networkToggle" style="margin-bottom: 0;">
         <div class="toggle-thumb"><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="4" fill="#e05c2a" stroke="#c04010" stroke-width="1"/><circle cx="6" cy="8" r="2.5" fill="#c0392b" stroke="#fff" stroke-width="0.5"/><circle cx="22" cy="8" r="2.5" fill="#059669" stroke="#fff" stroke-width="0.5"/><circle cx="8" cy="22" r="2" fill="#059669" stroke="#fff" stroke-width="0.5"/><circle cx="20" cy="20" r="2" fill="#c0392b" stroke="#fff" stroke-width="0.5"/><line x1="14" y1="14" x2="6" y2="8" stroke="#c8dde8" stroke-width="0.8"/><line x1="14" y1="14" x2="22" y2="8" stroke="#c8dde8" stroke-width="0.8"/><line x1="14" y1="14" x2="8" y2="22" stroke="#c8dde8" stroke-width="0.8"/><line x1="14" y1="14" x2="20" y2="20" stroke="#c8dde8" stroke-width="0.8"/><rect x="9" y="10" width="4" height="4" rx="0.8" fill="#fca5a5" stroke="#c0392b" stroke-width="0.6"/><rect x="17" y="16" width="4" height="4" rx="0.8" fill="#a7f3d0" stroke="#059669" stroke-width="0.6"/></svg></div>
         <span class="toggle-arrow">&#9660;</span> Show Co-authorship Network
       </button>
-      <a href="research.html" class="pub-network-toggle" style="text-decoration: none; margin-bottom: 0;">
-        <div class="toggle-thumb"><svg viewBox="0 0 28 28"><circle cx="8" cy="14" r="6" fill="none" stroke="#2563eb" stroke-width="1.5"/><circle cx="20" cy="8" r="4" fill="none" stroke="#059669" stroke-width="1.5"/><circle cx="22" cy="20" r="5" fill="none" stroke="#d97706" stroke-width="1.5"/><rect x="13" y="12" width="3" height="3" rx="0.5" fill="#fca5a5" stroke="#c62828" stroke-width="0.6"/><rect x="11" y="18" width="3" height="3" rx="0.5" fill="#a7f3d0" stroke="#059669" stroke-width="0.6"/><rect x="18" y="14" width="3" height="3" rx="0.5" fill="#e5e7eb" stroke="#6b7280" stroke-width="0.6"/><line x1="8" y1="14" x2="13" y2="13" stroke="#c8dde8" stroke-width="0.8"/><line x1="20" y1="8" x2="18" y2="14" stroke="#c8dde8" stroke-width="0.8"/><line x1="22" y1="20" x2="14" y2="19" stroke="#c8dde8" stroke-width="0.8"/></svg></div>
-        <span>View Research Map &rarr;</span>
-      </a>
       </div>
       <div class="pub-network-wrap" id="networkWrap">
         <div class="pub-network-inner">
@@ -195,7 +202,7 @@
         <button class="pub-filter-btn" data-filter="theorem">Contains proofs</button>
       </div>
 
-      <div class="pub-list reveal">
+      <div class="pub-list">
 
         <div class="pub-item" data-category="data" data-authors="Lancaster,Manhart A,Pichaud" data-title="Integrins coordinate basal surface contraction and oriented cell growth to enable thickening of a curved epithelium">
           <div class="pub-thumb"><img src="publications/eye_development_thumb.png" alt="thumbnail"/></div>
@@ -388,7 +395,7 @@
         </div>
 
         <div class="pub-item" data-category="data" data-authors="Hartl,Zeller,Manhart A,Selitsch,Lass-Floerl,Willinger" data-title="A Retrospective Assessment of Four Antigen Assays for the Detection of Invasive Candidiasis">
-          <div class="pub-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+          <div class="pub-thumb"><img src="publications/retrospective_thumb.png" alt="thumbnail"/></div>
           <div>
             <div class="pub-title-row"><p class="pub-title">A Retrospective Assessment of Four Antigen Assays for the Detection of Invasive Candidiasis Among High-Risk Hospitalized Patients</p><span class="pub-tag pub-tag-data">Contains data</span></div>
             <p class="pub-meta">Hartl B, Zeller I, Manhart A, Selitsch B, Lass-Floerl C, Willing B &middot; <strong>Mycopathologia</strong></p>
