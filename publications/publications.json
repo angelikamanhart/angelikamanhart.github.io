@@ -7,7 +7,6 @@
     "doi": "10.1016/j.cub.2025.05.048",
     "category": "data",
     "themes": [
-      "collective",
       "other"
     ],
     "thumbnail": "publications/integrins_epithelium_thickening_2025_thumb.png",
@@ -75,7 +74,8 @@
     "doi": "10.1098/rsos.220791",
     "category": "theorem",
     "themes": [
-      "collective"
+      "collective",
+      "micromacro"
     ],
     "thumbnail": "publications/environment_particle_swarms_2022_thumb.png",
     "pdfUrl": "publications/environment_particle_swarms_2022.pdf"
@@ -129,7 +129,8 @@
     "doi": "10.1007/s11538-020-00805-z",
     "category": "theorem",
     "themes": [
-      "collective"
+      "collective",
+      "micromacro"
     ],
     "thumbnail": "publications/self_propelled_obstacles_2020_thumb.png",
     "pdfUrl": "publications/self_propelled_obstacles_2020.pdf"
@@ -224,7 +225,8 @@
     "category": "theorem",
     "themes": [
       "collective",
-      "bacteria"
+      "bacteria",
+      "micromacro"
     ],
     "thumbnail": "publications/age_structured_myxobacteria_2018_thumb.png",
     "pdfUrl": "publications/age_structured_myxobacteria_2018.pdf"
@@ -265,7 +267,8 @@
     "category": "theorem",
     "themes": [
       "collective",
-      "bacteria"
+      "bacteria",
+      "micromacro"
     ],
     "thumbnail": "publications/continuum_nematic_alignment_2017_thumb.png",
     "pdfUrl": "publications/continuum_nematic_alignment_2017.pdf"

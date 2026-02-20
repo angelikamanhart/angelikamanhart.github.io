@@ -103,6 +103,7 @@
     .pub-tag-organelles { background: #7e6b9e; }
     .pub-tag-cytoskeleton { background: #0891b2; }
     .pub-tag-bacteria { background: #d97706; }
+    .pub-tag-micromacro { background: #8b5cf6; }
     .pub-tag-theme-other { background: #64748b; }
     .pub-meta { font-size: 0.84rem; color: var(--muted); font-weight: 300; }
     .pub-meta strong { color: var(--mid); font-weight: 600; }
@@ -152,9 +153,8 @@
       <li><a href="index.html#about">About</a></li>
       <li><a href="research.html">Research</a></li>
       <li><a href="publications.html">Publications</a></li>
-      <li><a href="index.html#team">Team</a></li>
-      <li style="display:none;"><a href="teaching.html">Teaching</a></li>
       <li><a href="outreach.html">Outreach & Art</a></li>
+      <li><a href="index.html#team">Team</a></li>
       <li><a href="cv.html">CV</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
@@ -209,6 +209,7 @@
         <button class="pub-filter-btn" data-filter="organelles">Organelles</button>
         <button class="pub-filter-btn" data-filter="cytoskeleton">Cytoskeleton</button>
         <button class="pub-filter-btn" data-filter="bacteria">Bacteria</button>
+        <button class="pub-filter-btn" data-filter="micromacro">Micro-macro</button>
       </div>
 
       <div class="pub-list" id="pubList"></div>
@@ -224,8 +225,8 @@
 
     var BOOK_ICON_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>';
 
-    var themeTagMap = { collective: 'Collectivity', organelles: 'Organelles', cytoskeleton: 'Cytoskeleton', bacteria: 'Bacteria', other: 'Other' };
-    var themeClassMap = { collective: 'pub-tag-collective', organelles: 'pub-tag-organelles', cytoskeleton: 'pub-tag-cytoskeleton', bacteria: 'pub-tag-bacteria', other: 'pub-tag-theme-other' };
+    var themeTagMap = { collective: 'Collectivity', organelles: 'Organelles', cytoskeleton: 'Cytoskeleton', bacteria: 'Bacteria', micromacro: 'Micro-macro', other: 'Other' };
+    var themeClassMap = { collective: 'pub-tag-collective', organelles: 'pub-tag-organelles', cytoskeleton: 'pub-tag-cytoskeleton', bacteria: 'pub-tag-bacteria', micromacro: 'pub-tag-micromacro', other: 'pub-tag-theme-other' };
 
     function buildAuthorNameMap(publications) {
       // Build a map from full name ("Lancaster C") to display name ("Lancaster")
@@ -295,7 +296,7 @@
     // ── UNIFIED PUBLICATION FILTER ──
     var activeFilters = [];
     var activeNetworkFilter = null;
-    var themeFilters = ['collective', 'organelles', 'cytoskeleton', 'bacteria'];
+    var themeFilters = ['collective', 'organelles', 'cytoskeleton', 'bacteria', 'micromacro'];
     var categoryFilters = ['data', 'theorem'];
 
     function filterPublications() {

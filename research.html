@@ -210,6 +210,7 @@
     .pub-tag-organelles { background: #7e6b9e; }
     .pub-tag-cytoskeleton { background: #0891b2; }
     .pub-tag-bacteria { background: #d97706; }
+    .pub-tag-micromacro { background: #8b5cf6; }
     .pub-tag-theme-other { background: #64748b; }
     .pub-meta { font-size: 0.84rem; color: var(--muted); font-weight: 300; }
     .pub-meta strong { color: var(--mid); font-weight: 600; }
@@ -266,9 +267,8 @@
       <li><a href="index.html#about">About</a></li>
       <li><a href="research.html">Research</a></li>
       <li><a href="publications.html">Publications</a></li>
-      <li><a href="index.html#team">Team</a></li>
-      <li style="display:none;"><a href="teaching.html">Teaching</a></li>
       <li><a href="outreach.html">Outreach & Art</a></li>
+      <li><a href="index.html#team">Team</a></li>
       <li><a href="cv.html">CV</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
@@ -468,8 +468,8 @@ function closeThemeDetail() {
 function renderPubItem(p) {
   var tagClass = p.category === 'theorem' ? 'pub-tag-theorem' : (p.category === 'data' ? 'pub-tag-data' : 'pub-tag-other');
   var tagLabel = p.category === 'theorem' ? 'Theorems' : (p.category === 'data' ? 'Data' : 'Other');
-  var themeTagMap = { collective: 'Collectivity', organelles: 'Organelles', cytoskeleton: 'Cytoskeleton', bacteria: 'Bacteria', other: 'Other' };
-  var themeClassMap = { collective: 'pub-tag-collective', organelles: 'pub-tag-organelles', cytoskeleton: 'pub-tag-cytoskeleton', bacteria: 'pub-tag-bacteria', other: 'pub-tag-theme-other' };
+  var themeTagMap = { collective: 'Collectivity', organelles: 'Organelles', cytoskeleton: 'Cytoskeleton', bacteria: 'Bacteria', micromacro: 'Micro-macro', other: 'Other' };
+  var themeClassMap = { collective: 'pub-tag-collective', organelles: 'pub-tag-organelles', cytoskeleton: 'pub-tag-cytoskeleton', bacteria: 'pub-tag-bacteria', micromacro: 'pub-tag-micromacro', other: 'pub-tag-theme-other' };
   var themeTagsHtml = '';
   if (p.themes) {
     p.themes.forEach(function(t) {
