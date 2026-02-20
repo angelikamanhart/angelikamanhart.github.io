@@ -103,6 +103,18 @@
     .dot-vienna { background: #16a34a; left: 76.2%; top: 50.1%; }
     .dot-nyc    { background: #f97316; left: 32%; top: 57.1%; }
     .dot-london { background: #dc2626; left: 68.2%; top: 46.7%; }
+    .dot-uganda { background: #1a5fb4; left: 84.7%; top: 88.75%; }
+
+    .uganda-label {
+      position: absolute;
+      left: 84.7%; top: 88.75%;
+      transform: translate(20px, -50%);
+      line-height: 1.2;
+      white-space: nowrap;
+      z-index: 5;
+    }
+    .uganda-label .uganda-title { font-family: var(--serif); font-size: 0.88rem; color: var(--ink); }
+    .uganda-label .uganda-detail { font-size: 0.68rem; font-weight: 700; color: var(--accent); letter-spacing: 0.05em; }
 
     /* Circular station cards */
     .station {
@@ -164,14 +176,68 @@
 
     .connector-line {
       fill: none;
-      stroke-width: 3;
-      stroke-dasharray: 6, 5;
+      stroke-width: 2;
       opacity: 0.45;
       vector-effect: non-scaling-stroke;
     }
     .connector-vienna { stroke: #16a34a; }
     .connector-nyc    { stroke: #f97316; }
     .connector-london { stroke: #dc2626; }
+    .connector-uganda { stroke: #1a5fb4; }
+
+    .plane {
+      position: absolute;
+      font-size: 26px;
+      z-index: 6;
+      pointer-events: none;
+      opacity: 0.6;
+      color: var(--accent2);
+      transform: translate(-50%, -50%);
+    }
+
+    /* Dual Degree circle overrides */
+    #station-1 { padding-top: 0.2rem; }
+    #station-1 .station-photo { width: 68px; height: 68px; margin-bottom: 0; }
+
+    /* Split layout for Dual Degree circle */
+    .station-split {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      width: 100%;
+      flex: 1;
+      min-height: 0;
+      margin-top: 0.15rem;
+    }
+    .station-split-half {
+      flex: 1;
+      text-align: center;
+      line-height: 1.2;
+      padding: 0 0.15rem;
+    }
+    .station-split-half:first-child .split-field {
+      transform: translateX(-0.15rem);
+    }
+    .station-split-half .split-field {
+      font-family: var(--serif);
+      font-size: 0.85rem;
+      color: var(--ink);
+      margin-top: 0.15rem;
+    }
+    .station-split-half .split-years {
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      margin-top: 0.1rem;
+    }
+    .station-split-divider {
+      width: 3px;
+      align-self: stretch;
+      background: #16a34a;
+      flex-shrink: 0;
+      border-radius: 1px;
+    }
 
     @keyframes fadeIn { to { opacity: 1; } }
 
@@ -219,8 +285,8 @@
     }
 
     /* Circle positions: clockwise from bottom-right, offset from path */
-    #station-1 { left: 88%; top: 42%; animation-delay: 0s; }
-    #station-2 { left: 82%; top: 72%; animation-delay: 0.1s; }
+    #station-1 { left: 88%; top: 47%; animation-delay: 0s; }
+    #station-2 { left: 72.5%; top: 75%; animation-delay: 0.1s; }
     #station-3 { left: 22%; top: 72%; animation-delay: 0.2s; }
     #station-4 { left: 18%; top: 38%; animation-delay: 0.3s; }
     #station-5 { left: 44%; top: 24%; animation-delay: 0.4s; }
@@ -285,6 +351,12 @@
       .tl-circle .station-mentor { font-size: 0.64rem; }
       .tl-circle .station-years { font-size: 0.64rem; }
 
+      .tl-circle .station-photo + .station-number ~ .station-split { margin-top: 0.1rem; }
+      .tl-circle .split-field { font-size: 0.72rem; }
+      .tl-circle .split-years { font-size: 0.55rem; }
+      .tl-circle:first-child { padding-top: 0.2rem; }
+      .tl-circle:first-child .station-photo { width: 58px; height: 58px; margin-bottom: 0; }
+
       .tl-vienna { border-color: #16a34a; }
       .tl-nyc    { border-color: #f97316; }
       .tl-london { border-color: #dc2626; }
@@ -345,7 +417,7 @@
   <div class="container">
     <div class="page-header">
       <p class="section-label">Academic Journey</p>
-      <h2 class="section-title">CV</h2>
+      <h2 class="section-title">Curriculum Vitae</h2>
       <p class="section-intro">Vienna &rarr; New York &rarr; London &rarr; Vienna &mdash; a journey through mathematics and biology.</p>
     </div>
   </div>
@@ -358,39 +430,70 @@
       <!-- SVG journey paths -->
       <svg id="journey-paths" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
         <!-- Vienna → NYC -->
-        <path class="journey-path" d="M 76.2 50.1 Q 54 62 32 57.1"/>
+        <path class="journey-path" id="path-vienna-nyc" d="M 76.2 50.1 Q 54 62 32 57.1"/>
         <!-- NYC → London -->
-        <path class="journey-path" d="M 32 57.1 Q 50 42 68.2 46.7"/>
+        <path class="journey-path" id="path-nyc-london" d="M 32 57.1 Q 50 42 68.2 46.7"/>
         <!-- London → Vienna -->
-        <path class="journey-path" d="M 68.2 46.7 Q 72 48 76.2 50.1"/>
+        <path class="journey-path" id="path-london-vienna" d="M 68.2 46.7 Q 72 48 76.2 50.1"/>
       </svg>
+
+      <!-- Airplane icon flying along paths -->
+      <div class="plane" id="plane-1">&#9992;</div>
 
       <!-- Connector lines from circles to geo dots -->
       <svg id="connector-lines" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+          <marker id="arrow-vienna" markerWidth="7" markerHeight="5" refX="3.5" refY="2.5" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L7,2.5 L0,5 Z" fill="#16a34a" opacity="0.7"/>
+          </marker>
+          <marker id="arrow-nyc" markerWidth="7" markerHeight="5" refX="3.5" refY="2.5" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L7,2.5 L0,5 Z" fill="#f97316" opacity="0.7"/>
+          </marker>
+          <marker id="arrow-london" markerWidth="7" markerHeight="5" refX="3.5" refY="2.5" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L7,2.5 L0,5 Z" fill="#dc2626" opacity="0.7"/>
+          </marker>
+          <marker id="arrow-uganda" markerWidth="7" markerHeight="5" refX="3.5" refY="2.5" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L7,2.5 L0,5 Z" fill="#1a5fb4" opacity="0.7"/>
+          </marker>
+        </defs>
         <!-- Vienna stations (1,2,6) → Vienna dot (76.2, 50.1) -->
-        <line class="connector-line connector-vienna" x1="88" y1="42" x2="76.2" y2="50.1"/>
-        <line class="connector-line connector-vienna" x1="82" y1="72" x2="76.2" y2="50.1"/>
-        <line class="connector-line connector-vienna" x1="70" y1="22" x2="76.2" y2="50.1"/>
+        <polyline class="connector-line connector-vienna" points="88,47 78.6,49.5 76.2,50.1" marker-mid="url(#arrow-vienna)"/>
+        <polyline class="connector-line connector-vienna" points="72.5,75 75.3,56.5 76.2,50.1" marker-mid="url(#arrow-vienna)"/>
+        <polyline class="connector-line connector-vienna" points="70,22 74.4,41.9 76.2,50.1" marker-mid="url(#arrow-vienna)"/>
         <!-- NYC station (3) → NYC dot (32, 57.1) -->
-        <line class="connector-line connector-nyc" x1="22" y1="72" x2="32" y2="57.1"/>
+        <polyline class="connector-line connector-nyc" points="22,72 29.7,60.5 32,57.1" marker-mid="url(#arrow-nyc)"/>
         <!-- London stations (4,5) → London dot (68.2, 46.7) -->
-        <line class="connector-line connector-london" x1="18" y1="38" x2="68.2" y2="46.7"/>
-        <line class="connector-line connector-london" x1="44" y1="24" x2="68.2" y2="46.7"/>
+        <polyline class="connector-line connector-london" points="18,38 46.7,43.0 68.2,46.7" marker-mid="url(#arrow-london)"/>
+        <polyline class="connector-line connector-london" points="44,24 59.2,38.3 68.2,46.7" marker-mid="url(#arrow-london)"/>
+        <!-- Studies (station 1) ↔ Uganda detour (smooth curves) -->
+        <path class="connector-line connector-uganda" d="M88,47 Q91,57.5 88.5,68 Q86,78.5 84.7,88.75" marker-mid="url(#arrow-uganda)"/>
+        <path class="connector-line connector-uganda" d="M84.7,88.75 Q83.5,78.5 84,68 Q84.5,57.5 88,47" marker-mid="url(#arrow-uganda)"/>
       </svg>
 
       <!-- Anchor dots -->
       <div class="geo-dot dot-vienna"></div>
       <div class="geo-dot dot-nyc"></div>
       <div class="geo-dot dot-london"></div>
+      <div class="geo-dot dot-uganda"></div>
+      <div class="uganda-label"><div class="uganda-title">Voluntary Social Year</div><div class="uganda-detail">2008 &middot; Uganda</div></div>
 
       <!-- Station circles: clockwise from bottom-right -->
       <div class="station station-vienna" id="station-1">
         <div class="station-photo"><img src="images/cv/studies_thumb.png" alt=""/></div>
         <div class="station-number">1</div>
-        <div class="station-title">Studies</div>
+        <div class="station-title">Dual Degree</div>
         <div class="station-institution">University of Vienna</div>
-        <div class="station-mentor">Mathematics &amp; Molecular Biology</div>
-        <div class="station-years">2006&ndash;2011</div>
+        <div class="station-split">
+          <div class="station-split-half">
+            <div class="split-field">Mathematics</div>
+            <div class="split-years">2004&ndash;2011</div>
+          </div>
+          <div class="station-split-divider"></div>
+          <div class="station-split-half">
+            <div class="split-field">Molecular Biology</div>
+            <div class="split-years">2005&ndash;2011</div>
+          </div>
+        </div>
       </div>
 
       <div class="station station-vienna" id="station-2">
@@ -398,7 +501,7 @@
         <div class="station-number">2</div>
         <div class="station-title">PhD in Mathematics</div>
         <div class="station-institution">University of Vienna</div>
-        <div class="station-mentor">Prof. Schmeiser</div>
+        <div class="station-mentor">Christian Schmeiser</div>
         <div class="station-years">2011&ndash;2015</div>
       </div>
 
@@ -407,7 +510,7 @@
         <div class="station-number">3</div>
         <div class="station-title">Postdoctoral Researcher</div>
         <div class="station-institution">New York University</div>
-        <div class="station-mentor">Prof. Mogilner</div>
+        <div class="station-mentor">Alex Mogilner</div>
         <div class="station-years">2016&ndash;2018</div>
       </div>
 
@@ -416,14 +519,14 @@
         <div class="station-number">4</div>
         <div class="station-title">Postdoctoral Researcher</div>
         <div class="station-institution">Imperial College London</div>
-        <div class="station-mentor">Prof. Degond</div>
+        <div class="station-mentor">Pierre Degond</div>
         <div class="station-years">2018&ndash;2019</div>
       </div>
 
       <div class="station station-london" id="station-5">
         <div class="station-photo"><img src="images/cv/ucl_thumb.png" alt=""/></div>
         <div class="station-number">5</div>
-        <div class="station-title">Assist/Assoc Prof.</div>
+        <div class="station-title">Assist/Assoc Professor</div>
         <div class="station-institution">University College London</div>
         <div class="station-years">2019&ndash;2022</div>
       </div>
@@ -431,7 +534,7 @@
       <div class="station station-vienna" id="station-6">
         <div class="station-photo"><img src="images/cv/present_thumb.jpg" alt=""/></div>
         <div class="station-number">6</div>
-        <div class="station-title">Assist/Assoc Prof.</div>
+        <div class="station-title">Assist/Assoc Professor</div>
         <div class="station-institution">University of Vienna</div>
         <div class="station-years">2023&ndash;Present</div>
       </div>
@@ -445,10 +548,19 @@
       <div class="tl-circle tl-vienna">
         <div class="station-photo"><img src="images/cv/studies_thumb.png" alt=""/></div>
         <div class="station-number">1</div>
-        <div class="station-title">Studies</div>
+        <div class="station-title">Dual Degree</div>
         <div class="station-institution">University of Vienna</div>
-        <div class="station-mentor">Mathematics &amp; Molecular Biology</div>
-        <div class="station-years">2006&ndash;2011</div>
+        <div class="station-split">
+          <div class="station-split-half">
+            <div class="split-field">Mathematics</div>
+            <div class="split-years">2004&ndash;2011</div>
+          </div>
+          <div class="station-split-divider"></div>
+          <div class="station-split-half">
+            <div class="split-field">Molecular Biology</div>
+            <div class="split-years">2005&ndash;2011</div>
+          </div>
+        </div>
       </div>
 
       <div class="tl-circle tl-vienna">
@@ -456,7 +568,7 @@
         <div class="station-number">2</div>
         <div class="station-title">PhD in Mathematics</div>
         <div class="station-institution">University of Vienna</div>
-        <div class="station-mentor">Prof. Schmeiser</div>
+        <div class="station-mentor">Christian Schmeiser</div>
         <div class="station-years">2011&ndash;2015</div>
       </div>
 
@@ -465,7 +577,7 @@
         <div class="station-number">3</div>
         <div class="station-title">Postdoctoral Researcher</div>
         <div class="station-institution">New York University</div>
-        <div class="station-mentor">Prof. Mogilner</div>
+        <div class="station-mentor">Alex Mogilner</div>
         <div class="station-years">2016&ndash;2018</div>
       </div>
 
@@ -474,14 +586,14 @@
         <div class="station-number">4</div>
         <div class="station-title">Postdoctoral Researcher</div>
         <div class="station-institution">Imperial College London</div>
-        <div class="station-mentor">Prof. Degond</div>
+        <div class="station-mentor">Pierre Degond</div>
         <div class="station-years">2018&ndash;2019</div>
       </div>
 
       <div class="tl-circle tl-london">
         <div class="station-photo"><img src="images/cv/ucl_thumb.png" alt=""/></div>
         <div class="station-number">5</div>
-        <div class="station-title">Assist/Assoc Prof.</div>
+        <div class="station-title">Assist/Assoc Professor</div>
         <div class="station-institution">University College London</div>
         <div class="station-years">2019&ndash;2022</div>
       </div>
@@ -489,14 +601,62 @@
       <div class="tl-circle tl-vienna">
         <div class="station-photo"><img src="images/cv/present_thumb.jpg" alt=""/></div>
         <div class="station-number">6</div>
-        <div class="station-title">Assist/Assoc Prof.</div>
+        <div class="station-title">Assist/Assoc Professor</div>
         <div class="station-institution">University of Vienna</div>
         <div class="station-years">2023&ndash;Present</div>
       </div>
     </div>
   </div>
 
-  <footer>&copy; 2025 Manhart A &middot; University of Vienna &middot; Faculty of Mathematics</footer>
+  <footer>&copy; 2026 Manhart A &middot; University of Vienna &middot; Faculty of Mathematics</footer>
+
+  <script>
+  (function() {
+    var segmentIds = ['path-vienna-nyc', 'path-nyc-london', 'path-london-vienna'];
+    var plane = document.getElementById('plane-1');
+    var map = document.getElementById('world-map');
+    if (!plane || !map) return;
+
+    // Build array of segments with cumulative lengths
+    var segments = [];
+    var totalLength = 0;
+    segmentIds.forEach(function(id) {
+      var p = document.getElementById(id);
+      var len = p.getTotalLength();
+      segments.push({ path: p, start: totalLength, len: len });
+      totalLength += len;
+    });
+
+    var duration = 15000; // full loop
+
+    function step(startTime, now) {
+      var elapsed = (now - startTime) % duration;
+      var dist = (elapsed / duration) * totalLength;
+
+      // Find which segment we're on
+      var seg = segments[segments.length - 1];
+      for (var i = 0; i < segments.length; i++) {
+        if (dist < segments[i].start + segments[i].len) { seg = segments[i]; break; }
+      }
+      var localDist = dist - seg.start;
+      var pt = seg.path.getPointAtLength(localDist);
+      var pt2 = seg.path.getPointAtLength(Math.min(localDist + 0.3, seg.len));
+
+      plane.style.left = pt.x + '%';
+      plane.style.top = pt.y + '%';
+
+      var mapRect = map.getBoundingClientRect();
+      var dx = (pt2.x - pt.x) * mapRect.width / 100;
+      var dy = (pt2.y - pt.y) * mapRect.height / 100;
+      var angle = Math.atan2(dy, dx) * 180 / Math.PI;
+      plane.style.transform = 'translate(-50%,-50%) rotate(' + angle + 'deg)';
+
+      requestAnimationFrame(function(t) { step(startTime, t); });
+    }
+
+    requestAnimationFrame(function(now) { step(now, now); });
+  })();
+  </script>
 
 </body>
 </html>
