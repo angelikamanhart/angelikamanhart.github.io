@@ -133,6 +133,8 @@
     /* ABOUT */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
     .about-text p { color: var(--mid); font-weight: 300; margin-bottom: 1rem; }
+    .about-link { display: inline-block; font-size: 0.85rem; font-weight: 600; color: var(--accent); text-decoration: none; margin-left: 0.3rem; transition: color 0.2s; }
+    .about-link:hover { color: var(--accent2); }
     .about-interests { display: flex; flex-direction: column; gap: 1.2rem; }
     .interest-group { background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--accent2); border-radius: 0 8px 8px 0; padding: 1.2rem 1.4rem; }
     .interest-group h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent2); margin-bottom: 0.7rem; }
@@ -272,10 +274,12 @@
       </div>
       <div class="about-grid reveal">
         <div class="about-text">
-          <p>I am a researcher working at the exciting intersection of mathematics and molecular biology. I hold the position of <strong>Associate Professor for Mathematical Biology</strong> at the Faculty of Mathematics at the University of Vienna, and an honorary position as Associate Professor in Applied Mathematics at the Mathematics Department of <strong>University College London (UCL)</strong>.</p>
-          <p>I believe that good mathematical models allow us to better understand biological phenomena. My work spans a range of scales — from individual proteins and cytoskeletal networks to collective behaviour of cells and tissues.</p>
-          <p>I enjoy outreach and public engagement activities and like using art as a means to communicate scientific ideas.</p>
-          <p><a href="cv.html" style="color: var(--accent2); font-weight: 500; text-decoration: none; border-bottom: 1px solid var(--accent2);">Find out more about my academic journey &rarr;</a></p>
+          <p>I am a researcher working in the interdisciplinary field of Computational/Mathematical Biology. I have a double-degree in Mathematics and Molecular Biology and currently hold the position of <strong>Associate Professor for Mathematical Biology</strong> at the Faculty of Mathematics at the University of Vienna, and an honorary position as Associate Professor in Applied Mathematics at the Mathematics Department of <strong>University College London (UCL)</strong>.
+          <a class="about-link" href="cv.html">My academic journey &rarr;</a></p>
+          <p>I believe that good mathematical models allow us to better understand biological phenomena. My work spans a range of scales — from individual proteins and cytoskeletal networks to collective behaviour of cells and tissues.
+          <a class="about-link" href="research.html">Explore my research &rarr;</a></p>
+          <p>I enjoy outreach and public engagement activities and like using art as a means to communicate scientific ideas.
+          <a class="about-link" href="outreach.html">Outreach &amp; Art &rarr;</a></p>
         </div>
         <div class="about-interests">
           <div class="interest-group">

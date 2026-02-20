@@ -443,19 +443,19 @@ var themes = [
     thumb: 'images/research_thumbs/cytoskeleton_thumb.png'
   },
   {
-    id: 'myxobacteria',
-    name: 'Myxobacteria',
+    id: 'bacteria',
+    name: 'Bacteria',
     subtitle: 'Coordination & Waves',
     description: 'Myxobacteria are soil-living bacteria that can glide on 2D surfaces using different movement mechanisms. In different settings they show fascinating collective pattern which include clustering and wave formation. We used collision operators to describe bacteria interactions and derived continuum equations. Studying these revealed criteria and mechanisms for the appearance of the fascinating counter-propagating waves.',
     color: '#d97706',
     thumb: 'images/research_thumbs/myxo_thumb.png'
   },
   {
-    id: 'organells',
+    id: 'organelles',
     name: 'Cell Organelles',
     subtitle: 'Nuclear Positioning & Scaling',
     description: 'The nucleus is a cell\u2019s central organ. Muscle cells can contain 10s\u2013100s of nuclei. Their position and size is important for muscle function & health. Using data & mathematical modelling, we investigate positioning and size scaling mechanism in single and multi-nucleated cells.',
-    color: '#7c3aed',
+    color: '#7e6b9e',
     thumb: 'images/research_thumbs/organelle_thumb.png'
   },
   {
@@ -493,35 +493,7 @@ var themes = [
   }
 ];
 
-var publications = [
-  { year: 2025, title: "Integrins coordinate basal surface contraction and oriented cell growth to enable thickening of a curved epithelium", journal: "Current Biology", doi: "10.1016/j.cub.2025.05.048", themes: ['collective','other'], category: 'data', authors: 'Lancaster C, Manhart A, Pichaud F', thumbnail: 'publications/eye_development_thumb.png', pdfUrl: 'publications/eye_development.pdf' },
-  { year: 2024, title: "A dynamical analysis of the alignment mechanism between two interacting cells", journal: "Bulletin of Mathematical Biology", doi: null, themes: ['collective'], category: 'theorem', authors: 'Leech V, Dalwadi MP, Manhart A', thumbnail: 'publications/cell_alignment_analytical_thumb.png', pdfUrl: 'publications/cell_alignment_analytical.pdf' },
-  { year: 2024, title: "Derivation and simulation of a computational model of active cell populations: How overlap avoidance, deformability, cell-cell junctions and cytoskeletal forces affect alignment", journal: "PLOS Computational Biology", doi: "10.1371/journal.pcbi.1011879", themes: ['collective'], category: 'data', authors: 'Leech V, Kenny FN, Marcotti S, Shaw TJ, Stramer BM, Manhart A', thumbnail: 'publications/cell_alignment_computational_thumb.png', pdfUrl: 'publications/cell_alignment_computational.pdf' },
-  { year: 2023, title: "Controlling periodic long-range signalling to drive a morphogenetic transition", journal: "eLife", doi: "10.7554/elife.83796", themes: ['collective'], category: 'data', authors: 'Ford HZ, Manhart A, Chubb JR', thumbnail: 'publications/periodic_long_range_thumb.png', pdfUrl: 'publications/periodic_long_range_signalling_dicty.pdf' },
-  { year: 2023, title: "Autocrine IL-6 drives cell and extracellular matrix anisotropy in scar fibroblasts", journal: "Matrix Biology", doi: null, themes: ['collective','cytoskeleton'], category: 'data', authors: 'Kenny FN, Marcotti S, DeFreitas DB, Drudi EM, Leech V, Bell RE, Easton J, Diaz-de-la-Loza MdC, Fleck R, Allison L, Phillippeos C, Manhart A, Shaw TJ, Stramer BM', thumbnail: 'publications/cell_alignment_biology_thumb.png', pdfUrl: 'publications/cell_alignment_biology.pdf' },
-  { year: 2022, title: "How environment affects active particle swarms: a case study", journal: "Royal Society Open Science", doi: "10.1098/rsos.220791", themes: ['collective'], category: 'theorem', authors: 'Degond P, Manhart A, Merino-Aceituno S, Peurichard D, Sala L', thumbnail: 'publications/environment_swarm_thumb.png', pdfUrl: 'publications/environment_particle_swarms.pdf' },
-  { year: 2022, title: "Chaos in synthetic microbial communities", journal: "PLOS Computational Biology", doi: null, themes: ['collective'], category: 'theorem', authors: 'Karkaria BD, Rao C, Manhart A, Fedorec AJH, Barnes CP', thumbnail: 'publications/chaos_synthetic_communities_thumb.png', pdfUrl: 'publications/chaos_synthetic_communities.pdf' },
-  { year: 2022, title: "Mathematical modeling accurately predicts the dynamics and scaling of nuclear growth in discrete cytoplasmic volumes", journal: "Journal of Theoretical Biology", doi: "10.1016/j.jtbi.2021.110936", themes: ['organells'], category: 'data', authors: 'Leech V, Hazel JW, Gatlin JC, Lindsay AE, Manhart A', thumbnail: 'publications/leech_nuclear_scaling_paper_thumb.png', pdfUrl: 'publications/leech_nuclear_scaling_paper.pdf' },
-  { year: 2021, title: "Kinetic modelling of colonies of myxobacteria", journal: "Kinetic & Related Models", doi: "10.3934/krm.2020046", themes: ['collective','myxobacteria'], category: 'theorem', authors: 'Hittmeir S, Kanzler L, Manhart A, Schmeiser C', thumbnail: 'publications/kinetic_myxobacteria_thumb.png', pdfUrl: null },
-  { year: 2020, title: "Large-Scale Dynamics of Self-propelled Particles Moving Through Obstacles: Model Derivation and Pattern Formation", journal: "Bulletin of Mathematical Biology", doi: "10.1007/s11538-020-00805-z", themes: ['collective'], category: 'theorem', authors: 'Aceves-Sanchez P, Degond P, Keaveny EE, Manhart A, Merino-Aceituno S, Peurichard D', thumbnail: 'publications/swimmer_obstacle_thumb.png', pdfUrl: 'publications/swimmer_obstacle.pdf' },
-  { year: 2020, title: "Reverse-engineering forces responsible for dynamic clustering and spreading of multiple nuclei in developing muscle cells", journal: "Molecular Biology of the Cell", doi: "10.1091/mbc.e19-12-0711", themes: ['organells','cytoskeleton'], category: 'data', authors: 'Manhart A, Azevedo M, Baylies MK, Mogilner A', thumbnail: 'publications/reverse_engineer_thumb.png', pdfUrl: 'publications/reverse_engineer.pdf' },
-  { year: 2020, title: "Centering and symmetry breaking in confined contracting actomyosin networks", journal: "eLife", doi: "10.7554/elife.55368", themes: ['cytoskeleton'], category: 'data', authors: 'Ierushalmi N, Malik-Garbi M, Manhart A, Shah EA, Goode BL, Mogilner A, Keren K', thumbnail: 'publications/centering_symmetry_actomyosin_thumb.png', pdfUrl: 'publications/centering_symmetry_actin.pdf' },
-  { year: 2019, title: "Analyzing collective motion with machine learning and topology", journal: "Chaos", doi: "10.1063/1.5125493", themes: ['collective'], category: 'theorem', authors: 'Bhaskar D, Manhart A, Milzman J, Nardini JT, Storey KM, Topaz CM, Ziegelmeier L', thumbnail: 'publications/tda_thumb.png', pdfUrl: 'publications/tda.pdf' },
-  { year: 2019, title: "Nuclear Scaling Is Coordinated among Individual Nuclei in Multinucleated Muscle Fibers", journal: "Developmental Cell", doi: "10.1016/j.devcel.2019.02.020", themes: ['organells','cytoskeleton'], category: 'data', authors: 'Windner SE, Manhart A, Brown A, Mogilner A, Baylies MK', thumbnail: 'publications/scaling_myonuclei_thumb.png', pdfUrl: 'publications/scaling_myonuclei.pdf' },
-  { year: 2019, title: "Quantitative regulation of the dynamic steady state of actin networks", journal: "eLife", doi: "10.7554/elife.42413", themes: ['cytoskeleton'], category: 'data', authors: 'Manhart A, Icheva TA, Guerin C, Klar T, Boujemaa-Paterski R, Thery M, Blanchoin L, Mogilner A', thumbnail: 'publications/quantitative_actin_thumb.png', pdfUrl: 'publications/quantitative_actin.pdf' },
-  { year: 2018, title: "Counter-propagating wave patterns in a swarm model with memory", journal: "Journal of Mathematical Biology", doi: "10.1007/s00285-018-1287-x", themes: ['collective','myxobacteria'], category: 'theorem', authors: 'Manhart A', thumbnail: 'publications/swarm_model_thumb.png', pdfUrl: 'publications/swarm_model_memory.pdf' },
-  { year: 2018, title: "An age-structured continuum model for myxobacteria", journal: "Mathematical Models and Methods in Applied Sciences", doi: "10.1142/s0218202518400043", themes: ['collective','myxobacteria'], category: 'theorem', authors: 'Degond P, Manhart A, Yu H', thumbnail: 'publications/age_structured_myxobacteria.png', pdfUrl: 'publications/age_structured_myxobacteria.pdf' },
-  { year: 2018, title: "Mechanical positioning of multiple nuclei in muscle cells", journal: "PLoS Computational Biology", doi: "10.1371/journal.pcbi.1006208", themes: ['organells','cytoskeleton'], category: 'data', authors: 'Manhart A, Windner S, Baylies M, Mogilner A', thumbnail: 'publications/mechanical_positioning_thumb.png', pdfUrl: 'publications/mechanical_positioning_myonuclei.pdf' },
-  { year: 2018, title: "Intracellular Fluid Mechanics: Coupling Cytoplasmic Flow with Active Cytoskeletal Gel", journal: "Annual Review of Fluid Mechanics", doi: "10.1146/annurev-fluid-010816-060238", themes: ['cytoskeleton'], category: 'data', authors: 'Mogilner A, Manhart A', thumbnail: 'publications/annurev_fluid.png', pdfUrl: 'publications/annurev_fluid.pdf' },
-  { year: 2018, title: "A Retrospective Assessment of Four Antigen Assays for the Detection of Invasive Candidiasis Among High-Risk Hospitalized Patients", journal: "Mycopathologia", doi: "10.1007/s11046-017-0238-1", themes: ['other'], category: 'data', authors: 'Hartl B, Zeller I, Manhart A, Selitsch B, Lass-Floerl C, Willinger B', thumbnail: null, pdfUrl: 'publications/antigen_assay_candidiasis.pdf' },
-  { year: 2017, title: "A continuum model for nematic alignment of self-propelled particles", journal: "Discrete & Continuous Dynamical Systems - B", doi: "10.3934/dcdsb.2017063", themes: ['collective','myxobacteria'], category: 'theorem', authors: 'Degond P, Manhart A, Yu H', thumbnail: 'publications/continuum_nematic_thumb.png', pdfUrl: 'publications/continuum_nematic.pdf' },
-  { year: 2017, title: "Numerical Treatment of the Filament Based Lamellipodium Model", journal: "Modelling Cellular Systems", doi: "10.1007/978-3-319-45833-5", themes: ['cytoskeleton'], category: 'theorem', authors: 'Manhart A, Oelz D, Schmeiser C, Sfakianakis N', thumbnail: 'publications/numerical_FBLM_thumb.png', pdfUrl: 'publications/numerical_FBLM.pdf' },
-  { year: 2016, title: "Agent-based modeling: case study in cleavage furrow models", journal: "Molecular Biology of the Cell", doi: "10.1091/mbc.E16-01-0013", themes: ['collective','organells'], category: 'data', authors: 'Manhart A, Mogilner A', thumbnail: 'publications/agent_based_furrow_thumb.png', pdfUrl: 'publications/agent_based_cleavage_furrow.pdf' },
-  { year: 2017, title: "Existence of and decay to equilibrium of the filament end density along the leading edge of the lamellipodium", journal: "Journal of Mathematical Biology", doi: "10.1007/s00285-016-1027-z", themes: ['cytoskeleton'], category: 'theorem', authors: 'Manhart A, Schmeiser C', thumbnail: 'publications/existence_leading_edge_thumb.png', pdfUrl: 'publications/existence_leading_edge.pdf' },
-  { year: 2017, title: "Mathematical modeling of Myosin induced bistability of Lamellipodial fragments", journal: "Journal of Mathematical Biology", doi: "10.1007/s00285-016-1008-2", themes: ['cytoskeleton'], category: 'theorem', authors: 'Hirsch S, Manhart A, Schmeiser C', thumbnail: 'publications/myosin_bistability_thumb.png', pdfUrl: 'publications/modelling_myosin_bistability.pdf' },
-  { year: 2015, title: "An extended Filament Based Lamellipodium Model produces various moving cell shapes in the presence of chemotactic signals", journal: "Journal of Theoretical Biology", doi: "10.1016/j.jtbi.2015.06.044", themes: ['cytoskeleton'], category: 'theorem', authors: 'Manhart A, Oelz D, Schmeiser C, Sfakianakis N', thumbnail: 'publications/extended_FBLM_shapes_thumb.png', pdfUrl: 'publications/extended_FBLM_shapes.pdf' },
-  { year: 2014, title: "Large-scale mitochondrial DNA analysis in Southeast Asia reveals evolutionary effects of cultural isolation in the multi-ethnic population of Myanmar", journal: "BMC Evolutionary Biology", doi: "10.1186/1471-2148-14-17", themes: ['other'], category: 'data', authors: 'Summerer M, Horst J, Erhart G, Weissensteiner H, Schoenherr S, Pacher D, Forer L, Horst D, Manhart A, Horst B, Sanguansermsri T, Kloss-Brandstaetter A', thumbnail: 'publications/mtDNA_myanmar_thumb.png', pdfUrl: 'publications/mtDNA_myanmar.pdf' }
-];
+var publications = [];
 
 var BOOK_ICON_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>';
 
@@ -549,7 +521,7 @@ function draw() {
 
   // Assign initial positions for themes in a circle to reduce edge crossings
   // Order chosen so related themes are adjacent
-  var themeOrder = ['collective', 'myxobacteria', 'other', 'organells', 'cytoskeleton', 'mohecce'];
+  var themeOrder = ['collective', 'bacteria', 'other', 'organelles', 'cytoskeleton', 'mohecce'];
   var nodes = [
     ...themes.map(function(t) {
       var idx = themeOrder.indexOf(t.id);
@@ -885,12 +857,17 @@ function renderPubItem(p) {
 }
 
 // ── INIT ──────────────────────────────────────────────────────────────────
-draw();
-window.addEventListener('resize', function() {
-  closeThemeDetail();
-  closePubModal();
-  draw();
-});
+fetch('publications/publications.json')
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    publications = data;
+    draw();
+    window.addEventListener('resize', function() {
+      closeThemeDetail();
+      closePubModal();
+      draw();
+    });
+  });
 </script>
 </body>
 </html>

@@ -99,88 +99,71 @@
 <svg id="graph"></svg>
 
 <script>
-// ── DATA ──────────────────────────────────────────────────────────────────────
-const publications = [
-  { title: "A dynamical analysis of the alignment mechanism between two interacting cells", year: 2024, category: "Theorem", authors: ["Leech V","Dalwadi MP","Manhart A"] },
-  { title: "Derivation and simulation of a computational model of active cell populations", year: 2024, category: "Data", authors: ["Leech V","Kenny FN","Marcotti S","Shaw TJ","Stramer BM","Manhart A"] },
-  { title: "Controlling periodic long-range signalling to drive a morphogenetic transition", year: 2023, category: "Data", authors: ["Ford HZ","Manhart A","Chubb JR"] },
-  { title: "Autocrine IL-6 drives cell and extracellular matrix anisotropy in scar fibroblasts", year: 2023, category: "Data", authors: ["Kenny FN","Marcotti S","DeFreitas DB","Drudi EM","Leech V","Bell RE","Easton J","Diaz-de-la-Loza MdC","Fleck R","Allison L","Phillippeos C","Manhart A","Shaw TJ","Stramer BM"] },
-  { title: "How environment affects active particle swarms: a case study", year: 2022, category: "Theorem", authors: ["Degond P","Manhart A","Merino-Aceituno S","Peurichard D","Sala L"] },
-  { title: "Chaos in synthetic microbial communities", year: 2022, category: "Theorem", authors: ["Karkaria BD","Rao C","Manhart A","Fedorec AJH","Barnes CP"] },
-  { title: "Mathematical modeling accurately predicts the dynamics and scaling of nuclear growth", year: 2022, category: "Data", authors: ["Leech V","Hazel JW","Gatlin JC","Lindsay AE","Manhart A"] },
-  { title: "Kinetic modelling of colonies of myxobacteria", year: 2021, category: "Theorem", authors: ["Hittmeir S","Kanzler L","Manhart A","Schmeiser C"] },
-  { title: "Large-Scale Dynamics of Self-propelled Particles Moving Through Obstacles", year: 2020, category: "Theorem", authors: ["Aceves-Sanchez P","Degond P","Keaveny EE","Manhart A","Merino-Aceituno S","Peurichard D"] },
-  { title: "Reverse-engineering forces responsible for dynamic clustering and spreading of multiple nuclei", year: 2020, category: "Data", authors: ["Manhart A","Azevedo M","Baylies MK","Mogilner A"] },
-  { title: "Centering and symmetry breaking in confined contracting actomyosin networks", year: 2020, category: "Data", authors: ["Ierushalmi N","Malik-Garbi M","Manhart A","Shah EA","Goode BL","Mogilner A","Keren K"] },
-  { title: "Analyzing collective motion with machine learning and topology", year: 2019, category: "Neither", authors: ["Bhaskar D","Manhart A","Milzman J","Nardini JT","Storey KM","Topaz CM","Ziegelmeier L"] },
-  { title: "Nuclear Scaling Is Coordinated among Individual Nuclei in Multinucleated Muscle Fibers", year: 2019, category: "Data", authors: ["Windner SE","Manhart A","Brown A","Mogilner A","Baylies MK"] },
-  { title: "Quantitative regulation of the dynamic steady state of actin networks", year: 2019, category: "Data", authors: ["Manhart A","Icheva TA","Guerin C","Klar T","Boujemaa-Paterski R","Thery M","Blanchoin L","Mogilner A"] },
-  { title: "Counter-propagating wave patterns in a swarm model with memory", year: 2018, category: "Theorem", authors: ["Manhart A"] },
-  { title: "An age-structured continuum model for myxobacteria", year: 2018, category: "Theorem", authors: ["Degond P","Manhart A","Yu H"] },
-  { title: "Mechanical positioning of multiple nuclei in muscle cells", year: 2018, category: "Data", authors: ["Manhart A","Windner SE","Baylies MK","Mogilner A"] },
-  { title: "Intracellular Fluid Mechanics: Coupling Cytoplasmic Flow with Active Cytoskeletal Gel", year: 2018, category: "Neither", authors: ["Mogilner A","Manhart A"] },
-  { title: "A Retrospective Assessment of Four Antigen Assays for the Detection of Invasive Candidiasis", year: 2018, category: "Data", authors: ["Hartl B","Zeller I","Manhart A","Selitsch B","Lass-Floerl C","Willinger B"] },
-  { title: "A continuum model for nematic alignment of self-propelled particles", year: 2017, category: "Theorem", authors: ["Degond P","Manhart A","Yu H"] },
-  { title: "Numerical Treatment of the Filament Based Lamellipodium Model", year: 2017, category: "Theorem", authors: ["Manhart A","Oelz D","Schmeiser C","Sfakianakis N"] },
-  { title: "Agent-based modeling: case study in cleavage furrow models", year: 2016, category: "Neither", authors: ["Manhart A","Mogilner A"] },
-  { title: "Existence of and decay to equilibrium of the filament end density", year: 2017, category: "Theorem", authors: ["Manhart A","Schmeiser C"] },
-  { title: "Mathematical modeling of Myosin induced bistability of Lamellipodial fragments", year: 2017, category: "Theorem", authors: ["Hirsch S","Manhart A","Schmeiser C"] },
-  { title: "An extended Filament Based Lamellipodium Model", year: 2015, category: "Theorem", authors: ["Manhart A","Oelz D","Schmeiser C","Sfakianakis N"] },
-  { title: "Large-scale mitochondrial DNA analysis in Southeast Asia", year: 2014, category: "Data", authors: ["Summerer M","Horst J","Erhart G","Weissensteiner H","Schoenherr S","Pacher D","Forer L","Horst D","Manhart A","Horst B","Sanguansermsri T","Kloss-Brandstaetter A"] },
-];
-
+// ── DATA (fetched from central JSON) ─────────────────────────────────────────
 const CENTER = "Manhart A";
-
-// Category assignment per author (dominant category from Category2)
-const authorCategory = {
-  "Aceves-Sanchez P": "Theorem", "Allison L": "Data", "Azevedo M": "Data", "Barnes CP": "Theorem", "Baylies MK": "Data",
-  "Bell RE": "Data", "Bhaskar D": "Neither", "Blanchoin L": "Data", "Boujemaa-Paterski R": "Data", "Brown A": "Data",
-  "Chubb JR": "Data", "Dalwadi MP": "Theorem", "DeFreitas DB": "Data", "Degond P": "Theorem", "Diaz-de-la-Loza MdC": "Data",
-  "Drudi EM": "Data", "Easton J": "Data", "Erhart G": "Data", "Fedorec AJH": "Theorem", "Fleck R": "Data",
-  "Ford HZ": "Data", "Forer L": "Data", "Gatlin JC": "Data", "Goode BL": "Data", "Guerin C": "Data",
-  "Hartl B": "Data", "Hazel JW": "Data", "Hirsch S": "Theorem", "Hittmeir S": "Theorem", "Horst B": "Data",
-  "Horst D": "Data", "Horst J": "Data", "Icheva TA": "Data", "Ierushalmi N": "Data", "Kanzler L": "Theorem",
-  "Karkaria BD": "Theorem", "Keaveny EE": "Theorem", "Kenny FN": "Data", "Keren K": "Data", "Klar T": "Data",
-  "Kloss-Brandstaetter A": "Data", "Lass-Floerl C": "Data", "Leech V": "Data", "Lindsay AE": "Data", "Malik-Garbi M": "Data",
-  "Manhart A": "Theorem", "Marcotti S": "Data", "Merino-Aceituno S": "Theorem", "Milzman J": "Neither", "Mogilner A": "Data",
-  "Nardini JT": "Neither", "Oelz D": "Theorem", "Pacher D": "Data", "Peurichard D": "Theorem", "Phillippeos C": "Data",
-  "Rao C": "Theorem", "Sala L": "Theorem", "Sanguansermsri T": "Data", "Schmeiser C": "Theorem", "Schoenherr S": "Data",
-  "Selitsch B": "Data", "Sfakianakis N": "Theorem", "Shah EA": "Data", "Shaw TJ": "Data", "Storey KM": "Neither",
-  "Stramer BM": "Data", "Summerer M": "Data", "Thery M": "Data", "Topaz CM": "Neither", "Weissensteiner H": "Data",
-  "Willinger B": "Data", "Windner SE": "Data", "Yu H": "Theorem", "Zeller I": "Data", "Ziegelmeier L": "Neither"
-};
-
-// Build nodes and edges
-const nodeMap = {};
-const edgeMap = {};
-
-publications.forEach(pub => {
-  pub.authors.forEach(a => {
-    if (!nodeMap[a]) nodeMap[a] = { id: a, papers: [], count: 0 };
-    nodeMap[a].papers.push(pub.title);
-    if (a !== CENTER) nodeMap[a].count++;
-  });
-
-  // All pairs (including edges between co-authors that don't involve Manhart A)
-  const authors = pub.authors;
-  for (let i = 0; i < authors.length; i++) {
-    for (let j = i + 1; j < authors.length; j++) {
-      const a = authors[i], b = authors[j];
-      const key = [a, b].sort().join('|||');
-      if (!edgeMap[key]) edgeMap[key] = { source: a, target: b, weight: 0, papers: [] };
-      edgeMap[key].weight++;
-      edgeMap[key].papers.push(pub.title);
-    }
-  }
-});
-
-const nodes = Object.values(nodeMap);
-const links = Object.values(edgeMap);
-
-// ── D3 FORCE GRAPH ────────────────────────────────────────────────────────────
 const svg    = d3.select('#graph');
 const tooltip = document.getElementById('tooltip');
 
+var publications = [];
+var authorCategory = {};
+var nodes = [];
+var links = [];
+var nodeMap = {};
+var edgeMap = {};
+
+fetch('publications/publications.json')
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    // Convert JSON format to this page's format
+    publications = data.map(function(p) {
+      var cat = p.category === 'theorem' ? 'Theorem' : (p.category === 'data' ? 'Data' : 'Neither');
+      var authorList = p.authors.split(', ').map(function(a) { return a.trim(); });
+      return { title: p.title, year: p.year, category: cat, authors: authorList };
+    });
+
+    // Auto-derive authorCategory (dominant category per author)
+    var authorCounts = {};
+    publications.forEach(function(pub) {
+      pub.authors.forEach(function(a) {
+        if (!authorCounts[a]) authorCounts[a] = { Data: 0, Theorem: 0, Neither: 0 };
+        authorCounts[a][pub.category]++;
+      });
+    });
+    Object.keys(authorCounts).forEach(function(a) {
+      var c = authorCounts[a];
+      if (c.Data >= c.Theorem && c.Data >= c.Neither) authorCategory[a] = 'Data';
+      else if (c.Theorem >= c.Data && c.Theorem >= c.Neither) authorCategory[a] = 'Theorem';
+      else authorCategory[a] = 'Neither';
+    });
+
+    // Build nodes and edges
+    publications.forEach(function(pub) {
+      pub.authors.forEach(function(a) {
+        if (!nodeMap[a]) nodeMap[a] = { id: a, papers: [], count: 0 };
+        nodeMap[a].papers.push(pub.title);
+        if (a !== CENTER) nodeMap[a].count++;
+      });
+
+      var authors = pub.authors;
+      for (var i = 0; i < authors.length; i++) {
+        for (var j = i + 1; j < authors.length; j++) {
+          var a = authors[i], b = authors[j];
+          var key = [a, b].sort().join('|||');
+          if (!edgeMap[key]) edgeMap[key] = { source: a, target: b, weight: 0, papers: [] };
+          edgeMap[key].weight++;
+          edgeMap[key].papers.push(pub.title);
+        }
+      }
+    });
+
+    nodes = Object.values(nodeMap);
+    links = Object.values(edgeMap);
+
+    draw();
+    window.addEventListener('resize', draw);
+  });
+
+// ── D3 FORCE GRAPH ────────────────────────────────────────────────────────────
 function draw() {
   svg.selectAll('*').remove();
   const W = svg.node().clientWidth;
@@ -403,9 +386,6 @@ function draw() {
     localStorage.setItem('coauthorship-layout', JSON.stringify(positions));
   });
 }
-
-draw();
-window.addEventListener('resize', draw);
 
 // Reset button
 document.getElementById('resetBtn').addEventListener('click', () => {

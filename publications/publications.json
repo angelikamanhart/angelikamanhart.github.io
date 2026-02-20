@@ -1,0 +1,365 @@
+[
+  {
+    "title": "Integrins coordinate basal surface contraction and oriented cell growth to enable thickening of a curved epithelium",
+    "authors": "Lancaster C, Manhart A, Pichaud F",
+    "year": 2025,
+    "journal": "Current Biology",
+    "doi": "10.1016/j.cub.2025.05.048",
+    "category": "data",
+    "themes": [
+      "collective",
+      "other"
+    ],
+    "thumbnail": "publications/integrins_epithelium_thickening_2025_thumb.png",
+    "pdfUrl": "publications/integrins_epithelium_thickening_2025.pdf"
+  },
+  {
+    "title": "A dynamical analysis of the alignment mechanism between two interacting cells",
+    "authors": "Leech V, Dalwadi MP, Manhart A",
+    "year": 2024,
+    "journal": "Bulletin of Mathematical Biology",
+    "doi": "10.1007/s11538-024-01397-8",
+    "category": "theorem",
+    "themes": [
+      "collective"
+    ],
+    "thumbnail": "publications/cell_alignment_analysis_2024_thumb.png",
+    "pdfUrl": "publications/cell_alignment_analysis_2024.pdf"
+  },
+  {
+    "title": "Derivation and simulation of a computational model of active cell populations: How overlap avoidance, deformability, cell-cell junctions and cytoskeletal forces affect alignment",
+    "authors": "Leech V, Kenny FN, Marcotti S, Shaw TJ, Stramer BM, Manhart A",
+    "year": 2024,
+    "journal": "PLOS Computational Biology",
+    "doi": "10.1371/journal.pcbi.1011879",
+    "category": "data",
+    "themes": [
+      "collective",
+      "cytoskeleton"
+    ],
+    "thumbnail": "publications/cell_alignment_computational_2024_thumb.png",
+    "pdfUrl": "publications/cell_alignment_computational_2024.pdf"
+  },
+  {
+    "title": "Controlling periodic long-range signalling to drive a morphogenetic transition",
+    "authors": "Ford HZ, Manhart A, Chubb JR",
+    "year": 2023,
+    "journal": "eLife",
+    "doi": "10.7554/elife.83796",
+    "category": "data",
+    "themes": [
+      "collective"
+    ],
+    "thumbnail": "publications/periodic_signalling_morphogenesis_2023_thumb.png",
+    "pdfUrl": "publications/periodic_signalling_morphogenesis_2023.pdf"
+  },
+  {
+    "title": "Autocrine IL-6 drives cell and extracellular matrix anisotropy in scar fibroblasts",
+    "authors": "Kenny FN, Marcotti S, DeFreitas DB, Drudi EM, Leech V, Bell RE, Easton J, Diaz-de-la-Loza MdC, Fleck R, Allison L, Phillippeos C, Manhart A, Shaw TJ, Stramer BM",
+    "year": 2023,
+    "journal": "Matrix Biology",
+    "doi": "10.1016/j.matbio.2023.08.004",
+    "category": "data",
+    "themes": [
+      "collective",
+      "cytoskeleton"
+    ],
+    "thumbnail": "publications/autocrine_il6_scar_fibroblasts_2023_thumb.png",
+    "pdfUrl": "publications/autocrine_il6_scar_fibroblasts_2023.pdf"
+  },
+  {
+    "title": "How environment affects active particle swarms: a case study",
+    "authors": "Degond P, Manhart A, Merino-Aceituno S, Peurichard D, Sala L",
+    "year": 2022,
+    "journal": "Royal Society Open Science",
+    "doi": "10.1098/rsos.220791",
+    "category": "theorem",
+    "themes": [
+      "collective"
+    ],
+    "thumbnail": "publications/environment_particle_swarms_2022_thumb.png",
+    "pdfUrl": "publications/environment_particle_swarms_2022.pdf"
+  },
+  {
+    "title": "Chaos in synthetic microbial communities",
+    "authors": "Karkaria BD, Rao C, Manhart A, Fedorec AJH, Barnes CP",
+    "year": 2022,
+    "journal": "PLOS Computational Biology",
+    "doi": "10.1371/journal.pcbi.1010548",
+    "category": "theorem",
+    "themes": [
+      "collective",
+      "bacteria"
+    ],
+    "thumbnail": "publications/chaos_microbial_communities_2022_thumb.png",
+    "pdfUrl": "publications/chaos_microbial_communities_2022.pdf"
+  },
+  {
+    "title": "Mathematical modeling accurately predicts the dynamics and scaling of nuclear growth in discrete cytoplasmic volumes",
+    "authors": "Leech V, Hazel JW, Gatlin JC, Lindsay AE, Manhart A",
+    "year": 2022,
+    "journal": "Journal of Theoretical Biology",
+    "doi": "10.1016/j.jtbi.2021.110936",
+    "category": "data",
+    "themes": [
+      "organelles"
+    ],
+    "thumbnail": "publications/nuclear_scaling_growth_2022_thumb.png",
+    "pdfUrl": "publications/nuclear_scaling_growth_2022.pdf"
+  },
+  {
+    "title": "Kinetic modelling of colonies of myxobacteria",
+    "authors": "Hittmeir S, Kanzler L, Manhart A, Schmeiser C",
+    "year": 2021,
+    "journal": "Kinetic & Related Models",
+    "doi": "10.3934/krm.2020046",
+    "category": "theorem",
+    "themes": [
+      "collective",
+      "bacteria"
+    ],
+    "thumbnail": "publications/kinetic_myxobacteria_colonies_2021_thumb.png",
+    "pdfUrl": "publications/kinetic_myxobacteria_colonies_2021.pdf"
+  },
+  {
+    "title": "Large-Scale Dynamics of Self-propelled Particles Moving Through Obstacles: Model Derivation and Pattern Formation",
+    "authors": "Aceves-Sanchez P, Degond P, Keaveny EE, Manhart A, Merino-Aceituno S, Peurichard D",
+    "year": 2020,
+    "journal": "Bulletin of Mathematical Biology",
+    "doi": "10.1007/s11538-020-00805-z",
+    "category": "theorem",
+    "themes": [
+      "collective"
+    ],
+    "thumbnail": "publications/self_propelled_obstacles_2020_thumb.png",
+    "pdfUrl": "publications/self_propelled_obstacles_2020.pdf"
+  },
+  {
+    "title": "Reverse-engineering forces responsible for dynamic clustering and spreading of multiple nuclei in developing muscle cells",
+    "authors": "Manhart A, Azevedo M, Baylies MK, Mogilner A",
+    "year": 2020,
+    "journal": "Molecular Biology of the Cell",
+    "doi": "10.1091/mbc.e19-12-0711",
+    "category": "data",
+    "themes": [
+      "organelles",
+      "cytoskeleton"
+    ],
+    "thumbnail": "publications/nuclear_clustering_spreading_2020_thumb.png",
+    "pdfUrl": "publications/nuclear_clustering_spreading_2020.pdf"
+  },
+  {
+    "title": "Centering and symmetry breaking in confined contracting actomyosin networks",
+    "authors": "Ierushalmi N, Malik-Garbi M, Manhart A, Shah EA, Goode BL, Mogilner A, Keren K",
+    "year": 2020,
+    "journal": "eLife",
+    "doi": "10.7554/elife.55368",
+    "category": "data",
+    "themes": [
+      "cytoskeleton"
+    ],
+    "thumbnail": "publications/centering_symmetry_actomyosin_2020_thumb.png",
+    "pdfUrl": "publications/centering_symmetry_actomyosin_2020.pdf"
+  },
+  {
+    "title": "Analyzing collective motion with machine learning and topology",
+    "authors": "Bhaskar D, Manhart A, Milzman J, Nardini JT, Storey KM, Topaz CM, Ziegelmeier L",
+    "year": 2019,
+    "journal": "Chaos: An Interdisciplinary Journal of Nonlinear Science",
+    "doi": "10.1063/1.5125493",
+    "category": "other",
+    "themes": [
+      "collective"
+    ],
+    "thumbnail": "publications/collective_motion_topology_2019_thumb.png",
+    "pdfUrl": "publications/collective_motion_topology_2019.pdf"
+  },
+  {
+    "title": "Nuclear Scaling Is Coordinated among Individual Nuclei in Multinucleated Muscle Fibers",
+    "authors": "Windner SE, Manhart A, Brown A, Mogilner A, Baylies MK",
+    "year": 2019,
+    "journal": "Developmental Cell",
+    "doi": "10.1016/j.devcel.2019.02.020",
+    "category": "data",
+    "themes": [
+      "organelles",
+      "cytoskeleton"
+    ],
+    "thumbnail": "publications/nuclear_scaling_muscle_fibers_2019_thumb.png",
+    "pdfUrl": "publications/nuclear_scaling_muscle_fibers_2019.pdf"
+  },
+  {
+    "title": "Quantitative regulation of the dynamic steady state of actin networks",
+    "authors": "Manhart A, Icheva TA, Guerin C, Klar T, Boujemaa-Paterski R, Thery M, Blanchoin L, Mogilner A",
+    "year": 2019,
+    "journal": "eLife",
+    "doi": "10.7554/elife.42413",
+    "category": "data",
+    "themes": [
+      "cytoskeleton"
+    ],
+    "thumbnail": "publications/actin_network_steady_state_2019_thumb.png",
+    "pdfUrl": "publications/actin_network_steady_state_2019.pdf"
+  },
+  {
+    "title": "Counter-propagating wave patterns in a swarm model with memory",
+    "authors": "Manhart A",
+    "year": 2018,
+    "journal": "Journal of Mathematical Biology",
+    "doi": "10.1007/s00285-018-1287-x",
+    "category": "theorem",
+    "themes": [
+      "collective",
+      "bacteria"
+    ],
+    "thumbnail": "publications/swarm_waves_memory_2018_thumb.png",
+    "pdfUrl": "publications/swarm_waves_memory_2018.pdf"
+  },
+  {
+    "title": "An age-structured continuum model for myxobacteria",
+    "authors": "Degond P, Manhart A, Yu H",
+    "year": 2018,
+    "journal": "Mathematical Models and Methods in Applied Sciences",
+    "doi": "10.1142/s0218202518400043",
+    "category": "theorem",
+    "themes": [
+      "collective",
+      "bacteria"
+    ],
+    "thumbnail": "publications/age_structured_myxobacteria_2018_thumb.png",
+    "pdfUrl": "publications/age_structured_myxobacteria_2018.pdf"
+  },
+  {
+    "title": "Mechanical positioning of multiple nuclei in muscle cells",
+    "authors": "Manhart A, Windner S, Baylies M, Mogilner A",
+    "year": 2018,
+    "journal": "PLoS computational biology",
+    "doi": "10.1371/journal.pcbi.1006208",
+    "category": "data",
+    "themes": [
+      "organelles",
+      "cytoskeleton"
+    ],
+    "thumbnail": "publications/mechanical_positioning_nuclei_2018_thumb.png",
+    "pdfUrl": "publications/mechanical_positioning_nuclei_2018.pdf"
+  },
+  {
+    "title": "Intracellular Fluid Mechanics: Coupling Cytoplasmic Flow with Active Cytoskeletal Gel",
+    "authors": "Mogilner A, Manhart A",
+    "year": 2018,
+    "journal": "Annual Review of Fluid Mechanics",
+    "doi": "10.1146/annurev-fluid-010816-060238",
+    "category": "data",
+    "themes": [
+      "cytoskeleton"
+    ],
+    "thumbnail": "publications/intracellular_fluid_mechanics_2018_thumb.png",
+    "pdfUrl": "publications/intracellular_fluid_mechanics_2018.pdf"
+  },
+  {
+    "title": "A continuum model for nematic alignment of self-propelled particles",
+    "authors": "Degond P, Manhart A, Yu H",
+    "year": 2017,
+    "journal": "Discrete & Continuous Dynamical Systems - B",
+    "doi": "10.3934/dcdsb.2017063",
+    "category": "theorem",
+    "themes": [
+      "collective",
+      "bacteria"
+    ],
+    "thumbnail": "publications/continuum_nematic_alignment_2017_thumb.png",
+    "pdfUrl": "publications/continuum_nematic_alignment_2017.pdf"
+  },
+  {
+    "title": "Numerical Treatment of the Filament Based Lamellipodium Model",
+    "authors": "Manhart A, Oelz D, Schmeiser C, Sfakianakis N",
+    "year": 2017,
+    "journal": "Modelling Cellular Systems",
+    "doi": "10.1007/978-3-319-45833-5",
+    "category": "theorem",
+    "themes": [
+      "cytoskeleton"
+    ],
+    "thumbnail": "publications/numerical_lamellipodium_2017_thumb.png",
+    "pdfUrl": "publications/numerical_lamellipodium_2017.pdf"
+  },
+  {
+    "title": "Agent-based modeling: case study in cleavage furrow models",
+    "authors": "Manhart A, Mogilner A",
+    "year": 2016,
+    "journal": "Molecular biology of the cell",
+    "doi": "10.1091/mbc.E16-01-0013",
+    "category": "data",
+    "themes": [
+      "collective",
+      "organelles"
+    ],
+    "thumbnail": "publications/agent_based_cleavage_furrow_2016_thumb.png",
+    "pdfUrl": "publications/agent_based_cleavage_furrow_2016.pdf"
+  },
+  {
+    "title": "Existence of and decay to equilibrium of the filament end density along the leading edge of the lamellipodium",
+    "authors": "Manhart A, Schmeiser C",
+    "year": 2017,
+    "journal": "Journal of mathematical biology",
+    "doi": "10.1007/s00285-016-1027-z",
+    "category": "theorem",
+    "themes": [
+      "cytoskeleton"
+    ],
+    "thumbnail": "publications/filament_density_leading_edge_2017_thumb.png",
+    "pdfUrl": "publications/filament_density_leading_edge_2017.pdf"
+  },
+  {
+    "title": "Mathematical modeling of Myosin induced bistability of Lamellipodial fragments",
+    "authors": "Hirsch S, Manhart A, Schmeiser C",
+    "year": 2017,
+    "journal": "Journal of mathematical biology",
+    "doi": "10.1007/s00285-016-1008-2",
+    "category": "theorem",
+    "themes": [
+      "cytoskeleton"
+    ],
+    "thumbnail": "publications/myosin_bistability_lamellipodium_2017_thumb.png",
+    "pdfUrl": "publications/myosin_bistability_lamellipodium_2017.pdf"
+  },
+  {
+    "title": "An extended Filament Based Lamellipodium Model produces various moving cell shapes in the presence of chemotactic signals",
+    "authors": "Manhart A, Oelz D, Schmeiser C, Sfakianakis N",
+    "year": 2015,
+    "journal": "Journal of theoretical biology",
+    "doi": "10.1016/j.jtbi.2015.06.044",
+    "category": "theorem",
+    "themes": [
+      "cytoskeleton"
+    ],
+    "thumbnail": "publications/extended_lamellipodium_chemotaxis_2015_thumb.png",
+    "pdfUrl": "publications/extended_lamellipodium_chemotaxis_2015.pdf"
+  },
+  {
+    "title": "Large-scale mitochondrial DNA analysis in Southeast Asia reveals evolutionary effects of cultural isolation in the multi-ethnic population of Myanmar",
+    "authors": "Summerer M, Horst J, Erhart G, Weissensteiner H, Schoenherr S, Pacher D, Forer L, Horst D, Manhart A, Horst B, Sanguansermsri T, Kloss-Brandstaetter A",
+    "year": 2014,
+    "journal": "BMC Evolutionary Biology",
+    "doi": "10.1186/1471-2148-14-17",
+    "category": "data",
+    "themes": [
+      "other"
+    ],
+    "thumbnail": "publications/mitochondrial_dna_myanmar_2014_thumb.png",
+    "pdfUrl": "publications/mitochondrial_dna_myanmar_2014.pdf"
+  },
+  {
+    "title": "A Retrospective Assessment of Four Antigen Assays for the Detection of Invasive Candidiasis Among High-Risk Hospitalized Patients",
+    "authors": "Hartl B, Zeller I, Manhart A, Selitsch B, Lass-Floerl C, Willing B",
+    "year": 2018,
+    "journal": "Mycopathologia",
+    "doi": "10.1007/s11046-017-0238-1",
+    "category": "data",
+    "themes": [
+      "other"
+    ],
+    "thumbnail": "publications/antigen_assays_candidiasis_2018_thumb.png",
+    "pdfUrl": "publications/antigen_assays_candidiasis_2018.pdf"
+  }
+]
