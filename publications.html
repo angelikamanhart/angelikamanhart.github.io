@@ -188,7 +188,7 @@
           <div class="pub-network-legend">
             <div class="legend-item"><svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="5" fill="var(--muted)" stroke="#fff" stroke-width="1"/></svg><span>= Authors</span></div>
             <div class="legend-item"><svg width="12" height="12" viewBox="0 0 12 12"><rect x="1" y="1" width="10" height="10" rx="2" fill="var(--pale)" stroke="var(--muted)" stroke-width="1.5"/></svg><span>= Publications</span></div>
-            <div class="legend-item" style="margin-left:auto;"><div class="legend-dot" style="background:#c0392b;"></div><span>Proofs</span></div>
+            <div class="legend-item" style="margin-left:auto;"><div class="legend-dot" style="background:#c0392b;"></div><span>Theorems</span></div>
             <div class="legend-item"><div class="legend-dot" style="background:#059669;"></div><span>Data</span></div>
           </div>
           <svg id="network-graph"></svg>
@@ -432,125 +432,442 @@
       });
       var nodes = Object.values(nodeMap);
 
+      // Build stable pub node ID from title (first 40 chars, slugified)
+      function pubId(title) {
+        return '_pub_' + title.toLowerCase().replace(/[^a-z0-9]+/g, '_').slice(0, 40);
+      }
+
       // Build pub nodes
-      var pubNodes = publications.map(function(pub, i) {
-        return { id: '_pub_' + i, isPub: true, pub: pub, title: pub.title, year: pub.year, category: pub.category };
+      var pubNodes = publications.map(function(pub) {
+        return { id: pubId(pub.title), isPub: true, pub: pub, title: pub.title, year: pub.year, category: pub.category };
       });
 
       // Links: author -> pub
       var pubLinks = [];
-      publications.forEach(function(pub, i) {
+      publications.forEach(function(pub) {
         pub.authors.forEach(function(author) {
-          pubLinks.push({ source: author, target: '_pub_' + i });
+          pubLinks.push({ source: author, target: pubId(pub.title) });
         });
       });
 
       // ── PRESET POSITIONS ──
       var PRESET_POSITIONS = {
-  "Lancaster": { "x": 149.3, "y": 369.9 },
-  "Manhart": { "x": 450, "y": 323.1 },
-  "Pichaud": { "x": 162.8, "y": 406.3 },
-  "Leech": { "x": 572.8, "y": 575.4 },
-  "Dalwadi": { "x": 534.3, "y": 623.2 },
-  "Kenny": { "x": 642.3, "y": 590.2 },
-  "Marcotti": { "x": 662.5, "y": 575.5 },
-  "Shaw": { "x": 681.3, "y": 552.5 },
-  "Stramer": { "x": 618.2, "y": 596.9 },
-  "Ford": { "x": 85.4, "y": 330 },
-  "Chubb": { "x": 102.1, "y": 303.1 },
-  "DeFreitas": { "x": 716.5, "y": 610.7 },
-  "Drudi": { "x": 753.5, "y": 529.1 },
-  "Bell": { "x": 738.4, "y": 569.5 },
-  "Easton": { "x": 694.9, "y": 633.1 },
-  "Diaz-de-la-Loza": { "x": 780.7, "y": 542.8 },
-  "Fleck": { "x": 746.5, "y": 604.8 },
-  "Allison": { "x": 776.5, "y": 504.6 },
-  "Phillippeos": { "x": 768.6, "y": 574.6 },
-  "Degond": { "x": 746.2, "y": 300.6 },
-  "Merino-Aceituno": { "x": 776.6, "y": 360.9 },
-  "Peurichard": { "x": 783.5, "y": 331.4 },
-  "Sala": { "x": 814.9, "y": 397.9 },
-  "Karkaria": { "x": 443.5, "y": -56.8 },
-  "Rao": { "x": 483.7, "y": -57 },
-  "Fedorec": { "x": 457.9, "y": -32 },
-  "Barnes": { "x": 512.9, "y": -41 },
-  "Hazel": { "x": 482, "y": 676.7 },
-  "Gatlin": { "x": 534.6, "y": 680 },
-  "Lindsay": { "x": 505.5, "y": 695.2 },
-  "Hittmeir": { "x": 749, "y": 64.2 },
-  "Kanzler": { "x": 774.1, "y": 98.7 },
-  "Schmeiser": { "x": 632.7, "y": 84.3 },
-  "Aceves-Sanchez": { "x": 822.5, "y": 254.7 },
-  "Keaveny": { "x": 832.6, "y": 291.1 },
-  "Azevedo": { "x": 138.9, "y": 223.4 },
-  "Baylies": { "x": 208.8, "y": 151.1 },
-  "Mogilner": { "x": 258.7, "y": 126.1 },
-  "Ierushalmi": { "x": 69.6, "y": 179.3 },
-  "Malik-Garbi": { "x": 85.2, "y": 139.5 },
-  "Shah": { "x": 77.8, "y": 211.1 },
-  "Goode": { "x": 100.5, "y": 166.8 },
-  "Keren": { "x": 114.7, "y": 123 },
-  "Bhaskar": { "x": 368.5, "y": 702.4 },
-  "Milzman": { "x": 377.1, "y": 667.9 },
-  "Nardini": { "x": 339.8, "y": 661.5 },
-  "Storey": { "x": 416.8, "y": 672.9 },
-  "Topaz": { "x": 402.9, "y": 699.1 },
-  "Ziegelmeier": { "x": 334.6, "y": 689.8 },
-  "Windner": { "x": 234.8, "y": 81.8 },
-  "Brown": { "x": 168.6, "y": 83.6 },
-  "Icheva": { "x": 282.9, "y": -11.8 },
-  "Guerin": { "x": 322.6, "y": -27.3 },
-  "Klar": { "x": 283.9, "y": -44.1 },
-  "Boujemaa-Paterski": { "x": 320.8, "y": -57.1 },
-  "Thery": { "x": 355.9, "y": -47.1 },
-  "Blanchoin": { "x": 252.3, "y": -16.2 },
-  "Yu": { "x": 740.4, "y": 245.7 },
-  "Hartl": { "x": 268.4, "y": 630.8 },
-  "Zeller": { "x": 237.5, "y": 612.3 },
-  "Selitsch": { "x": 267.6, "y": 591.4 },
-  "Lass-Floerl": { "x": 298.4, "y": 613 },
-  "Willinger": { "x": 237.2, "y": 573.1 },
-  "Oelz": { "x": 597.4, "y": 15.7 },
-  "Sfakianakis": { "x": 625.5, "y": 27.9 },
-  "Hirsch": { "x": 709.5, "y": 111.1 },
-  "Summerer": { "x": 128.1, "y": 533.2 },
-  "J. Horst": { "x": 90.9, "y": 473.3 },
-  "Erhart": { "x": 151.9, "y": 576.3 },
-  "Weissensteiner": { "x": 103.4, "y": 510.1 },
-  "Schoenherr": { "x": 70.9, "y": 448.8 },
-  "Pacher": { "x": 92.3, "y": 538.6 },
-  "Forer": { "x": 72, "y": 500 },
-  "D. Horst": { "x": 118.8, "y": 566 },
-  "B. Horst": { "x": 124.8, "y": 487.9 },
-  "Sanguansermsri": { "x": 98.9, "y": 438.2 },
-  "Kloss-Brandstaetter": { "x": 156.6, "y": 543.9 },
-  "_pub_0": { "x": 311.8, "y": 374.8 },
-  "_pub_1": { "x": 503.7, "y": 464.9 },
-  "_pub_2": { "x": 563.9, "y": 481.2 },
-  "_pub_3": { "x": 270.3, "y": 329.8 },
-  "_pub_4": { "x": 623.9, "y": 480.9 },
-  "_pub_5": { "x": 651.2, "y": 365 },
-  "_pub_6": { "x": 457.1, "y": 115.1 },
-  "_pub_7": { "x": 480.8, "y": 520.4 },
-  "_pub_8": { "x": 626.7, "y": 186.1 },
-  "_pub_9": { "x": 664.4, "y": 306.5 },
-  "_pub_10": { "x": 290.3, "y": 258.8 },
-  "_pub_11": { "x": 238.7, "y": 228.2 },
-  "_pub_12": { "x": 402.9, "y": 528 },
-  "_pub_13": { "x": 291, "y": 198.8 },
-  "_pub_14": { "x": 361.5, "y": 109.7 },
-  "_pub_15": { "x": 519.3, "y": 382.8 },
-  "_pub_16": { "x": 620.2, "y": 265.8 },
-  "_pub_17": { "x": 341.4, "y": 166.2 },
-  "_pub_18": { "x": 392.3, "y": 197.8 },
-  "_pub_19": { "x": 607.1, "y": 324.4 },
-  "_pub_20": { "x": 574.7, "y": 156.1 },
-  "_pub_21": { "x": 345.5, "y": 235.3 },
-  "_pub_22": { "x": 522.2, "y": 187.1 },
-  "_pub_23": { "x": 574.7, "y": 216.1 },
-  "_pub_24": { "x": 523.7, "y": 124.6 },
-  "_pub_25": { "x": 244.9, "y": 441.6 },
-  "_pub_26": { "x": 345.4, "y": 477 }
+  "Lancaster": {
+    "x": 180.3,
+    "y": 344.9
+  },
+  "Manhart": {
+    "x": 450,
+    "y": 323.1
+  },
+  "Pichaud": {
+    "x": 179.8,
+    "y": 383.3
+  },
+  "Leech": {
+    "x": 537.8,
+    "y": 601.4
+  },
+  "Dalwadi": {
+    "x": 506.3,
+    "y": 539.2
+  },
+  "Kenny": {
+    "x": 621.3,
+    "y": 516.2
+  },
+  "Marcotti": {
+    "x": 671.5,
+    "y": 575.5
+  },
+  "Shaw": {
+    "x": 616.3,
+    "y": 576.5
+  },
+  "Stramer": {
+    "x": 588.2,
+    "y": 604.9
+  },
+  "Ford": {
+    "x": 112.4,
+    "y": 316
+  },
+  "Chubb": {
+    "x": 134.1,
+    "y": 276.1
+  },
+  "DeFreitas": {
+    "x": 731.5,
+    "y": 576.7
+  },
+  "Drudi": {
+    "x": 795.5,
+    "y": 473.1
+  },
+  "Bell": {
+    "x": 759.4,
+    "y": 533.5
+  },
+  "Easton": {
+    "x": 722.9,
+    "y": 624.1
+  },
+  "Diaz-de-la-Loza": {
+    "x": 766.7,
+    "y": 490.8
+  },
+  "Fleck": {
+    "x": 770.5,
+    "y": 575.8
+  },
+  "Allison": {
+    "x": 730.5,
+    "y": 452.6
+  },
+  "Phillippeos": {
+    "x": 815.6,
+    "y": 541.6
+  },
+  "Degond": {
+    "x": 746.2,
+    "y": 300.6
+  },
+  "Merino-Aceituno": {
+    "x": 778.6,
+    "y": 416.9
+  },
+  "Peurichard": {
+    "x": 747.5,
+    "y": 365.4
+  },
+  "Sala": {
+    "x": 697.9,
+    "y": 423.9
+  },
+  "Karkaria": {
+    "x": 425.4,
+    "y": 14.4
+  },
+  "Rao": {
+    "x": 500.7,
+    "y": -25
+  },
+  "Fedorec": {
+    "x": 457.9,
+    "y": -32
+  },
+  "Barnes": {
+    "x": 534.9,
+    "y": -4
+  },
+  "Hazel": {
+    "x": 445,
+    "y": 614.7
+  },
+  "Gatlin": {
+    "x": 523.6,
+    "y": 678
+  },
+  "Lindsay": {
+    "x": 483.5,
+    "y": 651.2
+  },
+  "Hittmeir": {
+    "x": 749,
+    "y": 140.2
+  },
+  "Kanzler": {
+    "x": 784.1,
+    "y": 183.7
+  },
+  "Schmeiser": {
+    "x": 625.7,
+    "y": 77.3
+  },
+  "Aceves-Sanchez": {
+    "x": 799.5,
+    "y": 229.7
+  },
+  "Keaveny": {
+    "x": 783.6,
+    "y": 339.1
+  },
+  "Azevedo": {
+    "x": 245.9,
+    "y": 232.4
+  },
+  "Baylies": {
+    "x": 196.8,
+    "y": 174.1
+  },
+  "Mogilner": {
+    "x": 212.7,
+    "y": 114.9
+  },
+  "Ierushalmi": {
+    "x": 53.6,
+    "y": 214.3
+  },
+  "Malik-Garbi": {
+    "x": 71.2,
+    "y": 153.5
+  },
+  "Shah": {
+    "x": 72.8,
+    "y": 247.1
+  },
+  "Goode": {
+    "x": 80.5,
+    "y": 194.8
+  },
+  "Keren": {
+    "x": 138.7,
+    "y": 162
+  },
+  "Bhaskar": {
+    "x": 368.5,
+    "y": 702.4
+  },
+  "Milzman": {
+    "x": 391.1,
+    "y": 662.9
+  },
+  "Nardini": {
+    "x": 329.8,
+    "y": 647.5
+  },
+  "Storey": {
+    "x": 427.8,
+    "y": 662.9
+  },
+  "Topaz": {
+    "x": 407.9,
+    "y": 699.1
+  },
+  "Ziegelmeier": {
+    "x": 334.6,
+    "y": 689.8
+  },
+  "Windner": {
+    "x": 217.8,
+    "y": 52.8
+  },
+  "Brown": {
+    "x": 139.6,
+    "y": 116.6
+  },
+  "Icheva": {
+    "x": 282.9,
+    "y": 7.2
+  },
+  "Guerin": {
+    "x": 352.6,
+    "y": -15.3
+  },
+  "Klar": {
+    "x": 282.9,
+    "y": -23.1
+  },
+  "Boujemaa-Paterski": {
+    "x": 295.8,
+    "y": -50.1
+  },
+  "Thery": {
+    "x": 393.9,
+    "y": -15.1
+  },
+  "Blanchoin": {
+    "x": 241.3,
+    "y": 20.8
+  },
+  "Yu": {
+    "x": 702.4,
+    "y": 227.7
+  },
+  "Oelz": {
+    "x": 574.4,
+    "y": 14.7
+  },
+  "Sfakianakis": {
+    "x": 625.5,
+    "y": 27.9
+  },
+  "Hirsch": {
+    "x": 709.5,
+    "y": 111.1
+  },
+  "Summerer": {
+    "x": 129.1,
+    "y": 536.2
+  },
+  "J. Horst": {
+    "x": 90.9,
+    "y": 473.3
+  },
+  "Erhart": {
+    "x": 193.9,
+    "y": 569.3
+  },
+  "Weissensteiner": {
+    "x": 103.4,
+    "y": 510.1
+  },
+  "Schoenherr": {
+    "x": 70.9,
+    "y": 448.8
+  },
+  "Pacher": {
+    "x": 72.3,
+    "y": 543.6
+  },
+  "Forer": {
+    "x": 63,
+    "y": 498
+  },
+  "D. Horst": {
+    "x": 123.8,
+    "y": 578
+  },
+  "B. Horst": {
+    "x": 124.8,
+    "y": 487.9
+  },
+  "Sanguansermsri": {
+    "x": 86.9,
+    "y": 417.2
+  },
+  "Kloss-Brandstaetter": {
+    "x": 172.6,
+    "y": 548.9
+  },
+  "Hartl": {
+    "x": 269.4,
+    "y": 632.8
+  },
+  "Zeller": {
+    "x": 222.5,
+    "y": 602.3
+  },
+  "Selitsch": {
+    "x": 259.6,
+    "y": 589.4
+  },
+  "Lass-Floerl": {
+    "x": 314.4,
+    "y": 596
+  },
+  "Willinger": {
+    "x": 242.2,
+    "y": 541.1
+  },
+  "_pub_integrins_coordinate_basal_surface_contr": {
+    "x": 311.8,
+    "y": 374.8
+  },
+  "_pub_a_dynamical_analysis_of_the_alignment_me": {
+    "x": 518.7,
+    "y": 488.9
+  },
+  "_pub_derivation_and_simulation_of_a_computati": {
+    "x": 563.9,
+    "y": 481.2
+  },
+  "_pub_controlling_periodic_long_range_signalli": {
+    "x": 270.3,
+    "y": 329.8
+  },
+  "_pub_autocrine_il_6_drives_cell_and_extracell": {
+    "x": 623.9,
+    "y": 460.9
+  },
+  "_pub_how_environment_affects_active_particle_": {
+    "x": 651.2,
+    "y": 396
+  },
+  "_pub_chaos_in_synthetic_microbial_communities": {
+    "x": 457.1,
+    "y": 115.1
+  },
+  "_pub_mathematical_modeling_accurately_predict": {
+    "x": 464.8,
+    "y": 520.4
+  },
+  "_pub_kinetic_modelling_of_colonies_of_myxobac": {
+    "x": 654.7,
+    "y": 208.1
+  },
+  "_pub_large_scale_dynamics_of_self_propelled_p": {
+    "x": 620.4,
+    "y": 350.5
+  },
+  "_pub_reverse_engineering_forces_responsible_f": {
+    "x": 289.3,
+    "y": 240.8
+  },
+  "_pub_centering_and_symmetry_breaking_in_confi": {
+    "x": 213.7,
+    "y": 272.2
+  },
+  "_pub_analyzing_collective_motion_with_machine": {
+    "x": 402.9,
+    "y": 528
+  },
+  "_pub_nuclear_scaling_is_coordinated_among_ind": {
+    "x": 291,
+    "y": 198.8
+  },
+  "_pub_quantitative_regulation_of_the_dynamic_s": {
+    "x": 379.9,
+    "y": 81
+  },
+  "_pub_counter_propagating_wave_patterns_in_a_s": {
+    "x": 572.3,
+    "y": 393.8
+  },
+  "_pub_an_age_structured_continuum_model_for_my": {
+    "x": 620.2,
+    "y": 265.8
+  },
+  "_pub_mechanical_positioning_of_multiple_nucle": {
+    "x": 306.9,
+    "y": 168.5
+  },
+  "_pub_intracellular_fluid_mechanics_coupling_c": {
+    "x": 331.4,
+    "y": 149.6
+  },
+  "_pub_a_continuum_model_for_nematic_alignment_": {
+    "x": 601.1,
+    "y": 304.4
+  },
+  "_pub_numerical_treatment_of_the_filament_base": {
+    "x": 536.7,
+    "y": 148.1
+  },
+  "_pub_agent_based_modeling_case_study_in_cleav": {
+    "x": 363,
+    "y": 128.1
+  },
+  "_pub_existence_of_and_decay_to_equilibrium_of": {
+    "x": 544.2,
+    "y": 187.1
+  },
+  "_pub_mathematical_modeling_of_myosin_induced_": {
+    "x": 590.7,
+    "y": 197.1
+  },
+  "_pub_an_extended_filament_based_lamellipodium": {
+    "x": 508.7,
+    "y": 122.6
+  },
+  "_pub_large_scale_mitochondrial_dna_analysis_i": {
+    "x": 244.9,
+    "y": 441.6
+  },
+  "_pub_a_retrospective_assessment_of_four_antig": {
+    "x": 345.4,
+    "y": 477
+  }
 };
 
       var allNodes = nodes.concat(pubNodes);
@@ -579,9 +896,9 @@
 
       var node = g.append('g').selectAll('g').data(allNodes).join('g').attr('class', 'net-node')
         .call(d3.drag()
-          .on('start', function(e, d) { if (!e.active && !hasPreset) simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
-          .on('drag', function(e, d) { d.fx = e.x; d.fy = e.y; if (hasPreset) { d.x = e.x; d.y = e.y; simulation.tick(); } })
-          .on('end', function(e, d) { if (!hasPreset) { if (!e.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; } })
+          .on('start', function(e, d) { d.fx = d.x; d.fy = d.y; if (!e.active && !hasPreset) simulation.alphaTarget(0.3).restart(); })
+          .on('drag', function(e, d) { d.fx = e.x; d.fy = e.y; d.x = e.x; d.y = e.y; updatePositions(); })
+          .on('end', function(e, d) { if (hasPreset) { d.fx = d.x; d.fy = d.y; } else { if (!e.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; } })
         );
 
       // Author circles
@@ -619,7 +936,7 @@
           node.classed('dimmed', function(n) { return !n.isPub && authorIds.indexOf(n.id) === -1; });
           link.classed('dimmed', function(l) { return (typeof l.target === 'object' ? l.target.id : l.target) !== d.id; });
           link.classed('highlighted', function(l) { return (typeof l.target === 'object' ? l.target.id : l.target) === d.id; });
-          tooltip.innerHTML = '<div class="tt-name">' + d.title + '</div><div class="tt-count">' + d.year + ' &middot; ' + (d.category === 'Theorem' ? 'Proofs' : d.category) + '</div>';
+          tooltip.innerHTML = '<div class="tt-name">' + d.title + '</div><div class="tt-count">' + d.year + ' &middot; ' + (d.category === 'Theorem' ? 'Theorems' : d.category) + '</div>';
         } else {
           var connPubIds = pubLinks.filter(function(l) {
             return (typeof l.source === 'object' ? l.source.id : l.source) === d.id;
@@ -705,13 +1022,39 @@
       }
 
       if (hasPreset) {
+        var newNodeIds = {};
         allNodes.forEach(function(n) {
           var pos = PRESET_POSITIONS[n.id];
           if (pos) { n.x = pos.x; n.y = pos.y; n.fx = pos.x; n.fy = pos.y; }
-          else { hasNewNodes = true; }
+          else { hasNewNodes = true; newNodeIds[n.id] = true; }
         });
         if (hasNewNodes) {
-          for (var i = 0; i < 300; i++) simulation.tick();
+          // Build a quick lookup for nodes by ID
+          var nodeById = {};
+          allNodes.forEach(function(n) { nodeById[n.id] = n; });
+
+          // Place new nodes at the average position of their connected neighbors
+          allNodes.forEach(function(n) {
+            if (!newNodeIds[n.id]) return;
+            var nx = 0, ny = 0, count = 0;
+            pubLinks.forEach(function(l) {
+              var sid = typeof l.source === 'object' ? l.source.id : l.source;
+              var tid = typeof l.target === 'object' ? l.target.id : l.target;
+              var neighbor = null;
+              if (sid === n.id) neighbor = nodeById[tid];
+              if (tid === n.id) neighbor = nodeById[sid];
+              if (neighbor && neighbor.fx != null) { nx += neighbor.x; ny += neighbor.y; count++; }
+            });
+            if (count > 0) {
+              n.x = nx / count + (Math.random() - 0.5) * 30;
+              n.y = ny / count + (Math.random() - 0.5) * 30;
+            }
+          });
+
+          // Pin new nodes at their computed positions (no force settling needed)
+          allNodes.forEach(function(n) {
+            if (newNodeIds[n.id]) { n.fx = n.x; n.fy = n.y; }
+          });
         }
         simulation.alpha(0).stop();
         updatePositions();
@@ -721,7 +1064,8 @@
       }
       g.transition().duration(600).style('opacity', 1);
 
-      // ── EXPORT LAYOUT BUTTON ──
+      // ── EXPORT LAYOUT BUTTON (only visible with ?edit in URL) ──
+      if (window.location.search.indexOf('edit') !== -1) {
       var exportBtn = document.createElement('button');
       exportBtn.textContent = 'Export Layout';
       exportBtn.style.cssText = 'position:absolute;bottom:8px;right:8px;padding:0.4rem 0.9rem;background:var(--accent2);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:0.75rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;opacity:0.7;z-index:10;';
@@ -739,6 +1083,7 @@
           exportBtn.textContent = 'See console'; setTimeout(function() { exportBtn.textContent = 'Export Layout'; }, 2000);
         }
       });
+      } // end ?edit check
     }
 
     // ── SCROLL REVEAL ──
