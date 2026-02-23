@@ -103,7 +103,7 @@
     .pub-tag-organelles { background: #7e6b9e; }
     .pub-tag-cytoskeleton { background: #0891b2; }
     .pub-tag-bacteria { background: #d97706; }
-    .pub-tag-micromacro { background: #8b5cf6; }
+    .pub-tag-micromacro { background: #c2536a; }
     .pub-tag-theme-other { background: #64748b; }
     .pub-meta { font-size: 0.84rem; color: var(--muted); font-weight: 300; }
     .pub-meta strong { color: var(--mid); font-weight: 600; }
@@ -148,7 +148,7 @@
 
   <!-- NAV -->
   <nav>
-    <a class="nav-name" href="index.html"><img class="nav-portrait" src="images/portrait_me.jpg" alt=""/>Angelika Manhart</a>
+    <a class="nav-name" href="index.html"><img class="nav-portrait" src="shared/portrait_me.jpg" alt=""/>Angelika Manhart</a>
     <ul class="nav-links">
       <li><a href="index.html#about">About</a></li>
       <li><a href="research.html">Research</a></li>
@@ -188,6 +188,7 @@
           <div class="pub-network-legend">
             <div class="legend-item"><svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="5" fill="var(--muted)" stroke="#fff" stroke-width="1"/></svg><span>= Authors</span></div>
             <div class="legend-item"><svg width="12" height="12" viewBox="0 0 12 12"><rect x="1" y="1" width="10" height="10" rx="2" fill="var(--pale)" stroke="var(--muted)" stroke-width="1.5"/></svg><span>= Publications</span></div>
+            <div class="legend-item" style="font-size:0.72rem; color:var(--muted); font-style:italic;"><span>Click on authors or publications for details</span></div>
             <div class="legend-item" style="margin-left:auto;"><div class="legend-dot" style="background:#c0392b;"></div><span>Theorems</span></div>
             <div class="legend-item"><div class="legend-dot" style="background:#059669;"></div><span>Data</span></div>
           </div>
@@ -582,8 +583,8 @@
     "y": 183.7
   },
   "Schmeiser": {
-    "x": 625.7,
-    "y": 77.3
+    "x": 616.7,
+    "y": 94.6
   },
   "Aceves-Sanchez": {
     "x": 799.5,
@@ -842,8 +843,8 @@
     "y": 304.4
   },
   "_pub_numerical_treatment_of_the_filament_base": {
-    "x": 536.7,
-    "y": 148.1
+    "x": 541.7,
+    "y": 151.4
   },
   "_pub_agent_based_modeling_case_study_in_cleav": {
     "x": 363,
@@ -858,8 +859,8 @@
     "y": 197.1
   },
   "_pub_an_extended_filament_based_lamellipodium": {
-    "x": 508.7,
-    "y": 122.6
+    "x": 493.4,
+    "y": 136.4
   },
   "_pub_large_scale_mitochondrial_dna_analysis_i": {
     "x": 244.9,
@@ -895,12 +896,15 @@
       var link = g.append('g').selectAll('line').data(pubLinks).join('line')
         .attr('class', 'net-link').attr('stroke-width', 1);
 
-      var node = g.append('g').selectAll('g').data(allNodes).join('g').attr('class', 'net-node')
-        .call(d3.drag()
+      var isEditMode = window.location.search.indexOf('edit') !== -1;
+      var node = g.append('g').selectAll('g').data(allNodes).join('g').attr('class', 'net-node');
+      if (isEditMode) {
+        node.call(d3.drag()
           .on('start', function(e, d) { d.fx = d.x; d.fy = d.y; if (!e.active && !hasPreset) simulation.alphaTarget(0.3).restart(); })
           .on('drag', function(e, d) { d.fx = e.x; d.fy = e.y; d.x = e.x; d.y = e.y; updatePositions(); })
           .on('end', function(e, d) { if (hasPreset) { d.fx = d.x; d.fy = d.y; } else { if (!e.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; } })
         );
+      }
 
       // Author circles
       node.filter(function(d) { return !d.isPub; }).append('circle')
@@ -988,6 +992,11 @@
           updateFilterButtonStates();
         }
         filterPublications();
+        // Scroll to publication list
+        if (selectedNode) {
+          var pubList = document.getElementById('pubList');
+          if (pubList) pubList.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       });
 
       // Allow deselect by clicking on background
@@ -1066,7 +1075,7 @@
       g.transition().duration(600).style('opacity', 1);
 
       // ── EXPORT LAYOUT BUTTON (only visible with ?edit in URL) ──
-      if (window.location.search.indexOf('edit') !== -1) {
+      if (isEditMode) {
       var exportBtn = document.createElement('button');
       exportBtn.textContent = 'Export Layout';
       exportBtn.style.cssText = 'position:absolute;bottom:8px;right:8px;padding:0.4rem 0.9rem;background:var(--accent2);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:0.75rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;opacity:0.7;z-index:10;';

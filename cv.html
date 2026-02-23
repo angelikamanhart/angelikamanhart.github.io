@@ -239,6 +239,29 @@
       border-radius: 1px;
     }
 
+    /* Horizontal split for Assist/Associate Professor */
+    .station-hsplit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    .station-hsplit .hsplit-title {
+      font-family: var(--serif);
+      font-size: 0.88rem;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+    .station-hsplit-divider {
+      width: 60%;
+      height: 3px;
+      background: var(--border);
+      border-radius: 1px;
+      margin: 0.15rem 0;
+    }
+    .station-london .station-hsplit-divider { background: #dc2626; }
+    .station-vienna .station-hsplit-divider { background: #16a34a; }
+
     @keyframes fadeIn { to { opacity: 1; } }
 
     .station-number {
@@ -363,6 +386,8 @@
       .tl-vienna .station-photo { border-color: #16a34a; }
       .tl-nyc .station-photo    { border-color: #f97316; }
       .tl-london .station-photo { border-color: #dc2626; }
+      .tl-london .station-hsplit-divider { background: #dc2626; }
+      .tl-vienna .station-hsplit-divider { background: #16a34a; }
     }
 
     footer { text-align: center; padding: 1.8rem 5vw; font-size: 0.78rem; color: var(--muted); border-top: 1px solid var(--border); }
@@ -396,7 +421,7 @@
 
   <!-- NAV -->
   <nav>
-    <a class="nav-name" href="index.html"><img class="nav-portrait" src="images/portrait_me.jpg" alt=""/>Angelika Manhart</a>
+    <a class="nav-name" href="index.html"><img class="nav-portrait" src="shared/portrait_me.jpg" alt=""/>Angelika Manhart</a>
     <ul class="nav-links">
       <li><a href="index.html#about">About</a></li>
       <li><a href="research.html">Research</a></li>
@@ -424,7 +449,7 @@
   <!-- ═══════ DESKTOP: MAP LAYOUT ═══════ -->
   <div id="map-container">
     <div id="world-map">
-      <img class="map-image" src="images/world_map.png" alt="World Map"/>
+      <img class="map-image" src="cv/world_map.png" alt="World Map"/>
 
       <!-- SVG journey paths -->
       <svg id="journey-paths" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -474,11 +499,11 @@
       <div class="geo-dot dot-nyc"></div>
       <div class="geo-dot dot-london"></div>
       <div class="geo-dot dot-uganda"></div>
-      <div class="uganda-label"><div class="uganda-title">Voluntary Social Year</div><div class="uganda-detail">2008 &middot; Uganda</div></div>
+      <div class="uganda-label"><div class="uganda-detail">Study Break</div><div class="uganda-title">Voluntary Social Year</div><div class="uganda-detail">2008 &middot; Uganda</div></div>
 
       <!-- Station circles: clockwise from bottom-right -->
       <div class="station station-vienna" id="station-1">
-        <div class="station-photo"><img src="images/cv/studies_thumb.png" alt=""/></div>
+        <div class="station-photo"><img src="cv/studies_thumb.png" alt=""/></div>
         <div class="station-number">1</div>
         <div class="station-title">Dual Degree</div>
         <div class="station-institution">University of Vienna</div>
@@ -496,44 +521,52 @@
       </div>
 
       <div class="station station-vienna" id="station-2">
-        <div class="station-photo"><img src="images/cv/phd_thumb.png" alt=""/></div>
+        <div class="station-photo"><img src="cv/phd_thumb.png" alt=""/></div>
         <div class="station-number">2</div>
         <div class="station-title">PhD in Mathematics</div>
         <div class="station-institution">University of Vienna</div>
-        <div class="station-mentor">Christian Schmeiser</div>
+        <div class="station-mentor">With Christian Schmeiser</div>
         <div class="station-years">2011&ndash;2015</div>
       </div>
 
       <div class="station station-nyc" id="station-3">
-        <div class="station-photo"><img src="images/cv/new_york_thumb.png" alt=""/></div>
+        <div class="station-photo"><img src="cv/new_york_thumb.png" alt=""/></div>
         <div class="station-number">3</div>
         <div class="station-title">Postdoctoral Researcher</div>
         <div class="station-institution">New York University</div>
-        <div class="station-mentor">Alex Mogilner</div>
+        <div class="station-mentor">With Alex Mogilner</div>
         <div class="station-years">2016&ndash;2018</div>
       </div>
 
       <div class="station station-london" id="station-4">
-        <div class="station-photo"><img src="images/cv/imerpial_thumb.png" alt=""/></div>
+        <div class="station-photo"><img src="cv/imperial_thumb.png" alt=""/></div>
         <div class="station-number">4</div>
         <div class="station-title">Postdoctoral Researcher</div>
         <div class="station-institution">Imperial College London</div>
-        <div class="station-mentor">Pierre Degond</div>
+        <div class="station-mentor">With Pierre Degond</div>
         <div class="station-years">2018&ndash;2019</div>
       </div>
 
       <div class="station station-london" id="station-5">
-        <div class="station-photo"><img src="images/cv/ucl_thumb.png" alt=""/></div>
+        <div class="station-photo"><img src="cv/ucl_thumb.png" alt=""/></div>
         <div class="station-number">5</div>
-        <div class="station-title">Assist/Assoc Professor</div>
+        <div class="station-hsplit">
+          <div class="hsplit-title">Assistant Professor</div>
+          <div class="station-hsplit-divider"></div>
+          <div class="hsplit-title">Associate Professor</div>
+        </div>
         <div class="station-institution">University College London</div>
         <div class="station-years">2019&ndash;2022</div>
       </div>
 
       <div class="station station-vienna" id="station-6">
-        <div class="station-photo"><img src="images/cv/present_thumb.jpg" alt=""/></div>
+        <div class="station-photo"><img src="cv/present_thumb.jpg" alt=""/></div>
         <div class="station-number">6</div>
-        <div class="station-title">Assist/Assoc Professor</div>
+        <div class="station-hsplit">
+          <div class="hsplit-title">Assistant Professor</div>
+          <div class="station-hsplit-divider"></div>
+          <div class="hsplit-title">Associate Professor</div>
+        </div>
         <div class="station-institution">University of Vienna</div>
         <div class="station-years">2023&ndash;Present</div>
       </div>
@@ -545,7 +578,7 @@
   <div class="timeline-view">
     <div class="timeline">
       <div class="tl-circle tl-vienna">
-        <div class="station-photo"><img src="images/cv/studies_thumb.png" alt=""/></div>
+        <div class="station-photo"><img src="cv/studies_thumb.png" alt=""/></div>
         <div class="station-number">1</div>
         <div class="station-title">Dual Degree</div>
         <div class="station-institution">University of Vienna</div>
@@ -563,44 +596,52 @@
       </div>
 
       <div class="tl-circle tl-vienna">
-        <div class="station-photo"><img src="images/cv/phd_thumb.png" alt=""/></div>
+        <div class="station-photo"><img src="cv/phd_thumb.png" alt=""/></div>
         <div class="station-number">2</div>
         <div class="station-title">PhD in Mathematics</div>
         <div class="station-institution">University of Vienna</div>
-        <div class="station-mentor">Christian Schmeiser</div>
+        <div class="station-mentor">With Christian Schmeiser</div>
         <div class="station-years">2011&ndash;2015</div>
       </div>
 
       <div class="tl-circle tl-nyc">
-        <div class="station-photo"><img src="images/cv/new_york_thumb.png" alt=""/></div>
+        <div class="station-photo"><img src="cv/new_york_thumb.png" alt=""/></div>
         <div class="station-number">3</div>
         <div class="station-title">Postdoctoral Researcher</div>
         <div class="station-institution">New York University</div>
-        <div class="station-mentor">Alex Mogilner</div>
+        <div class="station-mentor">With Alex Mogilner</div>
         <div class="station-years">2016&ndash;2018</div>
       </div>
 
       <div class="tl-circle tl-london">
-        <div class="station-photo"><img src="images/cv/imerpial_thumb.png" alt=""/></div>
+        <div class="station-photo"><img src="cv/imperial_thumb.png" alt=""/></div>
         <div class="station-number">4</div>
         <div class="station-title">Postdoctoral Researcher</div>
         <div class="station-institution">Imperial College London</div>
-        <div class="station-mentor">Pierre Degond</div>
+        <div class="station-mentor">With Pierre Degond</div>
         <div class="station-years">2018&ndash;2019</div>
       </div>
 
       <div class="tl-circle tl-london">
-        <div class="station-photo"><img src="images/cv/ucl_thumb.png" alt=""/></div>
+        <div class="station-photo"><img src="cv/ucl_thumb.png" alt=""/></div>
         <div class="station-number">5</div>
-        <div class="station-title">Assist/Assoc Professor</div>
+        <div class="station-hsplit">
+          <div class="hsplit-title">Assistant Professor</div>
+          <div class="station-hsplit-divider"></div>
+          <div class="hsplit-title">Associate Professor</div>
+        </div>
         <div class="station-institution">University College London</div>
         <div class="station-years">2019&ndash;2022</div>
       </div>
 
       <div class="tl-circle tl-vienna">
-        <div class="station-photo"><img src="images/cv/present_thumb.jpg" alt=""/></div>
+        <div class="station-photo"><img src="cv/present_thumb.jpg" alt=""/></div>
         <div class="station-number">6</div>
-        <div class="station-title">Assist/Assoc Professor</div>
+        <div class="station-hsplit">
+          <div class="hsplit-title">Assistant Professor</div>
+          <div class="station-hsplit-divider"></div>
+          <div class="hsplit-title">Associate Professor</div>
+        </div>
         <div class="station-institution">University of Vienna</div>
         <div class="station-years">2023&ndash;Present</div>
       </div>

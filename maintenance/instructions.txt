@@ -1,0 +1,48 @@
+Publication Management Workflow
+================================
+
+All publication data lives in the Excel file: publications/my_publications.xlsx
+Two HTML pages load from the generated JSON: publications.html, research.html
+
+
+1. Adding or editing publications
+----------------------------------
+  - Edit publications/my_publications.xlsx
+  - Run from maintenance/:  python generate_publications.py
+  - This generates publications/publications.json (27+ entries)
+  - Both pages automatically reflect the changes
+
+
+2. Updating the co-authorship network layout
+----------------------------------------------
+  - Open publications.html?edit in the browser (needs a local server, see below)
+  - Toggle open the co-authorship network
+  - Drag nodes to desired positions
+  - Click "Export Layout" (bottom-right of network panel, only visible with ?edit)
+  - Run from maintenance/:  python update_layout.py
+  - This reads the layout JSON from your clipboard and patches publications.html
+
+
+3. Local testing
+-----------------
+  - Start a local server from the site root:  python -m http.server 8000
+  - Open http://localhost:8000/ in the browser
+  - fetch() requires HTTP, so pages won't load publication data via file:// URLs
+
+
+4. Deploying
+-------------
+  - git add / git commit / git push
+  - GitHub Pages deploys automatically from the master branch
+
+
+5. File structure
+------------------
+  root/           HTML pages (index, cv, research, publications, outreach)
+  shared/         Cross-section images (portrait, logo, background)
+  cv/             CV page assets (map, station thumbnails)
+  research/       Research page assets (theme thumbs, MOHECCE figures)
+  publications/   Publication PDFs, thumbnails, data (Excel + JSON)
+  outreach/       Outreach assets, sub-pages (gallery, essay), illustrations
+  team/           Team member photos
+  maintenance/    This file, generate_publications.py, update_layout.py

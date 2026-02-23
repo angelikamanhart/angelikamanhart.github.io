@@ -49,7 +49,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background-image: url('images/cells_background.png');
+      background-image: url('shared/cells_background.png');
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center center;
@@ -209,7 +209,7 @@
 
   <!-- NAV -->
   <nav>
-    <a class="nav-name" href="index.html"><img class="nav-portrait" src="images/portrait_me.jpg" alt=""/>Angelika Manhart</a>
+    <a class="nav-name" href="index.html"><img class="nav-portrait" src="shared/portrait_me.jpg" alt=""/>Angelika Manhart</a>
     <ul class="nav-links">
       <li><a href="index.html#about">About</a></li>
       <li><a href="research.html">Research</a></li>
@@ -238,7 +238,7 @@
         <p class="hero-eyebrow">University of Vienna · Faculty of Mathematics</p>
         <h1 class="hero-name">Angelika<br/><em>Manhart</em></h1>
         <p class="hero-title">Associate Professor for Mathematical Biology</p>
-        <p class="hero-tagline">Using mathematics to capture, describe and better understand biological phenomena — from cytoskeletal dynamics to collective cell migration.</p>
+        <p class="hero-tagline">Using mathematics to better understand biological phenomena — from cytoskeletal dynamics to collective cell migration.</p>
         <div class="hero-tags">
           <span class="hero-tag">Mathematical Biology</span>
           <span class="hero-tag">Collective Motion</span>
@@ -254,11 +254,11 @@
       </div>
       <div class="hero-photo-wrap">
         <div class="photo-circle" id="photoCircle">
-          <img src="images/portrait_me.jpg" alt="Manhart" id="profileImg"/>
+          <img src="shared/portrait_me.jpg" alt="Manhart" id="profileImg"/>
         </div>
       </div>
     </div>
-    <img src="images/univie_logo.png" alt="University of Vienna" class="hero-univie-logo"/>
+    <img src="shared/univie_logo.png" alt="University of Vienna" class="hero-univie-logo"/>
   </div>
 
   <hr class="divider"/>
@@ -271,7 +271,7 @@
           <p class="section-label">Background</p>
           <h2 class="section-title">About Me</h2>
         </div>
-        <img src="images/outreach/i_knew2.png" alt="" style="height: 150px; opacity: 0.85;"/>
+        <img src="shared/i_knew.png" alt="" style="height: 150px; flex-shrink: 1; min-width: 0; object-fit: contain; opacity: 0.85;"/>
       </div>
       <div class="about-grid reveal">
         <div class="about-text">
@@ -320,7 +320,7 @@
     <h3 class="team-subsection">Current</h3>
     <div class="team-grid reveal">
       <div class="team-card">
-        <div class="team-avatar"><img src="images/team/freingruber.png" alt="Viktoria Freingruber"/></div>
+        <div class="team-avatar"><img src="team/freingruber.png" alt="Viktoria Freingruber"/></div>
         <h3>Viktoria Freingruber</h3>
         <span class="team-role">Postdoctoral Researcher</span>
         <p style="font-size:0.72rem; color:var(--muted); margin-top:0.3rem;">from Spring 2026</p>
@@ -335,7 +335,7 @@
     <h3 class="team-subsection">Past</h3>
     <div class="team-grid reveal">
       <div class="team-card">
-        <div class="team-avatar"><img src="images/team/leech.png" alt="Vivienne Leech"/></div>
+        <div class="team-avatar"><img src="team/leech.png" alt="Vivienne Leech"/></div>
         <h3>Vivienne Leech</h3>
         <span class="team-role">PhD Student</span>
       </div>
@@ -344,7 +344,7 @@
 
   <!-- CONTACT -->
   <div id="contact" class="full-bleed" style="background: var(--ink); position: relative; overflow: hidden;">
-    <div style="position: absolute; top: 0; bottom: 0; right: 0; width: 55%; background-image: url('images/20131021_OMP_aussen_C_Gebhard_Sengmueller_010.jpg'); background-size: cover; background-position: center right; -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0) 100%); pointer-events: none; z-index: 0;"></div>
+    <div style="position: absolute; top: 0; bottom: 0; right: 0; width: 55%; background-image: url('shared/20131021_OMP_aussen_C_Gebhard_Sengmueller_010.jpg'); background-size: cover; background-position: center right; -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0) 100%); pointer-events: none; z-index: 0;"></div>
     <div class="inner" style="position: relative; z-index: 1;">
       <p class="section-label">Get in Touch</p>
       <h2 class="section-title" style="color:#fff; font-family: var(--serif);">Contact</h2>
@@ -402,9 +402,10 @@
     }
   </script>
   <script>
-  (function(){var u='angelika.manhart',d='univie.ac.at',a=u+'@'+d;
-var contact=document.getElementById('contactEmail');
-  if(contact){contact.innerHTML='<a href="mailto:'+a+'">'+a+'</a>';}
+  (function(){var c=[97,110,103,101,108,105,107,97,46,109,97,110,104,97,114,116,64,117,110,105,118,105,101,46,97,99,46,97,116];
+  var a=c.map(function(x){return String.fromCharCode(x);}).join('');
+  var el=document.getElementById('contactEmail');
+  if(el){el.innerHTML='<a href="m\u0061ilto:'+a+'">'+a+'</a>';}
   })();
   </script>
 </body>

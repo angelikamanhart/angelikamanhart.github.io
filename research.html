@@ -210,7 +210,7 @@
     .pub-tag-organelles { background: #7e6b9e; }
     .pub-tag-cytoskeleton { background: #0891b2; }
     .pub-tag-bacteria { background: #d97706; }
-    .pub-tag-micromacro { background: #8b5cf6; }
+    .pub-tag-micromacro { background: #c2536a; }
     .pub-tag-theme-other { background: #64748b; }
     .pub-meta { font-size: 0.84rem; color: var(--muted); font-weight: 300; }
     .pub-meta strong { color: var(--mid); font-weight: 600; }
@@ -262,7 +262,7 @@
 <body>
 
   <nav>
-    <a class="nav-name" href="index.html"><img class="nav-portrait" src="images/portrait_me.jpg" alt=""/>Angelika Manhart</a>
+    <a class="nav-name" href="index.html"><img class="nav-portrait" src="shared/portrait_me.jpg" alt=""/>Angelika Manhart</a>
     <ul class="nav-links">
       <li><a href="index.html#about">About</a></li>
       <li><a href="research.html">Research</a></li>
@@ -313,10 +313,10 @@ var themes = [
   {
     id: 'collective',
     name: 'Collective Dynamics',
-    subtitle: 'Alignment & Pattern Formation',
+    subtitle: 'Alignment &<br>Pattern Formation',
     description: 'Collective Dynamics studies how complex patterns arise from individual interactions. The research projects here range from studying specific systems & organisms, to investigating how environmental interactions influence patterns, to investigating alignment mechanisms.',
     color: '#2563eb',
-    thumb: 'images/research_thumbs/collective_thumb.png'
+    thumb: 'research/thumbs/collective_thumb.png'
   },
   {
     id: 'cytoskeleton',
@@ -324,7 +324,7 @@ var themes = [
     subtitle: 'Cell Migration & Fibre Dynamics',
     description: 'A cell\u2019s cytoskeleton allows it to perform various tasks, such as cell migration or position its cell organelles, such as nuclei. In this research we model the cytoskeleton using differential equations and study its properties and function.',
     color: '#059669',
-    thumb: 'images/research_thumbs/cytoskeleton_thumb.png'
+    thumb: 'research/thumbs/cytoskeleton_thumb.png'
   },
   {
     id: 'bacteria',
@@ -332,15 +332,15 @@ var themes = [
     subtitle: 'Coordination & Waves',
     description: 'Myxobacteria are soil-living bacteria that can glide on 2D surfaces using different movement mechanisms. In different settings they show fascinating collective pattern which include clustering and wave formation. We used collision operators to describe bacteria interactions and derived continuum equations. Studying these revealed criteria and mechanisms for the appearance of the fascinating counter-propagating waves.',
     color: '#d97706',
-    thumb: 'images/research_thumbs/myxo_thumb.png'
+    thumb: 'research/thumbs/myxo_thumb.png'
   },
   {
     id: 'organelles',
     name: 'Cell Organelles',
-    subtitle: 'Nuclear Positioning & Scaling',
+    subtitle: 'Nuclear Positioning<br>& Scaling',
     description: 'The nucleus is a cell\u2019s central organ. Muscle cells can contain 10s\u2013100s of nuclei. Their position and size is important for muscle function & health. Using data & mathematical modelling, we investigate positioning and size scaling mechanism in single and multi-nucleated cells.',
     color: '#7e6b9e',
-    thumb: 'images/research_thumbs/organelle_thumb.png'
+    thumb: 'research/thumbs/organelle_thumb.png'
   },
   {
     id: 'mohecce',
@@ -350,22 +350,32 @@ var themes = [
     richDescription: '<div class="detail-banner"><div><p>Modelling Heterogeneous Cell Clusters and their Environment (MOHECCE)</p><span class="project-number">FWF ASTRA 2026\u20132031 \u00b7 Project AST1156424</span></div><a class="detail-link-btn" href="https://www.fwf.ac.at/entdecken/auszeichnungen/fwf-astra-preise/2025" target="_blank">FWF ASTRA Award</a></div>' +
       '<h3>Background</h3>' +
       '<p>Cancer cell clusters are more successful at metastasizing than single cells. This interdisciplinary project combines mathematical modeling and simulation with experiments to understand collective cell migration. We investigate how cell properties, their environment, and cell\u2013cell communication shape collective behavior.</p>' +
-      '<figure class="detail-figure"><img src="images/MOHECCE/fig_bio_overview2.png" alt="From cell signalling to individual behaviour to collective dynamics"/><figcaption>From cell signalling to individual cell behaviour to collective cell dynamics</figcaption></figure>' +
+      '<figure class="detail-figure"><img src="research/MOHECCE/fig_bio_overview2.png" alt="From cell signalling to individual behaviour to collective dynamics"/><figcaption>From cell signalling to individual cell behaviour to collective cell dynamics</figcaption></figure>' +
       '<h3>Guiding Questions</h3>' +
       '<p>How do cells self-organize into clusters, and what factors influence their formation? What advantages do clustered cells have compared to individual migrating cells? We focus on two key aspects: <em>cell state heterogeneity</em> and the <em>cluster environment</em>.</p>' +
       '<h3>Approach</h3>' +
-      '<figure class="detail-figure"><img src="images/MOHECCE/fig_compare.png" alt="Models and data sources overview"/><figcaption>Combining mathematical models with experimental data sources</figcaption></figure>' +
+      '<figure class="detail-figure"><img src="research/MOHECCE/fig_compare.png" alt="Models and data sources overview"/><figcaption>Combining mathematical models with experimental data sources</figcaption></figure>' +
       '<div class="detail-row">' +
         '<div><h4>Mathematical Methods</h4><p>Interacting particle models, differential equations (ODEs and PDEs), numerical simulations, and quantitative data analysis.</p>' +
         '</div>' +
-        '<div><h4>Experimental Component</h4><p>Led by <a href="https://krebsforschung.meduniwien.ac.at/schwerpunkt/metasierung/juliane-winkler/" target="_blank">Juliane Winkler</a> at the Medical University of Vienna, examining how cell state and matrix conditions affect cell group properties and metastatic potential using breast cancer cell lines.</p></div>' +
+        '<div><h4>Experiments</h4><p>Led by <a href="https://krebsforschung.meduniwien.ac.at/schwerpunkt/metasierung/juliane-winkler/" target="_blank">Juliane Winkler</a> at the Medical University of Vienna, examining how cell state and matrix conditions affect cell group properties and metastatic potential using breast cancer cell lines.</p></div>' +
       '</div>' +
       '<div style="display:flex; gap:1.5rem; justify-content:center; align-items:start; margin:1.2rem 0; flex-wrap:wrap;">' +
-        '<figure class="detail-figure" style="flex:1; max-width:40%; min-width:200px;"><img src="images/MOHECCE/fig_math.png" alt="Mathematical methods"/></figure>' +
-        '<figure class="detail-figure" style="flex:1; max-width:40%; min-width:200px;"><img src="images/MOHECCE/fig_exp.png" alt="Microscopy of cancer cells"/><figcaption>Breast cancer cells (microscopy)</figcaption></figure>' +
+        '<figure class="detail-figure" style="flex:1; max-width:40%; min-width:200px;"><img src="research/MOHECCE/fig_math.png" alt="Mathematical methods"/></figure>' +
+        '<figure class="detail-figure" style="flex:1; max-width:40%; min-width:200px;"><img src="research/MOHECCE/fig_exp.png" alt="Microscopy of cancer cells"/><figcaption>Breast cancer cells (microscopy)</figcaption></figure>' +
+      '</div>' +
+      '<h3>Related Publication</h3>' +
+      '<div class="pub-item" style="margin-top:0.8rem;">' +
+        '<div class="pub-thumb"><img src="research/MOHECCE/single_cell_winkler_thumb.png" alt="thumbnail"/></div>' +
+        '<div>' +
+          '<div class="pub-title-row"><p class="pub-title">Single-cell analysis of breast cancer metastasis reveals epithelial-mesenchymal plasticity signatures associated with poor outcomes</p></div>' +
+          '<p class="pub-meta">Winkler J, et al. &middot; <strong>The Journal of Clinical Investigation</strong> &middot; 2024</p>' +
+          '<div class="pub-links"><a class="pub-link" href="https://doi.org/10.1172/JCI179942" target="_blank">DOI</a></div>' +
+        '</div>' +
+        '<span class="pub-year">2024</span>' +
       '</div>',
     color: '#dc2626',
-    thumb: 'images/research_thumbs/MOHECCE.png'
+    thumb: 'research/thumbs/MOHECCE.png'
   },
   {
     id: 'other',
@@ -373,7 +383,7 @@ var themes = [
     subtitle: 'Eye Development & More',
     description: 'Additional research on the development of the fruit fly eye and works related to past internships.',
     color: '#64748b',
-    thumb: 'images/research_thumbs/other_thumb.png'
+    thumb: 'research/thumbs/other_thumb.png'
   }
 ];
 
@@ -426,7 +436,7 @@ function showThemeDetail(theme) {
   iconEl.innerHTML = '<img src="' + theme.thumb + '" alt="' + theme.name + '">';
 
   document.getElementById('detailTitle').textContent = theme.name;
-  document.getElementById('detailSubtitle').textContent = theme.subtitle;
+  document.getElementById('detailSubtitle').innerHTML = theme.subtitle;
 
   var descEl = document.getElementById('detailDesc');
   if (theme.richDescription) {
