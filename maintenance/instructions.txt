@@ -36,7 +36,32 @@ Two HTML pages load from the generated JSON: publications.html, research.html
   - GitHub Pages deploys automatically from the master branch
 
 
-5. File structure
+5. Adding an outreach card (workshop, art-science project, etc.)
+-----------------------------------------------------------------
+  - Open outreach.html and find the relevant section (e.g. id="workshops")
+  - Add a project-card block inside the <div class="projects-grid">:
+
+      <div class="project-card">
+        <div class="project-image"><img src="outreach/YOUR_IMAGE.jpg" alt="Event Name"/></div>
+        <div class="project-body">
+          <div class="project-year">2026</div>
+          <h3 class="project-title">Event Title</h3>
+          <p class="project-desc">Description of the event.</p>
+          <div class="project-tags">
+            <span class="tag">Tag1</span>
+            <span class="tag">Tag2</span>
+          </div>
+          <div class="project-links">
+            <a class="project-link" href="https://..." target="_blank">Event Page</a>
+          </div>
+        </div>
+      </div>
+
+  - Place the image in outreach/
+  - Cards display in source order within each section
+
+
+6. File structure
 ------------------
   root/           HTML pages (index, cv, research, publications, outreach)
   shared/         Cross-section images (portrait, logo, background)

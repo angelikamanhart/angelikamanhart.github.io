@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Teaching — Angelika Manhart</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ink:      #0a1f44;
+      --mid:      #2a4a6b;
+      --muted:    #5b95b8;
+      --accent:   #0d3b7a;
+      --accent2:  #1a6fa8;
+      --pale:     #ddeaf3;
+      --white:    #ffffff;
+      --bg:       #f0f6fa;
+      --border:   #c8dde8;
+      --serif:    'DM Serif Display', Georgia, serif;
+      --sans:     'DM Sans', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-padding-top: 70px; }
+    body { font-family: var(--sans); background: var(--white); color: var(--ink); font-size: 17px; line-height: 1.72; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(224,237,247,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw; height: 62px;
+    }
+    .nav-name { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+    .nav-portrait { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; object-position: center 20%; border: 2px solid var(--border); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .hamburger { display: none; }
+
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 5vw; }
+
+    header {
+      padding: 3rem 0 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .intro {
+      font-size: 1.05rem;
+      color: var(--mid);
+      font-weight: 300;
+      max-width: 720px;
+      line-height: 1.8;
+      margin-top: 1rem;
+    }
+    .intro-links {
+      display: flex;
+      gap: 0.7rem;
+      margin-top: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .intro-link {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid var(--accent2);
+      border-radius: 6px;
+      color: var(--accent2);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .intro-link:hover {
+      background: var(--accent2);
+      color: var(--white);
+    }
+
+    /* AWARD BANNER */
+    .award-banner {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      background: #edf4fa;
+      border: 1px solid var(--border);
+      border-left: 4px solid #d4a017;
+      border-radius: 0 12px 12px 0;
+      padding: 1.5rem 2rem;
+      margin: 2.5rem 0 0;
+    }
+    .award-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--pale) 0%, var(--bg) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .award-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .award-content h3 {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+    .award-content p {
+      font-size: 0.92rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+    .award-link {
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--mid);
+      background: var(--white);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .award-link:hover {
+      border-color: var(--accent2);
+      color: var(--accent2);
+    }
+
+    .section-gap { padding: 4rem 0; }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .category-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--pale);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .category-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .category-header h2 {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      color: var(--ink);
+    }
+
+    /* PROJECT CARDS GRID */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .project-card:hover {
+      box-shadow: 0 8px 32px rgba(13,59,122,0.1);
+      transform: translateY(-2px);
+    }
+
+    .project-image {
+      width: 100%;
+      background: linear-gradient(135deg, var(--pale) 0%, var(--bg) 100%);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .project-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .project-body {
+      padding: 1.5rem;
+    }
+    .project-title {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+    .project-desc {
+      font-size: 0.92rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      font-size: 0.73rem;
+      font-weight: 500;
+      padding: 0.25rem 0.7rem;
+      border-radius: 100px;
+      background: var(--pale);
+      color: var(--mid);
+      border: 1px solid var(--border);
+    }
+    .project-links {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .project-link {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--mid);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .project-link:hover {
+      border-color: var(--accent2);
+      color: var(--accent2);
+    }
+
+    .back-to-top { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; margin-top: 0.5rem; transition: color 0.2s; }
+    .back-to-top:hover { color: var(--accent2); }
+    .back-to-top::before { content: '\2191'; }
+
+    /* CIRCULAR HUB NAVIGATION */
+    .hub-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 720px;
+      margin: 0 auto;
+      justify-items: center;
+    }
+
+    .hub-card {
+      background: rgba(255,255,255,0.92);
+      border: 3px solid var(--accent2);
+      border-radius: 50%;
+      padding: 2rem;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 210px;
+      height: 210px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      opacity: 0;
+      animation: hubReveal 0.6s ease forwards;
+      animation-delay: var(--delay);
+      box-shadow: 0 10px 40px rgba(13,59,122,0.12);
+    }
+
+    @keyframes hubReveal {
+      to { opacity: 1; }
+    }
+
+    .hub-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--pale) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      border-radius: 50%;
+    }
+    .hub-card:hover::before { opacity: 1; }
+
+    .hub-card:hover {
+      border-color: var(--accent);
+      border-width: 4px;
+      box-shadow: 0 25px 70px rgba(13,59,122,0.2);
+      transform: scale(1.08);
+      z-index: 10;
+    }
+
+    .hub-card > * { pointer-events: none; }
+    .hub-image {
+      width: 80px;
+      height: 80px;
+      background: var(--pale);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.8rem;
+      transition: transform 0.3s;
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+      border: 3px solid var(--white);
+      box-shadow: 0 4px 12px rgba(13,59,122,0.1);
+      font-size: 2rem;
+      overflow: hidden;
+    }
+    .hub-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hub-card:hover .hub-image {
+      transform: rotate(5deg) scale(1.1);
+      box-shadow: 0 6px 20px rgba(13,59,122,0.15);
+    }
+
+    .hub-card h3 {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+      position: relative;
+      z-index: 1;
+      line-height: 1.25;
+    }
+
+    .hub-card p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 300;
+      position: relative;
+      z-index: 1;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 62px; left: 0; right: 0;
+        background: rgba(224,237,247,0.97);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 5vw;
+        gap: 0.5rem;
+      }
+      .nav-links.open { display: flex; }
+      .hamburger {
+        display: flex; align-items: center; justify-content: center;
+        background: none; border: none; cursor: pointer;
+        width: 38px; height: 38px; padding: 0;
+      }
+      .hamburger svg { width: 22px; height: 22px; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
+      .award-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+    }
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 620px) {
+      .hub-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .hub-card:hover {
+        transform: scale(1.05);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-name" href="index.html"><img class="nav-portrait" src="shared/portrait_me.jpg" alt=""/>Angelika Manhart</a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="teaching.html">Teaching</a></li>
+      <li><a href="outreach.html">Outreach &amp; Art</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li><a href="cv.html">CV</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <svg viewBox="0 0 24 24" fill="none"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+  <script>document.querySelector('.nav-links').addEventListener('click',function(e){if(e.target.tagName==='A')this.classList.remove('open');})</script>
+
+<div class="container">
+  <header>
+    <p style="font-size: 0.73rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent2); margin-bottom: 0.5rem;">Teaching &amp; Supervision</p>
+    <h1>Teaching</h1>
+    <p class="intro">
+      My teaching emphasizes the connection between mathematical theory and applications. I strive to motivate and engage students by creating a classroom atmosphere that invites questions and discussions.
+    </p>
+    <div class="intro-links">
+      <a class="intro-link" href="https://ufind.univie.ac.at/de/person.html?id=31313" target="_blank">Courses at UniVie &rarr;</a>
+    </div>
+  </header>
+
+  <!-- FILZ MEDAL AWARD -->
+  <div class="award-banner">
+    <div class="award-image">
+      <img src="teaching/filz.png" alt="Filz Medal"/>
+    </div>
+    <div class="award-content">
+      <h3>Filz Medal</h3>
+      <p>Awarded the &ldquo;Filz Medal&rdquo; (not to be confused with the &ldquo;Fields Medal&rdquo; &#x1F609;) for excellence in teaching by the student representatives at the Faculty of Mathematics, University of Vienna.</p>
+      <a class="award-link" href="https://rotervektor.at/Filzmedaille-WS23SS24/Angelika-Manhart" target="_blank">Learn more &rarr;</a>
+    </div>
+  </div>
+
+  <!-- CATEGORY HUB NAVIGATION -->
+  <section id="overview" style="padding: 4rem 0 1rem;">
+    <div class="hub-container">
+      <a href="#bachelor" class="hub-card" style="--delay: 0s;">
+        <div class="hub-image">
+          <img src="teaching/numerik.png" alt="Bachelor"/>
+        </div>
+        <h3>Bachelor Courses</h3>
+        <p>Foundational courses</p>
+      </a>
+
+      <a href="#master" class="hub-card" style="--delay: 0.1s;">
+        <div class="hub-image">
+          <img src="teaching/pattern.png" alt="Master"/>
+        </div>
+        <h3>Master Courses</h3>
+        <p>Advanced topics</p>
+      </a>
+
+      <a href="#other" class="hub-card" style="--delay: 0.2s;">
+        <div class="hub-image">
+          <img src="teaching/trainings.png" alt="Trainings"/>
+        </div>
+        <h3>Professional Development</h3>
+        <p>Trainings &amp; Workshops</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- BACHELOR COURSES -->
+  <section class="section-gap" id="bachelor">
+    <div class="category-header">
+      <div class="category-icon"><img src="teaching/numerik.png" alt="Bachelor"/></div>
+      <h2>Bachelor Level Courses</h2>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-image"><img src="teaching/numerik.png" alt="Numerical Analysis"/></div>
+        <div class="project-body">
+          <h3 class="project-title">Numerical Analysis</h3>
+          <p class="project-desc">Introduction to numerical methods for solving mathematical problems computationally, including root finding, interpolation, numerical integration, and differential equations.</p>
+          <div class="project-tags">
+            <span class="tag">UniVie</span>
+            <span class="tag">NYU</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-image"><img src="teaching/biomath.png" alt="Biomathematics and Game Theory"/></div>
+        <div class="project-body">
+          <h3 class="project-title">Biomathematics and Game Theory</h3>
+          <p class="project-desc">Mathematical modeling of biological systems and evolutionary game theory, covering population dynamics, epidemiology, and strategic interactions in biological contexts.</p>
+          <div class="project-tags">
+            <span class="tag">UniVie</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-image"><img src="teaching/applied.png" alt="Applied Mathematics"/></div>
+        <div class="project-body">
+          <h3 class="project-title">Applied Mathematics</h3>
+          <p class="project-desc">Large-scale undergraduate course covering fundamental applied mathematics topics including differential equations, linear algebra applications, and mathematical modeling.</p>
+          <div class="project-tags">
+            <span class="tag">UCL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#overview" class="back-to-top">Back to overview</a>
+  </section>
+
+  <!-- MASTER COURSES -->
+  <section class="section-gap" id="master" style="background: var(--bg); margin: 0 -5vw; padding-left: 5vw; padding-right: 5vw;">
+    <div class="category-header">
+      <div class="category-icon"><img src="teaching/pattern.png" alt="Master"/></div>
+      <h2>Master Level Courses</h2>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-image"><img src="teaching/pattern.png" alt="Mathematical Ecology and Pattern Formation"/></div>
+        <div class="project-body">
+          <h3 class="project-title">Mathematical Ecology &amp; Pattern Formation</h3>
+          <p class="project-desc">Graduate-level course exploring mathematical models of ecological systems and pattern formation in biology, including reaction-diffusion systems, Turing patterns, and spatial ecology.</p>
+          <div class="project-tags">
+            <span class="tag">UniVie</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#overview" class="back-to-top">Back to overview</a>
+  </section>
+
+  <!-- OTHER TEACHING -->
+  <section class="section-gap" id="other">
+    <div class="category-header">
+      <div class="category-icon"><img src="teaching/trainings.png" alt="Trainings"/></div>
+      <h2>Other Teaching &amp; Professional Development</h2>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-image"><img src="teaching/phd_postdoc.png" alt="PhD and Post-doc Trainings"/></div>
+        <div class="project-body">
+          <h3 class="project-title">PhD and Post-doc Trainings</h3>
+          <p class="project-desc">Professional development sessions for early-career researchers on topics including scientific presentations, collaborations and career planning. Held together with Dave Hewett.</p>
+          <div class="project-tags">
+            <span class="tag">UCL</span>
+          </div>
+          <div class="project-links">
+            <a class="project-link" href="https://www.homepages.ucl.ac.uk/~ucahdhe/" target="_blank">Dave Hewett &rarr;</a>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-image"><img src="teaching/lecturing.png" alt="Workshop: Lecturing Mathematics"/></div>
+        <div class="project-body">
+          <h3 class="project-title">Workshop: Lecturing Mathematics</h3>
+          <p class="project-desc">Professional development workshop for faculty and post-docs on effective teaching strategies, course design, and pedagogical approaches in mathematics. Held together with trainer and systemic coach Yasmin Dolak-Struss.</p>
+          <div class="project-tags">
+            <span class="tag">UniVie</span>
+          </div>
+          <div class="project-links">
+            <a class="project-link" href="https://www.solutionbase.at/de" target="_blank">Yasmin Dolak-Struss &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#overview" class="back-to-top">Back to overview</a>
+  </section>
+
+</div>
+
+  <footer style="text-align: center; padding: 1.8rem 5vw; font-size: 0.78rem; color: var(--muted); border-top: 1px solid var(--border);">&copy; 2026 Manhart A &middot; University of Vienna &middot; Faculty of Mathematics</footer>
+
+</body>
+</html>
