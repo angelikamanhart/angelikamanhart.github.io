@@ -90,7 +90,7 @@
       border: 1px solid var(--border);
       border-left: 4px solid #d4a017;
       border-radius: 0 12px 12px 0;
-      padding: 1.5rem 2rem;
+      padding: 0.7rem 2rem;
       margin: 2.5rem 0 0;
     }
     .award-image {
@@ -122,17 +122,17 @@
       line-height: 1.6;
     }
     .award-link {
-      display: inline-block;
-      margin-top: 0.6rem;
+      display: inline;
       font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      padding: 0.35rem 0.8rem;
+      padding: 0.2rem 0.6rem;
       border: 1px solid var(--border);
       border-radius: 6px;
       color: var(--mid);
       background: var(--white);
+      white-space: nowrap;
       text-decoration: none;
       transition: all 0.2s;
     }
@@ -435,7 +435,7 @@
     <p style="font-size: 0.73rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent2); margin-bottom: 0.5rem;">Teaching &amp; Supervision</p>
     <h1>Teaching</h1>
     <p class="intro">
-      My teaching emphasizes the connection between mathematical theory and applications. I strive to motivate and engage students by creating a classroom atmosphere that invites questions and discussions.
+      My teaching emphasizes the connection between mathematical theory and applications.<br/>I strive to motivate and engage students by creating a classroom atmosphere that invites questions and discussions.
     </p>
     <div class="intro-links">
       <a class="intro-link" href="https://ufind.univie.ac.at/de/person.html?id=31313" target="_blank">Courses at UniVie &rarr;</a>
@@ -449,8 +449,7 @@
     </div>
     <div class="award-content">
       <h3>Filz Medal</h3>
-      <p>Awarded the &ldquo;Filz Medal&rdquo; (not to be confused with the &ldquo;Fields Medal&rdquo; &#x1F609;) for excellence in teaching by the student representatives at the Faculty of Mathematics, University of Vienna.</p>
-      <a class="award-link" href="https://rotervektor.at/Filzmedaille-WS23SS24/Angelika-Manhart" target="_blank">Learn more &rarr;</a>
+      <p>Awarded the &ldquo;Filz Medal&rdquo; (not to be confused with the &ldquo;Fields Medal&rdquo; &#x1F609;) for excellence in teaching by the student representatives at the Faculty of Mathematics, University of Vienna. <a class="award-link" href="https://rotervektor.at/Filzmedaille-WS23SS24/Angelika-Manhart" target="_blank">Learn more &rarr;</a></p>
     </div>
   </div>
 
@@ -494,7 +493,7 @@
         <div class="project-image"><img src="teaching/numerik.png" alt="Numerical Analysis"/></div>
         <div class="project-body">
           <h3 class="project-title">Numerical Analysis</h3>
-          <p class="project-desc">Introduction to numerical methods for solving mathematical problems computationally, including root finding, interpolation, numerical integration, and differential equations.</p>
+          <p class="project-desc">Introduction to numerical methods for solving mathematical problems computationally, including root finding, numerically solving eigenvalue problems, numerical integration and interpolation.</p>
           <div class="project-tags">
             <span class="tag">UniVie</span>
             <span class="tag">NYU</span>
@@ -505,7 +504,7 @@
         <div class="project-image"><img src="teaching/biomath.png" alt="Biomathematics and Game Theory"/></div>
         <div class="project-body">
           <h3 class="project-title">Biomathematics and Game Theory</h3>
-          <p class="project-desc">Mathematical modeling of biological systems and evolutionary game theory, covering population dynamics, epidemiology, and strategic interactions in biological contexts.</p>
+          <p class="project-desc">Mathematical modeling of biological systems, covering population dynamics, epidemiology, cell movement and evolutionary game theory.</p>
           <div class="project-tags">
             <span class="tag">UniVie</span>
           </div>
@@ -567,7 +566,7 @@
         </div>
       </div>
       <div class="project-card">
-        <div class="project-image"><img src="teaching/lecturing.png" alt="Workshop: Lecturing Mathematics"/></div>
+        <div class="project-image" style="position: relative;"><img src="teaching/lecturing.png" alt="Workshop: Lecturing Mathematics"/><span style="position: absolute; bottom: 0.4rem; right: 0.5rem; font-size: 0.65rem; color: rgba(255,255,255,0.7);">&copy; Yasmin Dolak-Struss</span></div>
         <div class="project-body">
           <h3 class="project-title">Workshop: Lecturing Mathematics</h3>
           <p class="project-desc">Professional development workshop for faculty and post-docs on effective teaching strategies, course design, and pedagogical approaches in mathematics. Held together with trainer and systemic coach Yasmin Dolak-Struss.</p>
