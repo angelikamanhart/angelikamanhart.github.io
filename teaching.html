@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Teaching — Angelika Manhart</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="shared/favicon.svg"/>
   <style>
     :root {
       --ink:      #0a1f44;
@@ -389,9 +390,8 @@
       }
       .hamburger svg { width: 22px; height: 22px; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
       .award-banner {
-        flex-direction: column;
-        text-align: center;
         gap: 1rem;
+        padding: 0.7rem 1rem;
       }
     }
     @media (max-width: 768px) {
@@ -413,7 +413,7 @@
 <body>
 
   <nav>
-    <a class="nav-name" href="index.html"><img class="nav-portrait" src="shared/portrait_me.jpg" alt=""/>Angelika Manhart</a>
+    <a class="nav-name" href="index.html"><img class="nav-portrait" src="shared/favicon.png" alt=""/>Angelika Manhart</a>
     <ul class="nav-links">
       <li><a href="index.html#about">About</a></li>
       <li><a href="research.html">Research</a></li>
@@ -553,7 +553,7 @@
     </div>
     <div class="projects-grid">
       <div class="project-card">
-        <div class="project-image"><img src="teaching/phd_postdoc.png" alt="PhD and Post-doc Trainings"/></div>
+        <div class="project-image" style="position: relative;"><img src="teaching/phd_postdoc.png" alt="PhD and Post-doc Trainings"/><span style="position: absolute; top: 0.4rem; right: 0.5rem; font-size: 0.65rem; color: rgba(0,0,0,0.5);">&copy; David Hewett</span></div>
         <div class="project-body">
           <h3 class="project-title">PhD and Post-doc Trainings</h3>
           <p class="project-desc">Professional development sessions for early-career researchers on topics including scientific presentations, collaborations and career planning. Held together with Dave Hewett.</p>

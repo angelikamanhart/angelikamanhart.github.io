@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Research — Angelika Manhart</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="shared/favicon.svg"/>
   <style>
     :root {
       --ink:      #0a1f44;
@@ -62,8 +63,8 @@
       color: inherit;
       cursor: pointer;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      width: 220px;
-      height: 220px;
+      width: 240px;
+      height: 240px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -99,8 +100,8 @@
     }
 
     .hub-image {
-      width: 80px;
-      height: 80px;
+      width: 90px;
+      height: 90px;
       background: var(--pale);
       border-radius: 50%;
       display: flex;
@@ -120,7 +121,7 @@
 
     .hub-card h3 {
       font-family: var(--serif);
-      font-size: 0.95rem;
+      font-size: 1.05rem;
       color: var(--ink);
       margin-bottom: 0.25rem;
       position: relative;
@@ -128,7 +129,7 @@
       line-height: 1.25;
     }
     .hub-card p {
-      font-size: 0.78rem;
+      font-size: 0.84rem;
       color: var(--muted);
       font-weight: 300;
       position: relative;
@@ -175,6 +176,9 @@
     }
     .close-detail-btn:hover { border-color: var(--accent2); color: var(--accent2); }
     .theme-detail-desc { color: var(--mid); font-weight: 300; line-height: 1.75; margin-bottom: 2rem; font-size: 0.95rem; }
+    .theme-detail-desc p { margin-bottom: 0.9rem; }
+    .theme-detail-desc p:last-child { margin-bottom: 0; }
+    .theme-detail-desc strong { font-weight: 600; color: var(--ink); }
     .theme-detail-desc img { max-width: 100%; height: auto; border-radius: 8px; margin: 1rem 0; }
     .theme-detail-desc a { color: var(--accent2); text-decoration: none; font-weight: 500; }
     .theme-detail-desc a:hover { text-decoration: underline; }
@@ -262,7 +266,7 @@
 <body>
 
   <nav>
-    <a class="nav-name" href="index.html"><img class="nav-portrait" src="shared/portrait_me.jpg" alt=""/>Angelika Manhart</a>
+    <a class="nav-name" href="index.html"><img class="nav-portrait" src="shared/favicon.png" alt=""/>Angelika Manhart</a>
     <ul class="nav-links">
       <li><a href="index.html#about">About</a></li>
       <li><a href="research.html">Research</a></li>
@@ -316,14 +320,20 @@ var themes = [
     name: 'Collective Dynamics',
     subtitle: 'Alignment &<br>Pattern Formation',
     description: 'Collective Dynamics studies how complex patterns arise from individual interactions. The research projects here range from studying specific systems & organisms, to investigating how environmental interactions influence patterns, to investigating alignment mechanisms.',
+    richDescription: '<p>Collective Dynamics studies how complex patterns arise from individual interactions. The research projects here range from studying specific systems &amp; organisms, to investigating how environmental interactions influence patterns, to investigating alignment mechanisms.</p>' +
+      '<p>Part of my work in this area is devoted to connecting the <strong>\u201cmicroscale\u201d</strong>, i.e. the scale at which interactions between individual agents (cells, bacteria, etc.) are described explicitly, with the <strong>\u201cmacroscale\u201d</strong>, i.e. the scale at which the emergent collective behaviour is described in terms of densities, mean directions, etc.</p>' +
+      '<p>Some of my work in collective dynamics focuses on specific systems: For example I have studied how coordinated counter-propagating waves in <strong>myxobacteria</strong> colonies can arise, or have worked with experimentalists on understanding the behaviour of <strong>skin cells</strong> in scar tissue.</p>',
     color: '#2563eb',
     thumb: 'research/thumbs/collective_thumb.png'
   },
   {
     id: 'cytoskeleton',
     name: 'Cytoskeleton',
-    subtitle: 'Cell Migration & Fibre Dynamics',
+    subtitle: 'Cell Migration &<br>Fibre Dynamics',
     description: 'A cell\u2019s cytoskeleton allows it to perform various tasks, such as cell migration or position its cell organelles, such as nuclei. In this research we model the cytoskeleton using differential equations and study its properties and function.',
+    richDescription: '<p>A cell\u2019s cytoskeleton allows it to perform various tasks, such as cell migration or position its cell organelles, such as nuclei. In this research we model the cytoskeleton using differential equations and study its properties and function.</p>' +
+      '<p>My more recent work is predominantly data-based and focusses on the <strong>microtubule-driven positioning and scaling of nuclei</strong> in muscle cells, on <strong>actin network dynamics</strong> and on <strong>fibroblast behaviour</strong>.</p>' +
+      '<p>My older work in this area focussed on a modelling framework, called the <strong>\u201cFilament Based Lamellipodium Model\u201d</strong>, which is a partial-differential-equations model of a moving cell, that can capture phenomena such as cell turning or cell deformations.</p>',
     color: '#059669',
     thumb: 'research/thumbs/cytoskeleton_thumb.png'
   },
@@ -332,6 +342,7 @@ var themes = [
     name: 'Bacteria',
     subtitle: 'Coordination & Waves',
     description: 'Myxobacteria are soil-living bacteria that can glide on 2D surfaces using different movement mechanisms. In different settings they show fascinating collective pattern which include clustering and wave formation. We used collision operators to describe bacteria interactions and derived continuum equations. Studying these revealed criteria and mechanisms for the appearance of the fascinating counter-propagating waves.',
+    richDescription: '<p><strong>Myxobacteria</strong> are soil-living bacteria that can glide on 2D surfaces using different movement mechanisms. In different settings they show fascinating collective pattern which include <strong>clustering</strong> and <strong>wave formation</strong>. We used <strong>collision operators</strong> to describe bacteria interactions and derived <strong>continuum equations</strong> (see also \u201cCollective Dynamics\u201d). Studying these revealed criteria and mechanisms for the appearance of the fascinating <strong>counter-propagating waves</strong>.</p>',
     color: '#d97706',
     thumb: 'research/thumbs/myxo_thumb.png'
   },
@@ -339,14 +350,16 @@ var themes = [
     id: 'organelles',
     name: 'Cell Organelles',
     subtitle: 'Nuclear Positioning<br>& Scaling',
-    description: 'The nucleus is a cell\u2019s central organ. Muscle cells can contain 10s\u2013100s of nuclei. Their position and size is important for muscle function & health. Using data & mathematical modelling, we investigate positioning and size scaling mechanism in single and multi-nucleated cells.',
+    description: 'Almost all of my work in this area focusses on the nucleus. The nucleus is a cell\u2019s central organ. Muscle cells can contain 10s\u2013100s of nuclei.',
+    richDescription: '<p>Almost all of my work in this area focusses on the <strong>nucleus</strong>. The nucleus is a cell\u2019s central organ. <strong>Muscle cells</strong> can contain 10s\u2013100s of nuclei. Their position and size is important for muscle function &amp; health.</p>' +
+      '<p>Together with experimental collaborators, we focussed on two central questions: What determines a <strong>nucleus\u2019 position</strong> and what determines a <strong>nucleus\u2019 size</strong>. To study this mathematically, we use <strong>differential equation</strong> based models for the nucleus, the cytoskeleton and size-sensing signals.</p>',
     color: '#7e6b9e',
     thumb: 'research/thumbs/organelle_thumb.png'
   },
   {
     id: 'mohecce',
     name: 'MOHECCE',
-    subtitle: 'Heterogeneous Cell Clusters in Cancer',
+    subtitle: 'Heterogeneous Cell Clusters<br>in Cancer',
     description: 'Modelling Heterogeneous Cell Clusters and their Environment \u2014 funded by the Austrian Science Fund (FWF) as part of their ASTRA funding scheme (2026\u20132031).',
     richDescription: '<div class="detail-banner"><div><p>Modelling Heterogeneous Cell Clusters and their Environment (MOHECCE)</p><span class="project-number">FWF ASTRA 2026\u20132031 \u00b7 Project AST1156424</span></div><a class="detail-link-btn" href="https://www.fwf.ac.at/entdecken/auszeichnungen/fwf-astra-preise/2025" target="_blank">FWF ASTRA Award</a></div>' +
       '<h3>Background</h3>' +
@@ -381,7 +394,7 @@ var themes = [
   {
     id: 'other',
     name: 'Other',
-    subtitle: 'Eye Development & More',
+    subtitle: 'Eye Development &<br>More',
     description: 'Additional research on the development of the fruit fly eye and works related to past internships.',
     color: '#64748b',
     thumb: 'research/thumbs/other_thumb.png'
