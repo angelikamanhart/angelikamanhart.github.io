@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3:*)",
+      "Bash(python -c:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(python update_excel.py:*)",
+      "Bash(python:*)",
+      "Bash(grep:*)",
+      "WebFetch(domain:doi.org)",
+      "WebFetch(domain:www.jci.org)",
+      "WebSearch",
+      "WebFetch(domain:link.springer.com)",
+      "WebFetch(domain:arxiv.org)",
+      "WebFetch(domain:api.crossref.org)",
+      "Bash(wc:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(\"C:/Users/manhara7/Documents/Workfiles/Homepage/angelikamanhart.github.io/angelikamanhart.github.io/shared/favicon.svg\":*)",
+      "Bash(\"/c/Program Files/Python313/python\" -c \"\nimport base64, os\n\n# Step 1: Read and base64-encode the PNG\npng_path = r''C:/Users/manhara7/Documents/Workfiles/Homepage/angelikamanhart.github.io/angelikamanhart.github.io/research/thumbs/collective_thumb.png''\nwith open\\(png_path, ''rb''\\) as f:\n    b64 = base64.b64encode\\(f.read\\(\\)\\).decode\\(''ascii''\\)\n\nprint\\(f''PNG file size: {os.path.getsize\\(png_path\\)} bytes''\\)\nprint\\(f''Base64 length: {len\\(b64\\)} chars''\\)\n\n# Step 2: Build the SVG\nsvg = f''''''<?xml version=\"\"1.0\"\" encoding=\"\"UTF-8\"\"?>\n<svg xmlns=\"\"http://www.w3.org/2000/svg\"\" xmlns:xlink=\"\"http://www.w3.org/1999/xlink\"\" viewBox=\"\"0 0 64 64\"\" width=\"\"64\"\" height=\"\"64\"\">\n  <defs>\n    <clipPath id=\"\"rounded\"\">\n      <rect width=\"\"64\"\" height=\"\"64\"\" rx=\"\"12\"\" ry=\"\"12\"\"/>\n    </clipPath>\n    <filter id=\"\"shadow\"\" x=\"\"-20%\"\" y=\"\"-20%\"\" width=\"\"140%\"\" height=\"\"140%\"\">\n      <feDropShadow dx=\"\"0\"\" dy=\"\"1\"\" stdDeviation=\"\"2\"\" flood-color=\"\"#000000\"\" flood-opacity=\"\"0.6\"\"/>\n    </filter>\n  </defs>\n  <g clip-path=\"\"url\\(#rounded\\)\"\">\n    <image href=\"\"data:image/png;base64,{b64}\"\" x=\"\"-32\"\" y=\"\"-32\"\" width=\"\"128\"\" height=\"\"128\"\" preserveAspectRatio=\"\"xMidYMid slice\"\"/>\n    <rect width=\"\"64\"\" height=\"\"64\"\" fill=\"\"rgba\\(0,0,0,0.2\\)\"\"/>\n    <text x=\"\"32\"\" y=\"\"40\"\" text-anchor=\"\"middle\"\" font-family=\"\"Arial, Helvetica, sans-serif\"\" font-weight=\"\"bold\"\" font-size=\"\"34\"\" fill=\"\"white\"\" filter=\"\"url\\(#shadow\\)\"\">AM</text>\n  </g>\n</svg>''''''\n\n# Write the SVG\nout_path = r''C:/Users/manhara7/Documents/Workfiles/Homepage/angelikamanhart.github.io/angelikamanhart.github.io/shared/favicon.svg''\nos.makedirs\\(os.path.dirname\\(out_path\\), exist_ok=True\\)\nwith open\\(out_path, ''w'', encoding=''utf-8''\\) as f:\n    f.write\\(svg\\)\n\nprint\\(f''SVG written: {os.path.getsize\\(out_path\\)} bytes''\\)\n\n# Step 3: Verify\nwith open\\(out_path, ''r''\\) as f:\n    head = f.read\\(300\\)\nprint\\(f''First 300 chars:''\\)\nprint\\(head\\)\n\")"
+    ]
+  }
+}
