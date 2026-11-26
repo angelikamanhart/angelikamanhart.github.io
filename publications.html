@@ -327,7 +327,7 @@
     function filterPublications() {
       var statusEl = document.getElementById('networkStatus');
       var statusText = document.getElementById('networkStatusText');
-      document.querySelectorAll('.pub-item').forEach(function(item) {
+      document.querySelectorAll('#pubList .pub-item').forEach(function(item) {
         var catMatch = true;
         if (activeFilters.length > 0) {
           catMatch = activeFilters.every(function(f) {
